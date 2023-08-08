@@ -1,0 +1,19 @@
+---
+import Button from '@components/ui/Button.astro'
+---
+
+<form method="POST" class="mt-6 flex max-w-md gap-x-4">
+  <input
+    id="email-address"
+    name="email"
+    type="email"
+    autocomplete="email"
+    aria-placeholder="Email"
+    required
+    minlength="5"
+    maxlength="50"
+    class="min-w-0 flex-auto border-0 bg-white px-3.5 py-2 text-gray-700 shadow-sm ring-1 ring-inset ring-white/10 focus:ring-2 focus:ring-inset focus:ring-indigo-500 sm:text-sm sm:leading-6"
+    placeholder="Email"
+  />
+  <Button type="submit" class="flex-none">Absenden</Button>
+</form>

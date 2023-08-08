@@ -1,0 +1,45 @@
+---
+import { Dropdown, DropdownItems } from 'astro-navbar'
+const { title, lastItem, children } = Astro.props
+---
+
+<li class="relative">
+  <Dropdown class="group">
+    <button
+      class="flex w-full items-center gap-1 py-2 text-gray-600 hover:text-gray-900 lg:w-auto lg:px-3">
+      <span>{title}</span>
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        fill="none"
+        viewBox="0 0 24 24"
+        stroke-width="3"
+        stroke="currentColor"
+        class="mt-0.5 h-3 w-3 group-open:rotate-180">
+        <path
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          d="M19.5 8.25l-7.5 7.5-7.5-7.5"></path>
+      </svg>
+    </button>
+    <DropdownItems>
+      <div
+        class:list={[
+          'lg:absolute w-full lg:w-48 z-10',
+          lastItem ? 'lg:right-0 origin-top-right' : 'lg:left-0 origin-top-left'
+        ]}>
+        <div
+          class="flex flex-col px-3 lg:rounded-md lg:border lg:bg-white lg:py-2 lg:shadow">
+          {
+            children.map((item) => (
+              <a
+                href={item.path}
+                class="py-1 text-gray-600 hover:bg-[#dfecf7] hover:text-[#2b2523]">
+                {item.title}
+              </a>
+            ))
+          }
+        </div>
+      </div>
+    </DropdownItems>
+  </Dropdown>
+</li>

@@ -1,0 +1,42 @@
+---
+import { getCollection } from 'astro:content'
+import FormattedDate from '@components/FormattedDate.astro'
+import { Image } from 'astro:assets'
+
+// sort posts by date, newest first
+const posts = (await getCollection('blog')).sort(
+  (a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf()
+)
+---
+
+<div class="my-2 py-6">
+  <h1 class="text-center text-3xl font-extrabold tracking-tight">
+    Aktuelles von Bärenherz
+  </h1>
+
+  <ul class="w-full gap-4 p-10 md:flex">
+    {
+      posts.map((post) => (
+        <li class="flex-1 border-2 border-[#dfecf7] hover:border-2 hover:border-[#033277]">
+          <a href={`/blog/${post.slug}/`}>
+            <Image
+              width={600}
+              height={400}
+              src={post.data.cover}
+              alt={post.data.coverAlt}
+            />
+            <div class="p-5">
+              <h4 class="h-14 font-bold">{post.data.title}</h4>
+              <p class="pb-2 text-gray-500">
+                <FormattedDate date={post.data.pubDate} />
+              </p>
+              <div class="prose-sm line-clamp-3 lg:prose-xl">
+                {post.data.description}
+              </div>
+            </div>
+          </a>
+        </li>
+      ))
+    }
+  </ul>
+</div>

@@ -1,0 +1,108 @@
+---
+import Logo from '@assets/logo_header.png'
+
+import Container from '@components/container.astro'
+import Link from '@components/ui/Link.astro'
+import Dropdown from './dropdown.astro'
+import { Astronav, MenuItems, MenuIcon } from 'astro-navbar'
+
+const menuItems = [
+  {
+    title: 'Über uns',
+    children: [
+    {
+    title: 'Mission',
+    path: '/about'
+  },
+      {
+        title: 'Philosophie',
+        path: '/about#philosophie'
+      },
+      {
+        title: 'Vorstand',
+        path: '/about#vorstand'
+      },
+      {
+        title: 'Statuten',
+        path: '/about#statuten'
+      }
+    ]
+  },
+  { title: 'Mitgliedschaft', path: '/mitgliedschaft' },
+  { title: 'Projekte', path: '/projekte' },
+  {
+    title: 'Aktivitäten',
+    children: [
+      {
+        title: 'Charity Golfturinier 2023',
+        path: ''
+      },
+      {
+        title: 'Charity Skitag 2023',
+        path: ''
+      },
+      {
+        title: 'Charity Golfturinier 2022',
+        path: ''
+      }
+    ]
+  },
+  { title: 'News', path: '/blog' }
+]
+---
+
+<Container>
+  <header class="my-5 flex flex-col items-center justify-between lg:flex-row">
+    <Astronav>
+      <div class="flex w-full items-center justify-between lg:w-auto">
+        <a href="/">
+          <img
+            src={Logo.src}
+            class="aspect-auto h-16 object-cover"
+            alt="Logo Bärenherz"
+          />
+        </a>
+
+        <!-- hamburger button -->
+        <div class="block lg:hidden">
+          <MenuIcon class="h-4 w-4 text-[#033277]" />
+        </div>
+      </div>
+      <MenuItems class="mt-2 hidden w-full lg:mt-0 lg:flex lg:w-auto">
+        <ul class="flex flex-col lg:flex-row lg:gap-3">
+          {
+            menuItems.map((item, index) => (
+              <>
+                {item.children && (
+                  <Dropdown
+                    title={item.title}
+                    children={item.children}
+                    lastItem={index === menuItems.length - 1}
+                  />
+                )}
+
+                {!item.children && (
+                  <li>
+                    <a
+                      href={item.path}
+                      class="flex py-2 text-gray-600 hover:bg-[#dfecf7] hover:text-gray-900 lg:px-3">
+                      {item.title}
+                    </a>
+                  </li>
+                )}
+              </>
+            ))
+          }
+        </ul>
+        <div class="mt-3 flex items-center gap-4 lg:hidden">
+          <Link href="/spenden" style="inverted">Jetzt spenden!</Link>
+        </div>
+      </MenuItems>
+    </Astronav>
+    <div>
+      <div class="hidden items-center gap-4 lg:flex">
+        <Link href="/spenden" style="inverted">Jetzt spenden!</Link>
+      </div>
+    </div>
+  </header>
+</Container>

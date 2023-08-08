@@ -1,0 +1,27 @@
+---
+import Container from './container.astro'
+import NewsletterForm from './forms/NewsletterForm.astro'
+---
+
+<Container class="mt-6 bg-[#033277] py-10 text-white">
+  <div class="flex flex-col gap-6 md:flex-row xl:justify-center">
+    <!-- heading -->
+    <div>
+      <h2 class="text-4xl font-bold dark:text-white">
+        Bleiben Sie Informiert!
+      </h2>
+    </div>
+    <!-- newsletter section -->
+    <div class="flex flex-col leading-7 md:w-4/5 xl:w-7/12">
+      <div>
+        <p>
+          Wir informieren Sie über unsere laufenden Projekte, wie ihre Spenden
+          vor Ort Gutes tun und senden ihnen Einladungen zu unseren
+          Veranstaltungen.
+        </p>
+      </div>
+      <!-- formulario -->
+      <NewsletterForm />
+    </div>
+  </div>
+</Container>

@@ -1,0 +1,37 @@
+---
+import { Image } from 'astro:assets'
+import Container from './container.astro'
+import Link from '@components/ui/Link.astro'
+
+const { ctaImage, ctaAlt, ctaLink } = Astro.props
+---
+
+<Container
+  class="my-6 gap-5 bg-[#033277] p-0 py-10 md:flex md:justify-items-stretch md:p-0 xl:justify-center">
+  <div class="m-0 hidden flex-shrink-0 p-0 md:block">
+    <Image src={ctaImage} alt={ctaAlt} loading="eager" format="avif" />
+  </div>
+  <div class="flex flex-1 justify-center align-middle">
+    <div class="text-center md:flex md:flex-col md:justify-center">
+      <p
+        class="max-w-xl text-lg font-bold italic leading-relaxed text-white md:px-10">
+        <slot name="content1">quote</slot>
+      </p>
+      <p class="mt-4 max-w-xl text-base font-bold text-white">
+        <slot name="content2">quote</slot>
+      </p>
+      <p class="mt-4 max-w-xl text-sm text-white">
+        <slot name="content3">quote</slot>
+      </p>
+      <div class="mt-6 flex flex-col gap-3 md:flex-row md:justify-center">
+        <Link
+          href="/spenden"
+          class="lg flex items-center justify-center gap-1 text-2xl"
+          size="xl"
+          rel="noopener">
+          {ctaLink}
+        </Link>
+      </div>
+    </div>
+  </div>
+</Container>

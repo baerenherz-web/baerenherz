@@ -1,0 +1,23 @@
+---
+import { Image } from 'astro:assets'
+const { altHead, imageHead } = Astro.props
+---
+
+<div class="relative isolate flex overflow-hidden bg-gray-900 py-24 sm:py-32">
+  <Image
+    src={imageHead}
+    alt={altHead}
+    class="absolute inset-0 -z-10 h-full w-full object-cover object-right md:object-center"
+  />
+
+  <div
+    class="m-20 flex max-w-2xl flex-col bg-[#f2f8f9] px-4 py-6 md:w-2/6 md:px-6">
+    <h4 class="text-2xl tracking-tight">
+      <slot name="title">Title</slot>
+    </h4>
+    <span class="my-4 w-full border-b-2 border-[#033277]"></span>
+    <h2 class="text-3xl font-bold md:text-4xl md:leading-tight">
+      <slot name="content">Subtitle</slot>
+    </h2>
+  </div>
+</div>

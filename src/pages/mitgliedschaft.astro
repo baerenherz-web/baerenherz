@@ -1,0 +1,78 @@
+---
+import Layout from '@layouts/Layout.astro'
+import Sectionhead from '@components/Sectionhead.astro'
+import Container from '@components/container.astro'
+import Button from '@components/ui/Button.astro'
+import Cta from '@components/Cta.astro'
+
+import localImage from '@assets/Mitfliedschaft.jpg'
+const localAlt = 'Mitgliedschaft'
+---
+
+<Layout title="Mitgliedschaft">
+  <Sectionhead
+    class="items-center text-center"
+    altHead={localAlt}
+    imageHead={localImage}>
+    <Fragment slot="title" class="uppercase">Mitgliedschaft</Fragment>
+    <Fragment slot="content">
+      Gemeinsam dort helfen, wo Hilfe gebraucht wird.
+    </Fragment>
+  </Sectionhead>
+
+  <Container>
+    <section class="py-10 md:px-14 xl:mx-auto xl:my-6 xl:w-3/4">
+      <article class="py-6">
+        <h2 class="py-4 text-2xl font-bold">Mitgliedschaft</h2>
+        <p class="text-lg leading-7">
+          Eine Mitgliedschaft bei Bärenherz hilft uns, unsere administrativen
+          Kosten und Aufgaben zu erfüllen. Ein wesentlicher Teil unserer
+          Philosophie ist es, dass alle Einnahmen aus unseren Aktivitäten zu
+          100% in die jeweils geförderten Projekte fliessen. Sämtliche
+          administrativen Kosten wie z.B. Pflege der Homepage werden
+          ehrenamtlich übernommen bzw.von Mitgliedsbeiträgen oder Zuwendungen
+          der Mitglieder getragen. Auch freuen wir uns natürlich, uns mit
+          unseren Mitgliedern auszutauschen, Ideen aufzunehmen und uns gemeinsam
+          zu engagieren. Wir bieten sowohl eine persönliche Mitgliedschaft wie
+          auch eine Unternehmensmitgliedschaft für alle an, die die Philosophie
+          und Projekte unseres karitativen Vereins unterstützen wollen.
+          Nachfolgend können Sie die Mitgliedschaft einfach online beantragen,
+          der Vorstand entscheidet dann umgehend über die Aufnahme.
+        </p>
+      </article>
+
+      <!-- boxes -->
+      <article
+        class="flex flex-col gap-4 md:my-4 md:flex-row md:justify-center md:gap-10">
+        <div
+          class="flex flex-col justify-center gap-5 bg-[#84b9e4] p-8 text-center align-middle">
+          <h3 class="" font-bold>Persönliche Mitgliedschaft</h3>
+          <p>Jahresbeitrag CHF 250.00</p>
+          <Button style="inverted" size="md" class="m-auto">
+            Persönliches Mitglied werden
+          </Button>
+        </div>
+        <div
+          class="flex flex-col justify-center gap-5 bg-[#84b9e4] p-8 text-center align-middle">
+          <h3 class="" font-bold>Unternehmensmitgliedschaft</h3>
+          <p>Jahresbeitrag CHF 1'000.00</p>
+          <Button style="inverted" size="md" class="m-auto">
+            Unternehmensmitglied werden
+          </Button>
+        </div>
+      </article>
+      <!-- end Boxes -->
+
+      <p class="mt-10 text-lg leading-7">
+        Der Jahresbeitrag ist jeweils für das Kalenderjahr geschuldet. Bitte
+        füllen Sie das verknüpfte Antragsfor mular aus und reichen Sie dieses
+        ein an info@baerenherz.org oder per Post an Bärenherz – Verein für
+        humanitäre Hilfe, c/o Rainer Mück, Untersellenstrasse 37, 8873 Amden.
+        Der Vorstand entscheidet über die Aufnahme neuer Vereinsmitglieder.
+      </p>
+      <div class="py-10">
+        <Cta />
+      </div>
+    </section>
+  </Container>
+</Layout>

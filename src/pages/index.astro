@@ -1,0 +1,40 @@
+---
+import Layout from '../layouts/Layout.astro'
+import Container from '@components/container.astro'
+import Carrousel from '@components/carrousel/Carrousel.astro'
+import Cta from '@components/Cta.astro'
+import Newsletter from '@components/Newsletter.astro'
+import Aktuelles from '@components/Aktuelles.astro'
+
+import ctaImage from '@assets/cta.jpg'
+const ctaAlt = 'test'
+const ctaLink = 'Jetzt spenden'
+---
+
+<Layout title="Baerenherz - Verein für humanitäre Hilfe">
+  <!-- <Carrousel client:load /> -->
+  <Container>
+    <article class="py-10 md:px-14 xl:mx-auto xl:my-6 xl:w-3/4">
+      <p>
+        Bärenherz - Verein für humanitäre Hilfe - wurde 2021 in der Schweiz mit
+        dem Ziel gegründet, dort zu helfen, wo lebensnotwendige Unterstützung
+        benötigt wird. Wir sind ein unabhängiger Verein, der durch das
+        persönliche und ehrenamtliche Engagement der Mitglieder sowie den
+        Einnahmen aus von uns organisierten Charity Events und Spendengeldern
+        jeweils im Vor-feld definierte Projekte in Sinne der Philosophie des
+        Vereins unterstützt.
+      </p>
+    </article>
+  </Container>
+  <Cta ctaImage={ctaImage} ctaAlt={ctaAlt} ctaLink={ctaLink}>
+    <Fragment slot="content1">
+      „Mit meiner Mitgliedschaft kann ich die großartige Arbeit von Bärenherz
+      unterstützen und habe das gute Gefühl eine Hilfe zu leisten, die auch zu
+      100% dort ankommt, wo sie auch dringend gebraucht wird.“
+    </Fragment>
+    <Fragment slot="content2">Natascha Heye</Fragment>
+    <Fragment slot="content3">Unternehmerin, Zürich</Fragment>
+  </Cta>
+  <Aktuelles />
+  <Newsletter />
+</Layout>
