@@ -7,6 +7,9 @@ import Cta from '@components/Cta.astro'
 
 import localImage from '@assets/Mitfliedschaft.jpg'
 const localAlt = 'Mitgliedschaft'
+import ctaImage from '@assets/cta.jpg'
+const ctaAlt = 'test'
+const ctaLink = 'Jetzt spenden'
 ---
 
 <Layout title="Mitgliedschaft">
@@ -71,7 +74,16 @@ const localAlt = 'Mitgliedschaft'
         Der Vorstand entscheidet über die Aufnahme neuer Vereinsmitglieder.
       </p>
       <div class="py-10">
-        <Cta />
+        <Cta ctaImage={ctaImage} ctaAlt={ctaAlt} ctaLink={ctaLink}>
+          <Fragment slot="content1">
+            „Mit meiner Mitgliedschaft kann ich die großartige Arbeit von
+            Bärenherz unterstützen und habe das gute Gefühl eine Hilfe zu
+            leisten, die auch zu 100% dort ankommt, wo sie auch dringend
+            gebraucht wird.“
+          </Fragment>
+          <Fragment slot="content2">Natascha Heye</Fragment>
+          <Fragment slot="content3">Unternehmerin, Zürich</Fragment>
+        </Cta>
       </div>
     </section>
   </Container>

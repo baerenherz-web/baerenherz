@@ -1,16 +1,15 @@
 import { defineConfig } from 'astro/config';
 import tailwind from '@astrojs/tailwind';
-import preact from "@astrojs/preact";
-import netlify from '@astrojs/netlify/functions';
-
 import mdx from "@astrojs/mdx";
+
+import netlify from "@astrojs/netlify/functions";
 
 // https://astro.build/config
 export default defineConfig({
-  integrations: [tailwind(), preact(), mdx()],
+  integrations: [tailwind(), mdx()],
   experimental: {
     assets: true
   },
-  output: 'server',
-  adapter: netlify(),
+  output: "server",
+  adapter: netlify()
 });
