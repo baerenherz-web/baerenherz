@@ -20,11 +20,14 @@ import Footer from '../components/Footer.astro'
     <meta name="generator" content={Astro.generator} />
     <link
       rel="stylesheet"
-      href="node_modules/@glidejs/glide/dist/css/glide.core.min.css"
+      type="text/css"
+      href="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css"
     />
+    <!-- Add the slick-theme.css if you want default styling -->
     <link
       rel="stylesheet"
-      href="node_modules/@glidejs/glide/dist/css/glide.theme.min.css"
+      type="text/css"
+      href="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick-theme.css"
     />
     <title>{title}</title>
   </head>
@@ -33,6 +36,10 @@ import Footer from '../components/Footer.astro'
     <Navbar />
     <slot />
     <Footer />
+    <script
+      type="text/javascript"
+      src="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"
+    ></script>
   </body>
 </html>
 

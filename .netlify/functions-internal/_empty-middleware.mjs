@@ -1,4 +1,5 @@
 export { o as onRequest } from './renderers.mjs';
+import 'preact';
 import 'node:fs';
 import 'node:path';
 import 'node:os';

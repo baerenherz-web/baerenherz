@@ -1,10 +1,13 @@
 ---
 import Layout from '../layouts/Layout.astro'
 import Container from '@components/container.astro'
-import Carrousel from '@components/carrousel/Carrousel.astro'
+// import Carousel from '@components/carousel/Carousel.jsx'
 import Cta from '@components/Cta.astro'
 import Newsletter from '@components/Newsletter.astro'
 import Aktuelles from '@components/Aktuelles.astro'
+
+import { Image } from 'astro:assets'
+import baby from '@assets/carousel-img/baby.jpg'
 
 import ctaImage from '@assets/cta.jpg'
 const ctaAlt = 'test'
@@ -13,7 +16,11 @@ const ctaLink = 'Jetzt spenden'
 
 <Layout title="Baerenherz - Verein für humanitäre Hilfe">
   <!-- <Carrousel client:load /> -->
+  <!-- <Carousel client:load /> -->
   <Container>
+    <div class="m-0 w-max border-2 border-red-700 p-0">
+      <Image src={baby} alt="baby" />
+    </div>
     <article class="py-10 md:px-14 xl:mx-auto xl:my-6 xl:w-3/4">
       <p>
         Bärenherz - Verein für humanitäre Hilfe - wurde 2021 in der Schweiz mit
