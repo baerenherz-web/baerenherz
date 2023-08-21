@@ -1,5 +1,7 @@
 export { o as onRequest } from './renderers.mjs';
 import 'preact';
+import 'react';
+import 'react-dom/server';
 import 'node:fs';
 import 'node:path';
 import 'node:os';

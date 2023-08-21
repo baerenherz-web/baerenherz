@@ -5,21 +5,26 @@ import Container from '@components/container.astro'
 import Cta from '@components/Cta.astro'
 import Newsletter from '@components/Newsletter.astro'
 import Aktuelles from '@components/Aktuelles.astro'
+import Carousel from '@components/carousel/Carousel.jsx'
+import CarouselSevelte from '@components/carousel/Carousel.svelte'
 
 import { Image } from 'astro:assets'
 import baby from '@assets/carousel-img/baby.jpg'
 
 import ctaImage from '@assets/cta.jpg'
+import Carousel2 from '@components/carousel/Carousel2.astro'
 const ctaAlt = 'test'
 const ctaLink = 'Jetzt spenden'
 ---
 
 <Layout title="Baerenherz - Verein für humanitäre Hilfe">
   <!-- <Carrousel client:load /> -->
-  <!-- <Carousel client:load /> -->
   <Container>
-    <div class="m-0 w-max border-2 border-red-700 p-0">
-      <Image src={baby} alt="baby" />
+    <div class="border-2 border-red-700 p-0">
+      <!-- <Image src={baby} alt="baby" /> -->
+      <Carousel client:idle />
+      <!-- <Carousel2 client:idle /> -->
+      <!-- <CarouselSevelte client:idle /> -->
     </div>
     <article class="py-10 md:px-14 xl:mx-auto xl:my-6 xl:w-3/4">
       <p>
@@ -27,7 +32,6 @@ const ctaLink = 'Jetzt spenden'
         dem Ziel gegründet, dort zu helfen, wo lebensnotwendige Unterstützung
         benötigt wird. Wir sind ein unabhängiger Verein, der durch das
         persönliche und ehrenamtliche Engagement der Mitglieder sowie den
-        Einnahmen aus von uns organisierten Charity Events und Spendengeldern
         jeweils im Vor-feld definierte Projekte in Sinne der Philosophie des
         Vereins unterstützt.
       </p>
