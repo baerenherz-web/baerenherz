@@ -30,6 +30,7 @@
     "preact-glide": "^1.1.8",
     "react": "^18.0.0",
     "react-dom": "^18.0.0",
+    "react-glide": "^4.1.0",
     "react-slick": "^0.29.0",
     "react-slick-preact-patch": "^0.28.3",
     "slick-carousel": "^1.8.1",
