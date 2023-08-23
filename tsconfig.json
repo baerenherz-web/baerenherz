@@ -5,6 +5,7 @@
     "jsxImportSource": "react",
     "strictNullChecks": true,
     "allowJs": true,
+    "allowImportingTsExtensions": true,
     "baseUrl": "src",
     "paths": {
       "@lib/*": [
