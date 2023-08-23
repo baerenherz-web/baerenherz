@@ -82,7 +82,7 @@ function Photo({ photo }) {
   )
 }
 
-export default function Carousel() {
+const Carousel = () => {
   const settings = {
     dots: true,
     infinite: true,
@@ -101,3 +101,6 @@ export default function Carousel() {
     </div>
   )
 }
+
+
+export default Carousel;
