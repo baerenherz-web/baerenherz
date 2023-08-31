@@ -2,10 +2,9 @@
 import Layout from '../layouts/Layout.astro'
 import Container from '@components/container.astro'
 import Cta from '@components/Cta.astro'
-import Newsletter from '@components/Newsletter.astro'
+import Newsletter from '@components/Newsletter.jsx'
 import Aktuelles from '@components/Aktuelles.astro'
 import Carousel from '@components/carousel/Carousel.jsx'
-import NewsletterTest from '@components/NewsletterTest.jsx'
 
 import ctaImage from '@assets/cta.jpg'
 const ctaAlt = 'test'
@@ -38,6 +37,5 @@ const ctaLink = 'Jetzt spenden'
     <Fragment slot="content3">Unternehmerin, Zürich</Fragment>
   </Cta>
   <Aktuelles />
-  <Newsletter />
-  <NewsletterTest client:idle />
+  <Newsletter client:idle />
 </Layout>
