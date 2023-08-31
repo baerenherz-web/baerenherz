@@ -5,6 +5,7 @@ import Cta from '@components/Cta.astro'
 import Newsletter from '@components/Newsletter.astro'
 import Aktuelles from '@components/Aktuelles.astro'
 import Carousel from '@components/carousel/Carousel.jsx'
+import NewsletterTest from '@components/NewsletterTest.jsx'
 
 import ctaImage from '@assets/cta.jpg'
 const ctaAlt = 'test'
@@ -38,4 +39,5 @@ const ctaLink = 'Jetzt spenden'
   </Cta>
   <Aktuelles />
   <Newsletter />
+  <NewsletterTest client:idle />
 </Layout>
