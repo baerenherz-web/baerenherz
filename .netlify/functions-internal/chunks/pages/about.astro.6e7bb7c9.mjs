@@ -1,27 +1,110 @@
----
-import { Image } from 'astro:assets'
-import Layout from '@layouts/Layout.astro'
-import Sectionhead from '@components/Sectionhead.astro'
-import Container from '@components/container.astro'
-import Newsletter from '@components/Newsletter.jsx'
+/* empty css                         */import { c as createAstro, a as createComponent, r as renderTemplate, m as maybeRenderHead, f as renderComponent, d as renderSlot, $ as $$Image, s as spreadAttributes, b as addAttribute, F as Fragment } from '../../renderers.mjs';
+import { $ as $$Container, b as $$Layout } from './404.astro.aa9b2365.mjs';
 
-import Vorstand from '@assets/Ski-Gruppe.jpg'
-import localImage from '@assets/philosohie.jpg'
-const localAlt = 'Philosophie'
----
+const $$Astro$4 = createAstro();
+const $$Sectionhead = createComponent(async ($$result, $$props, $$slots) => {
+  const Astro2 = $$result.createAstro($$Astro$4, $$props, $$slots);
+  Astro2.self = $$Sectionhead;
+  const { altHead, imageHead } = Astro2.props;
+  return renderTemplate`${maybeRenderHead()}<div class="relative isolate flex overflow-hidden bg-gray-900 py-24 sm:py-32">
+  ${renderComponent($$result, "Image", $$Image, { "src": imageHead, "alt": altHead, "class": "absolute inset-0 -z-10 h-full w-full object-cover object-right md:object-center" })}
 
-<Layout title="Über uns">
-  <Sectionhead
-    class="items-center text-center"
-    altHead={localAlt}
-    imageHead={localImage}>
-    <Fragment slot="title" class="uppercase">Bärenherz</Fragment>
-    <Fragment slot="content">
+  <div class="m-20 flex max-w-2xl flex-col bg-[#f2f8f9] px-4 py-6 md:w-2/6 md:px-6">
+    <h4 class="text-2xl tracking-tight">
+      ${renderSlot($$result, $$slots["title"], renderTemplate`Title`)}
+    </h4>
+    <span class="my-4 w-full border-b-2 border-[#033277]"></span>
+    <h2 class="text-3xl font-bold md:text-4xl md:leading-tight">
+      ${renderSlot($$result, $$slots["content"], renderTemplate`Subtitle`)}
+    </h2>
+  </div>
+</div>`;
+}, "/home/qwerty/Workspace/Projects/Baerenherz/newWeb/Baerenherz/src/components/Sectionhead.astro", void 0);
+
+const $$Astro$3 = createAstro();
+const $$Button = createComponent(async ($$result, $$props, $$slots) => {
+  const Astro2 = $$result.createAstro($$Astro$3, $$props, $$slots);
+  Astro2.self = $$Button;
+  const {
+    block,
+    size = "lg",
+    style = "primary",
+    class: className,
+    ...rest
+  } = Astro2.props;
+  const sizes = {
+    lg: "px-5 py-2.5",
+    md: "px-4 py-2 w-fit"
+  };
+  const styles = {
+    outline: "bg-white border-2 border-black hover:bg-gray-100 text-black ",
+    primary: "bg-[#dfecf7] text-[#2b2523] px-3.5 py-2.5 text-sm font-semibold shadow-sm hover:bg-[#033277] hover:text-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white hover:border-[#dfecf7] hover:border-2 border-transparent border-2",
+    inverted: "bg-[#033277] text-white hover:bg-[#dfecf7] hover:text-[#2b2523] hover:border-[#033277] border-2 border-transparent",
+    muted: "bg-gray-100 hover:bg-gray-200 border-2 border-transparent"
+  };
+  return renderTemplate`${maybeRenderHead()}<button${spreadAttributes(rest)}${addAttribute([
+    "text-center transition focus-visible:ring-2 ring-offset-2 ring-gray-200",
+    block && "w-full",
+    sizes[size],
+    styles[style],
+    className
+  ], "class:list")}>${renderSlot($$result, $$slots["default"])}
+</button>`;
+}, "/home/qwerty/Workspace/Projects/Baerenherz/newWeb/Baerenherz/src/components/ui/Button.astro", void 0);
+
+const $$Astro$2 = createAstro();
+const $$NewsletterForm = createComponent(async ($$result, $$props, $$slots) => {
+  const Astro2 = $$result.createAstro($$Astro$2, $$props, $$slots);
+  Astro2.self = $$NewsletterForm;
+  return renderTemplate`${maybeRenderHead()}<form method="POST" class="mt-6 flex max-w-md gap-x-4">
+  <input id="email-address" name="email" type="email" autocomplete="email" aria-placeholder="Email" required minlength="5" maxlength="50" class="min-w-0 flex-auto border-0 bg-white px-3.5 py-2 text-gray-700 shadow-sm ring-1 ring-inset ring-white/10 focus:ring-2 focus:ring-inset focus:ring-indigo-500 sm:text-sm sm:leading-6" placeholder="Email">
+  ${renderComponent($$result, "Button", $$Button, { "type": "submit", "class": "flex-none" }, { "default": ($$result2) => renderTemplate`Absenden` })}
+</form>`;
+}, "/home/qwerty/Workspace/Projects/Baerenherz/newWeb/Baerenherz/src/components/forms/NewsletterForm.astro", void 0);
+
+const $$Astro$1 = createAstro();
+const $$Newsletter = createComponent(async ($$result, $$props, $$slots) => {
+  const Astro2 = $$result.createAstro($$Astro$1, $$props, $$slots);
+  Astro2.self = $$Newsletter;
+  return renderTemplate`${renderComponent($$result, "Container", $$Container, { "class": "mt-6 bg-[#033277] py-10 text-white" }, { "default": ($$result2) => renderTemplate`
+  ${maybeRenderHead()}<div class="flex flex-col gap-6 md:flex-row xl:justify-center">
+    <!-- heading -->
+    <div>
+      <h2 class="text-4xl font-bold dark:text-white">
+        Bleiben Sie Informiert!
+      </h2>
+    </div>
+    <!-- newsletter section -->
+    <div class="flex flex-col leading-7 md:w-4/5 xl:w-7/12">
+      <div>
+        <p>
+          Wir informieren Sie über unsere laufenden Projekte, wie ihre Spenden
+          vor Ort Gutes tun und senden ihnen Einladungen zu unseren
+          Veranstaltungen.
+        </p>
+      </div>
+      <!-- formulario -->
+      ${renderComponent($$result2, "NewsletterForm", $$NewsletterForm, {})}
+    </div>
+  </div>
+` })}`;
+}, "/home/qwerty/Workspace/Projects/Baerenherz/newWeb/Baerenherz/src/components/Newsletter.astro", void 0);
+
+const Vorstand = {"src":"/_astro/Ski-Gruppe.dccd0416.jpg","width":850,"height":608,"format":"jpg","orientation":1};
+
+const localImage = {"src":"/_astro/philosohie.020f4193.jpg","width":2126,"height":1417,"format":"jpg","orientation":1};
+
+const $$Astro = createAstro();
+const $$About = createComponent(async ($$result, $$props, $$slots) => {
+  const Astro2 = $$result.createAstro($$Astro, $$props, $$slots);
+  Astro2.self = $$About;
+  const localAlt = "Philosophie";
+  return renderTemplate`${renderComponent($$result, "Layout", $$Layout, { "title": "\xDCber uns" }, { "default": ($$result2) => renderTemplate`
+  ${renderComponent($$result2, "Sectionhead", $$Sectionhead, { "class": "items-center text-center", "altHead": localAlt, "imageHead": localImage }, { "content": ($$result3) => renderTemplate`${renderComponent($$result3, "Fragment", Fragment, { "slot": "content" }, { "default": ($$result4) => renderTemplate`
       Direkte Hilfe, unbürokratisch und schnell.
-    </Fragment>
-  </Sectionhead>
-  <Container>
-    <section class="py-10 md:px-14 xl:mx-auto xl:my-6 xl:w-3/4">
+    ` })}`, "title": ($$result3) => renderTemplate`${renderComponent($$result3, "Fragment", Fragment, { "slot": "title", "class": "uppercase" }, { "default": ($$result4) => renderTemplate`Bärenherz` })}` })}
+  ${renderComponent($$result2, "Container", $$Container, {}, { "default": ($$result3) => renderTemplate`
+    ${maybeRenderHead()}<section class="py-10 md:px-14 xl:mx-auto xl:my-6 xl:w-3/4">
       <article class="py-6">
         <h2 class="py-4 text-2xl font-bold">Mission</h2>
         <p class="text-lg leading-7">
@@ -50,11 +133,9 @@ const localAlt = 'Philosophie'
           <h3 class="py-4 text-center text-3xl font-bold">
             Die Philosophie unseres Vereins beruht auf drei Grundgedanken:
           </h3>
-          <div
-            class="flex flex-col justify-around gap-20 p-6 align-middle md:flex-row">
+          <div class="flex flex-col justify-around gap-20 p-6 align-middle md:flex-row">
             <div class="flex w-full flex-col items-center md:w-1/3">
-              <div
-                class="mb-8 flex h-48 w-48 items-center rounded-full bg-white px-4 text-center">
+              <div class="mb-8 flex h-48 w-48 items-center rounded-full bg-white px-4 text-center">
                 <h3 class="text-center text-lg/6 font-bold tracking-tighter">
                   Hilfe zur Selbsthilfe
                 </h3>
@@ -70,8 +151,7 @@ const localAlt = 'Philosophie'
             </div>
 
             <div class="flex w-full flex-col items-center md:w-1/3">
-              <div
-                class="mb-8 flex h-48 w-48 items-center rounded-full bg-white px-4 text-center">
+              <div class="mb-8 flex h-48 w-48 items-center rounded-full bg-white px-4 text-center">
                 <h3 class="text-center text-lg/6 font-bold tracking-tighter">
                   Ehrenamtlich aus Überzeugung
                 </h3>
@@ -85,8 +165,7 @@ const localAlt = 'Philosophie'
             </div>
 
             <div class="flex w-full flex-col items-center md:w-1/3">
-              <div
-                class="mb-8 flex h-48 w-48 items-center rounded-full bg-white px-4 text-center">
+              <div class="mb-8 flex h-48 w-48 items-center rounded-full bg-white px-4 text-center">
                 <h3 class="text-center text-lg/6 font-bold tracking-tighter">
                   Unnötige Kosten vermeiden
                 </h3>
@@ -133,8 +212,8 @@ const localAlt = 'Philosophie'
           <li>Markus T. Schweizer, Senior Partner, EY – Mitglied</li>
         </ul>
 
-        <Image src={Vorstand} alt="Vorstand" class="w-full py-4" />
-        <Newsletter class="my-4 py-4" />
+        ${renderComponent($$result3, "Image", $$Image, { "src": Vorstand, "alt": "Vorstand", "class": "w-full py-4" })}
+        ${renderComponent($$result3, "Newsletter", $$Newsletter, { "class": "my-4 py-4" })}
       </article>
 
       <!-- Statuten -->
@@ -192,7 +271,7 @@ const localAlt = 'Philosophie'
           <p>
             <span class="font-bold">4. Mitgliedschaft</span> Mitglieder können natürliche
             und juristische Personen werden, die den Vereinszweck unterstützen. Alle
-            Mitglieder haben in der Mitgliederversammlung das gleiche Stimmrecht.\
+            Mitglieder haben in der Mitgliederversammlung das gleiche Stimmrecht.\\
             Aufnahmegesuche sind an den Vorstand zu richten; über die Aufnahme entscheidet
             der Vorstand.
           </p>
@@ -275,7 +354,7 @@ const localAlt = 'Philosophie'
           <p>i) Änderung der Statuten</p>
 
           <p>
-            j) Entscheid <p>über Ausschlüsse von Mitgliedern</p>
+            j) Entscheid </p><p>über Ausschlüsse von Mitgliedern</p>
 
             <p>
               k) Beschlussfassung über die Auflösung des Vereins und die
@@ -334,8 +413,8 @@ const localAlt = 'Philosophie'
               wegen oder gemäss Statuten einem anderen Organ übertragen sind.
             </p>
             <p>
-              Im Vorstand sind folgende <p></p>Ressorts vertreten:
-            </p>
+              Im Vorstand sind folgende </p><p></p>Ressorts vertreten:
+            
 
             <p>a) Präsidium</p>
             <p>b) Vizepräsidium</p>
@@ -400,9 +479,22 @@ const localAlt = 'Philosophie'
               an der Gründungsversammlung vom 02.07.2021 angenommen und sind mit
               diesem Datum in Kraft getreten.
             </p>
-          </p>
+          
         </div>
       </article>
     </section>
-  </Container>
-</Layout>
+  ` })}
+` })}`;
+}, "/home/qwerty/Workspace/Projects/Baerenherz/newWeb/Baerenherz/src/pages/about.astro", void 0);
+
+const $$file = "/home/qwerty/Workspace/Projects/Baerenherz/newWeb/Baerenherz/src/pages/about.astro";
+const $$url = "/about";
+
+const about = /*#__PURE__*/Object.freeze(/*#__PURE__*/Object.defineProperty({
+  __proto__: null,
+  default: $$About,
+  file: $$file,
+  url: $$url
+}, Symbol.toStringTag, { value: 'Module' }));
+
+export { $$Sectionhead as $, $$Button as a, about as b };
