@@ -8,6 +8,7 @@ import Cta from '@components/Cta.astro'
 import localImage from '@assets/Mitfliedschaft.jpg'
 const localAlt = 'Mitgliedschaft'
 import ctaImage from '@assets/cta.jpg'
+import Newsletter from '@components/Newsletter'
 const ctaAlt = 'test'
 const ctaLink = 'Jetzt spenden'
 ---
@@ -73,6 +74,11 @@ const ctaLink = 'Jetzt spenden'
         humanitäre Hilfe, c/o Rainer Mück, Untersellenstrasse 37, 8873 Amden.
         Der Vorstand entscheidet über die Aufnahme neuer Vereinsmitglieder.
       </p>
+
+      <div class="py-10">
+        <Newsletter />
+      </div>
+      <!-- 
       <div class="py-10">
         <Cta ctaImage={ctaImage} ctaAlt={ctaAlt} ctaLink={ctaLink}>
           <Fragment slot="content1">
@@ -85,6 +91,7 @@ const ctaLink = 'Jetzt spenden'
           <Fragment slot="content3">Unternehmerin, Zürich</Fragment>
         </Cta>
       </div>
+       -->
     </section>
   </Container>
 </Layout>
