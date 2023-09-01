@@ -20,10 +20,11 @@ const posts = (await getCollection('blog')).sort(
         <li class="flex-1 border-2 border-[#dfecf7] hover:border-2 hover:border-[#033277]">
           <a href={`/blog/${post.slug}/`}>
             <Image
-              width={600}
-              height={400}
+              width={1200}
+              height={200}
               src={post.data.cover}
               alt={post.data.coverAlt}
+              class="object-cover object-center md:h-[250px] xl:h-[600] "
             />
             <div class="p-5">
               <h4 class="h-14 font-bold">{post.data.title}</h4>
