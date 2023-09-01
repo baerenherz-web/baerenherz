@@ -7,19 +7,21 @@ import photos from '@data/photos.json'
 function Photo({ photo }) {
   return (
     <a href={photo.link} key={photo.id}>
-      <div className="relative h-[600px] bg-gray-900 md:h-[400px] lg:h-[500px] xl:h-[600px]">
+      <div className="relative h-[800px] bg-gray-900 md:h-[400px] lg:h-[800px] xl:h-[1400px]">
         <img
           className="absolute inset-0 h-full w-full object-cover"
           alt="homepagebanner-image"
           src={`/carousel/${photo.url}`}
         />
         <div className="absolute inset-0 flex flex-col justify-end bg-opacity-80 p-4 md:justify-center md:p-6 lg:p-8 xl:p-10">
-          {photo.id === '1' && (
+          {photo.id === '0' && (
             <div>
-              <img src={photo.badge} alt="Badge" />
+              <img src={photo.badge} loading="lazy" alt={photo.description} />
             </div>
           )}
 
+          {/* text box */}
+          {/* 
           <div className="absolute bottom-0 left-0 m-5 flex w-3/6 flex-col border-2 border-teal-800 bg-[#f2f8f9] p-5 md:w-2/6 md:px-6">
             <h4 className="mb-2 text-2xl font-semibold md:text-3xl lg:text-4xl">
               {photo.heading}
@@ -28,7 +30,8 @@ function Photo({ photo }) {
             <h2 className="text-xl font-bold leading-tight md:text-2xl lg:text-3xl">
               {photo.description}
             </h2>
-          </div>
+          </div> 
+          */}
         </div>
       </div>
     </a>
@@ -41,7 +44,7 @@ export default function Carousel() {
     infinite: true,
     speed: 500,
     autoplay: true,
-    autoplaySpeed: 2000,
+    autoplaySpeed: 3000,
     slidesToShow: 1,
     slidesToScroll: 1,
     adaptiveHeight: true
