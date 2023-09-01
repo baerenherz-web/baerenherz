@@ -16,11 +16,11 @@ function Photo({ photo }) {
         <div className="absolute inset-0 flex flex-col justify-end bg-opacity-80 p-4 md:justify-center md:p-6 lg:p-8 xl:p-10">
           {photo.id === '0' && (
             <div>
-              <img src={photo.badge} loading='lazy' alt={photo.description} />
+              <img src={photo.badge} loading="lazy" alt={photo.description} />
             </div>
           )}
 
-{/* text box */}
+          {/* text box */}
           {/* 
           <div className="absolute bottom-0 left-0 m-5 flex w-3/6 flex-col border-2 border-teal-800 bg-[#f2f8f9] p-5 md:w-2/6 md:px-6">
             <h4 className="mb-2 text-2xl font-semibold md:text-3xl lg:text-4xl">
