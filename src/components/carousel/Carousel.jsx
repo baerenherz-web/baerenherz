@@ -66,10 +66,10 @@ function Photo({ photo }) {
             </div>
           )}
 
-          <div class="m-20 flex max-w-screen-md flex-col bg-[#f2f8f9] px-4 py-6 md:w-2/6 md:px-6">
-            <h4 class="text-2xl tracking-tight">{photo.heading}</h4>
-            <span class="my-4 w-full border-b-2 border-[#033277]"></span>
-            <h2 class="text-3xl font-bold md:text-4xl md:leading-tight">
+          <div className="m-20 flex max-w-screen-md flex-col bg-[#f2f8f9] px-4 py-6 md:w-2/6 md:px-6">
+            <h4 className="text-2xl tracking-tight">{photo.heading}</h4>
+            <span className="my-4 w-full border-b-2 border-[#033277]"></span>
+            <h2 className="text-3xl font-bold md:text-4xl md:leading-tight">
               {photo.description}
             </h2>
           </div>
@@ -84,8 +84,11 @@ export default function Carousel() {
     dots: true,
     infinite: true,
     speed: 500,
+    autoplay: true,
+    autoplaySpeed: 2000,
     slidesToShow: 1,
-    slidesToScroll: 1
+    slidesToScroll: 1,
+    adaptativeHeight: true,
   }
 
   return (

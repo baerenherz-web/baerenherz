@@ -1,20 +1,20 @@
 ---
 import Layout from '../layouts/Layout.astro'
 import Container from '@components/container.astro'
-import Cta from '@components/Cta.astro'
+// import Cta from '@components/Cta.astro'
 import Newsletter from '@components/Newsletter.jsx'
 import Aktuelles from '@components/Aktuelles.astro'
 import Carousel from '@components/carousel/Carousel.jsx'
 
-import ctaImage from '@assets/cta.jpg'
-const ctaAlt = 'test'
+// import ctaImage from '@assets/cta.jpg'
+const ctaAlt = 'Spenden'
 const ctaLink = 'Jetzt spenden'
 ---
 
 <Layout title="Baerenherz - Verein für humanitäre Hilfe">
   <Container>
     <div class="p-0">
-      <Carousel client:only="react" />
+      <Carousel client:load />
     </div>
     <article class="py-10 md:px-14 xl:mx-auto xl:my-6 xl:w-3/4">
       <p>

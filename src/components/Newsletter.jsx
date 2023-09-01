@@ -1,6 +1,6 @@
 import { useState } from 'react'
 
-const NewsletterTest = () => {
+export default function Newsletter () {
   const [email, setEmail] = useState('')
   const [subscribed, setSubscribed] = useState(false)
 
@@ -84,4 +84,4 @@ const NewsletterTest = () => {
   )
 }
 
-export default NewsletterTest
+
