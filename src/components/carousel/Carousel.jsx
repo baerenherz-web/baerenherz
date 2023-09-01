@@ -2,45 +2,7 @@ import Slider from 'react-slick'
 import 'slick-carousel/slick/slick.css'
 import 'slick-carousel/slick/slick-theme.css'
 
-const photos = [
-  {
-    "id": "1",
-    "url": "1-leben-retten.jpeg",
-    "css_id": "banner-image-one",
-    "heading": "unsere mission",
-    "description": "Lebensrettende Hilfe für die Schwächsten",
-    "link": "/projekte",
-    "link_text": "mehr erfahren"
-  },
-  {
-    "id": "2",
-    "url": "2-2jahre.JPG",
-    "css_id": "banner-image-two",
-    "link_text": "mehr erfahren",
-    "link": "/",
-    "description": "Hilfe, die dort ankommt, wo sie am dringendsten gebraucht wird",
-    "golflink": "/events#golf-turnier"
-  },
-  {
-    "id": "3",
-    "url": "3-besuch.jpg",
-    "css_id": "banner-image-three",
-    "heading": "unsere projekte",
-    "description": "Hilfe, die dort ankommt, wo sie am dringendsten gebraucht wird",
-    "link": "/projekte",
-    "link_text": "mehr erfahren"
-  },
-  {
-    "id": "4",
-    "url": "4-golf-2023.jpg",
-    "css_id": "banner-image-three",
-    "heading": "unsere projekte",
-    "description": "Hilfe, die dort ankommt, wo sie am dringendsten gebraucht wird",
-    "link": "/projekte",
-    "link_text": "mehr erfahren"
-  }
-]
-
+import photos from '@data/photos.json'
 
 function Photo({ photo }) {
   return (
