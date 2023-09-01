@@ -21,7 +21,7 @@ const posts = (await getCollection('blog')).sort(
     </div>
     {
       posts.map((post) => (
-        <li>
+        <li class="list-none">
           <a href={`/blog/${post.slug}/`}>
             <Image
               width={720}

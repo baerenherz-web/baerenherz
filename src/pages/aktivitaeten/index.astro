@@ -16,7 +16,7 @@ const posts = (await getCollection('aktivitaeten')).sort(
   <Container class="mx-14 my-10">
     {
       posts.map((post) => (
-        <li>
+        <li class="list-none">
           <a href={`/aktivitaeten/${post.slug}/`}>
             <Image
               width={720}
