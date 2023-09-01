@@ -41,16 +41,16 @@ const NewsletterTest = () => {
 
   return (
     <div className="mx-auto mt-6 bg-[#033277] px-5 py-10 text-white md:px-10">
-      <div class="flex flex-col gap-6 md:flex-row xl:justify-center">
+      <div ClassName="flex flex-col gap-6 md:flex-row xl:justify-center">
         <div>
-          <h2 class="text-4xl font-bold dark:text-white">
+          <h2 ClassName="text-4xl font-bold dark:text-white">
             Bleiben Sie Informiert!
           </h2>
         </div>
         {subscribed ? (
           <p className="mb-4 text-green-500">Thank you for subscribing!</p>
         ) : (
-          <div class="flex flex-col leading-7 md:w-4/5 xl:w-7/12">
+          <div ClassName="flex flex-col leading-7 md:w-4/5 xl:w-7/12">
             <div>
               <p>
                 Wir informieren Sie über unsere laufenden Projekte, wie ihre
@@ -63,11 +63,11 @@ const NewsletterTest = () => {
               <input
                 type="email"
                 placeholder="Email"
-                autocomplete="email"
+                autoComplete="email"
                 aria-placeholder="Email"
                 required
-                minlength="5"
-                maxlength="50"
+                minLength="5"
+                maxLength="50"
                 className="min-w-0 flex-auto border-0 bg-white px-3.5 py-2 text-gray-700 shadow-sm ring-1 ring-inset ring-white/10 focus:ring-2 focus:ring-inset focus:ring-indigo-500 sm:text-sm sm:leading-6"
                 onChange={handleEmailChange}
               />
