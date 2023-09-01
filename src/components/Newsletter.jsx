@@ -1,6 +1,6 @@
 import { useState } from 'react'
 
-const NewsletterTest = () => {
+export default function Newsletter() {
   const [email, setEmail] = useState('')
   const [subscribed, setSubscribed] = useState(false)
 
@@ -41,18 +41,18 @@ const NewsletterTest = () => {
 
   return (
     <div className="mx-auto mt-6 bg-[#033277] px-5 py-10 text-white md:px-10">
-      <div ClassName="flex flex-col gap-6 md:flex-row xl:justify-center">
-        <div>
-          <h2 ClassName="text-4xl font-bold dark:text-white">
+      <div className="flex flex-col gap-6 md:flex-row xl:justify-center">
+        <div className="py-3">
+          <h2 className="text-3xl font-bold  text-white">
             Bleiben Sie Informiert!
           </h2>
         </div>
         {subscribed ? (
           <p className="mb-4 text-green-500">Thank you for subscribing!</p>
         ) : (
-          <div ClassName="flex flex-col leading-7 md:w-4/5 xl:w-7/12">
+          <div className="flex flex-col leading-7 md:w-4/5 xl:w-7/12">
             <div>
-              <p>
+              <p className="prose text-base text-white">
                 Wir informieren Sie über unsere laufenden Projekte, wie ihre
                 Spenden vor Ort Gutes tun und senden ihnen Einladungen zu
                 unseren Veranstaltungen.
@@ -83,5 +83,3 @@ const NewsletterTest = () => {
     </div>
   )
 }
-
-export default NewsletterTest
