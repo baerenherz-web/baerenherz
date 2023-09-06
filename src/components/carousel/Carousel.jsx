@@ -7,19 +7,25 @@ import photos from '@data/photos.json'
 function Photo({ photo }) {
   return (
     <a href={photo.link} key={photo.id}>
-      <div className="relative h-[800px] bg-gray-900 md:h-[400px] lg:h-[800px] xl:h-[1400px]">
+      <div className="relative h-[50vh] bg-gray-900 ">
+      <div className="h-full flex items-center justify-center">
         <img
-          className="absolute inset-0 h-full w-full object-cover"
+        /* className="absolute inset-0 h-full w-full object-cover" */
+        className="object-cover object-center h-full "
           alt="homepagebanner-image"
           src={`/carousel/${photo.url}`}
+          loading='lazy'
         />
-        <div className="absolute inset-0 flex flex-col justify-end bg-opacity-80 p-4 md:justify-center md:p-6 lg:p-8 xl:p-10">
-          {photo.id === '0' && (
+                <div className="absolute inset-0 flex flex-col justify-end bg-opacity-80 p-4 md:justify-center md:p-6 lg:p-8 xl:p-10">
+                  </div>
+                  {/* old code */}
+          {/* {photo.id === '0' && (
             <div>
               <img src={photo.badge} loading="lazy" alt={photo.description} />
             </div>
-          )}
+          )} */}
 
+{/* to add later */}
           {/* text box */}
           {/* 
           <div className="absolute bottom-0 left-0 m-5 flex w-3/6 flex-col border-2 border-teal-800 bg-[#f2f8f9] p-5 md:w-2/6 md:px-6">
