@@ -9,7 +9,7 @@ export default function Newsletter() {
   }
 
   const handleSubscribe = async () => {
-    const apiKey = import.meta.env.PUBLIC_BREVO_API_KEY
+    const apiKey = import.meta.env.BREVO_API_KEY
     const url = `https://api.brevo.com/v3/contacts`
     const headers = {
       accept: 'application/json',
