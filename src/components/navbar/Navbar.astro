@@ -34,6 +34,10 @@ const menuItems = [
     title: 'Aktivitäten',
     children: [
       {
+        title: 'Alle Aktivitäten',
+        path: '/aktivitaeten/'
+      },
+      {
         title: 'Charity Golfturinier 2023',
         path: '/aktivitaeten/charity-golfturnier-bericht2023'
       },
@@ -69,7 +73,7 @@ const menuItems = [
         </div>
       </div>
       <MenuItems class="mt-2 hidden w-full lg:mt-0 lg:flex lg:w-auto">
-        <ul class="flex flex-col text-[1.6rem] lg:flex-row lg:gap-3">
+        <ul class="flex flex-col text-[1.3rem] lg:flex-row lg:gap-3">
           {
             menuItems.map((item, index) => (
               <>
