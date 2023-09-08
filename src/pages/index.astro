@@ -1,10 +1,11 @@
 ---
 import Layout from '../layouts/Layout.astro'
 import Container from '@components/container.astro'
-// import Cta from '@components/Cta.astro'
-import Newsletter from '@components/Newsletter.jsx'
-import Aktuelles from '@components/Aktuelles.astro'
 import Carousel from '@components/carousel/Carousel.jsx'
+import MainTextHome from '@components/MainTextHome.astro'
+// import Cta from '@components/Cta.astro'
+import Aktuelles from '@components/Aktuelles.astro'
+import Newsletter from '@components/Newsletter.jsx'
 
 // import ctaImage from '@assets/cta.jpg'
 const ctaAlt = 'Spenden'
@@ -16,18 +17,9 @@ const ctaLink = 'Jetzt spenden'
     <div class="p-0">
       <Carousel client:only="react" />
     </div>
-    <article class="my-10 py-10 lg:mx-auto lg:w-11/12">
-      <p class="max-w-screen-2xl text-2xl leading-relaxed md:px-14">
-        Bärenherz - Verein für humanitäre Hilfe - wurde 2021 in der Schweiz mit
-        dem Ziel gegründet, dort zu helfen, wo lebensnotwendige Unterstützung
-        benötigt wird. Wir sind ein unabhängiger Verein, der durch das
-        persönliche und ehrenamtliche Engagement der Mitglieder sowie den
-        jeweils im Vorfeld definierte Projekte in Sinne der Philosophie des
-        Vereins unterstützt.
-      </p>
-    </article>
-  </Container>
 
+    <MainTextHome />
+  </Container>
   <!--   
   <Cta ctaImage={ctaImage} ctaAlt={ctaAlt} ctaLink={ctaLink}>
     <Fragment slot="content1">
@@ -39,7 +31,6 @@ const ctaLink = 'Jetzt spenden'
     <Fragment slot="content3">Unternehmerin, Zürich</Fragment>
   </Cta> 
 -->
-
   <Aktuelles />
   <Newsletter client:idle />
 </Layout>
