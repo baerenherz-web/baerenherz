@@ -14,25 +14,10 @@ import Footer from '../components/Footer.astro'
 <html lang="en" class="h-full">
   <head>
     <meta charset="UTF-8" />
-    <meta name="description" content="Astro description" />
-    <meta name="viewport" content="width=device-width" />
+    <meta name="Bärenherz" content="Verein für humanitäre Hilfe" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
     <link rel="icon" type="image/svg+xml" href="/favicon.avif" />
     <meta name="generator" content={Astro.generator} />
-    <link
-      rel="stylesheet"
-      type="text/css"
-      href="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css"
-    />
-    <!-- Add the slick-theme.css if you want default styling -->
-    <link
-      rel="stylesheet"
-      type="text/css"
-      href="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick-theme.css"
-    />
-    <link
-      rel="stylesheet"
-      href="https://cdn.jsdelivr.net/npm/glider-js@1/glider.min.css"
-    />
     <title>{title}</title>
   </head>
 
@@ -40,23 +25,10 @@ import Footer from '../components/Footer.astro'
     <Navbar />
     <slot />
     <Footer />
-    <script
-      type="text/javascript"
-      src="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"
-    ></script>
   </body>
 </html>
 
 <style is:global>
-  :root {
-    --accent: 124, 58, 237;
-    --accent-gradient: linear-gradient(
-      45deg,
-      rgb(var(--accent)),
-      #da62c4 30%,
-      white 60%
-    );
-  }
   html {
     background-color: #f6f6f6;
   }
