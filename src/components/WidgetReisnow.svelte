@@ -7,6 +7,7 @@
     const script1 = document.createElement('script');
     script1.src = 'https://tamaro.raisenow.com/brenh-1353/latest/widget.js';
 
+// to testing: add parameter ", { testMode: true}" to the call of the widget
     script1.onload = () => {
       window.rnw.tamaro.runWidget('.rnw-widget-container');
       isLoading = false; 
