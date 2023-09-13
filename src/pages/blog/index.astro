@@ -6,7 +6,7 @@ import { Image } from 'astro:assets'
 import FormattedDate from '@components/FormattedDate.astro'
 import Container from '@components/container.astro'
 
-import headerImg from '@assets/blog/postheader.png'
+import headerImg from '@assets/blog/postheader.avif'
 
 // sort posts by date, newest first
 const posts = (await getCollection('blog')).sort(
@@ -17,7 +17,7 @@ const posts = (await getCollection('blog')).sort(
 <Layout title="Blog">
   <Container class="mx-14 my-10 flex flex-col">
     <div class="my-6 justify-items-center py-2">
-      <Image src={headerImg} width={600} alt="header post" />
+      <Image src={headerImg} width={600} height={400} alt="header post" />
     </div>
     {
       posts.map((post) => (
