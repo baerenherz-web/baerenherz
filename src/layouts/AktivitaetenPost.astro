@@ -4,7 +4,7 @@ import { Image } from 'astro:assets'
 
 type Props = CollectionEntry<'aktivitaeten'>['data']
 
-const { title, cover, coverAlt } = Astro.props
+const { title, cover, coverAlt, link } = Astro.props
 
 import Layout from '@layouts/Layout.astro'
 import Container from '@components/container.astro'
@@ -14,23 +14,25 @@ import partners from '@assets/logos/sponsoren2023.png'
 ---
 
 <Layout title={title}>
-  <Container class="mx-14 my-10">
-    <div class="py-6">
-      <Link href="/aktivitaeten">« Aktivitäten</Link>
-    </div>
-    <div class="">
-      {cover && <Image width={1020} src={cover} alt={coverAlt} />}
-    </div>
-
-    <div class="my-8">
-      <h1 class="py-4 text-3xl">{title}</h1>
-      <div class="prose-xl lg:prose-xl">
-        <slot />
+  <article class="flex min-h-screen items-center justify-center bg-gray-100">
+    <div class="m-6 rounded bg-white p-8 shadow-lg">
+      <div class="py-6">
+        <Link href="/aktivitaeten">« Aktivitäten</Link>
       </div>
-    </div>
+      <div class="">
+        {cover && <Image width={1020} src={cover} alt={coverAlt} />}
+      </div>
 
-    {/* Partners */}
-    <!-- <div class="flex gap-10">
+      <div class="my-8">
+        <h1 class="py-4 text-3xl">{title}</h1>
+        <div class="max-width-80 prose max-w-prose lg:prose-xl">
+          <!-- <a href={link}>Bildgalerie</a> -->
+          <slot />
+        </div>
+      </div>
+
+      {/* Partners */}
+      <!-- <div class="flex gap-10">
       <div class="flex-1">
         <h3 class="text-3xl font-bold">Unsere Partner:</h3>
       </div>
@@ -38,5 +40,6 @@ import partners from '@assets/logos/sponsoren2023.png'
         <Image src={partners} alt="random" />
       </div>
     </div> -->
-  </Container>
+    </div>
+  </article>
 </Layout>
