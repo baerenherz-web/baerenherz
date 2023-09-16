@@ -4,7 +4,7 @@ import FormattedDate from '@components/FormattedDate.astro'
 import { Image } from 'astro:assets'
 
 // sort posts by date, newest first
-const posts = (await getCollection('blog')).sort(
+const posts = (await getCollection('news')).sort(
   (a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf()
 )
 ---
@@ -18,7 +18,7 @@ const posts = (await getCollection('blog')).sort(
     {
       posts.map((post) => (
         <li class="flex-1 border-2 border-[#dfecf7] hover:border-2 hover:border-[#033277]">
-          <a href={`/blog/${post.slug}/`}>
+          <a href={`/news/${post.slug}/`}>
             <Image
               width={1200}
               height={200}

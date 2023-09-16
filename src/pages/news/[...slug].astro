@@ -1,9 +1,9 @@
 ---
 import { CollectionEntry, getCollection } from 'astro:content'
-import BlogPost from '../../layouts/BlogPost.astro'
+import NewsPost from '../../layouts/NewsPost.astro'
 
-const posts = await getCollection('blog')
-type Props = CollectionEntry<'blog'>
+const posts = await getCollection('news')
+type Props = CollectionEntry<'news'>
 
 const { slug } = Astro.params
 const post = posts.find((page) => page.slug === slug)
@@ -11,6 +11,6 @@ if (!post) return Astro.redirect('/404')
 const { Content } = await post.render()
 ---
 
-<BlogPost {...post.data}>
+<NewsPost {...post.data}>
   <Content />
-</BlogPost>
+</NewsPost>

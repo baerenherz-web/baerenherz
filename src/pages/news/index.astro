@@ -6,15 +6,15 @@ import { Image } from 'astro:assets'
 import FormattedDate from '@components/FormattedDate.astro'
 import Container from '@components/container.astro'
 
-import headerImg from '@assets/blog/postheader.avif'
+import headerImg from '@assets/news/postheader.webp'
 
 // sort posts by date, newest first
-const posts = (await getCollection('blog')).sort(
+const posts = (await getCollection('news')).sort(
   (a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf()
 )
 ---
 
-<Layout title="Blog">
+<Layout title="News">
   <Container class="mx-14 my-10 flex flex-col">
     <div class="my-6 justify-items-center py-2">
       <Image src={headerImg} width={600} height={400} alt="header post" />
@@ -22,7 +22,7 @@ const posts = (await getCollection('blog')).sort(
     {
       posts.map((post) => (
         <li class="my-5 list-none">
-          <a href={`/blog/${post.slug}/`}>
+          <a href={`/news/${post.slug}/`}>
             <Image
               width={720}
               height={360}
