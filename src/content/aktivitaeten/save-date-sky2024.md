@@ -10,6 +10,6 @@ Zwar hat uns das Wetter beim ersten Bärenherz Skitag 2023 vor grössere Herausf
 
 Lassen Sie sich überraschen und geniessen Sie mit uns zwei unvergessliche Skitage!
 
-> Download: [„Einladung“](/aktivitaeten/anmeldung-charity-skitage-2024.pdf)
+> Download: [„Einladung“](/aktivitaeten/baerenherz-charity-skitage-2024.pdf)
 >
-> Download: [„Anmeldung“](/aktivitaeten/baerenherz-charity-skitage-2024.pdf)
+> Download: [„Anmeldung“](/aktivitaeten/anmeldung-charity-skitage-2024.pdf)
