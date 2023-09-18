@@ -12,19 +12,21 @@ import Link from '@components/ui/Link.astro'
 ---
 
 <Layout title={title}>
-  <Container class="mx-14 my-10">
-    <div class="py-6">
-      <Link href="/news">« News</Link>
-    </div>
-    <div class="">
-      {cover && <Image width={1020} src={cover} alt={coverAlt} />}
-    </div>
+  <article class="flex min-h-screen items-center justify-center bg-gray-100">
+    <div class="m-6 rounded bg-white p-8 shadow-lg">
+      <div class="py-6">
+        <Link href="/news">« News</Link>
+      </div>
+      <div class="">
+        {cover && <Image width={1020} src={cover} alt={coverAlt} />}
+      </div>
 
-    <div class="my-8 py-4">
-      <h1 class="py-4 text-3xl">{title}</h1>
-      <div class="prose-xl lg:prose-xl">
-        <slot />
+      <div class="my-8 py-4">
+        <h1 class="py-4 text-3xl">{title}</h1>
+        <div class="max-width-80 prose max-w-prose lg:prose-xl">
+          <slot />
+        </div>
       </div>
     </div>
-  </Container>
+  </article>
 </Layout>

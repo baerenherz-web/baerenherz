@@ -46,13 +46,16 @@ function Photo({ photo }) {
 export default function Carousel() {
   const settings = {
     dots: true,
+
     infinite: true,
     speed: 500,
     autoplay: true,
     autoplaySpeed: 3000,
     slidesToShow: 1,
     slidesToScroll: 1,
-    adaptiveHeight: true
+    adaptiveHeight: true,
+    lazyLoad: 'ondemand',
+    swipe: true,
   }
 
   return (

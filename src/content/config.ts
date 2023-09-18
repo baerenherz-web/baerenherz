@@ -5,7 +5,7 @@ const news = defineCollection({
   schema: ({ image }) =>
     z.object({
       title: z.string(),
-      description: z.string(),
+      description: z.string().optional(),
       // Transform string to Date object
       pubDate: z
         .string()
@@ -40,7 +40,8 @@ const aktivitaeten = defineCollection({
       cover: image().refine((img) => img.width >= 1080, {
         message: 'Cover image must be at least 1080 pixels wide!'
       }),
-      coverAlt: z.string()
+      coverAlt: z.string(),
+      link: z.string().optional(),
     })
 })
 

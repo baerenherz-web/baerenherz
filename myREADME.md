@@ -17,3 +17,6 @@ setting.json "Eslint: Validate"
 	}
 }
 ```
+
+
+info about slick https://kenwheeler.github.io/slick/
