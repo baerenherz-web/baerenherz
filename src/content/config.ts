@@ -5,7 +5,7 @@ const news = defineCollection({
   schema: ({ image }) =>
     z.object({
       title: z.string(),
-      description: z.string(),
+      description: z.string().optional(),
       // Transform string to Date object
       pubDate: z
         .string()
