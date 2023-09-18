@@ -7,10 +7,9 @@ type Props = CollectionEntry<'aktivitaeten'>['data']
 const { title, cover, coverAlt, link } = Astro.props
 
 import Layout from '@layouts/Layout.astro'
-import Container from '@components/container.astro'
 import Link from '@components/ui/Link.astro'
 
-import partners from '@assets/logos/sponsoren2023.png'
+// import partners from '@assets/logos/sponsoren2023.png'
 ---
 
 <Layout title={title}>
@@ -25,21 +24,33 @@ import partners from '@assets/logos/sponsoren2023.png'
 
       <div class="my-8">
         <h1 class="py-4 text-3xl">{title}</h1>
+
         <div class="max-width-80 prose max-w-prose lg:prose-xl">
-          <!-- <a href={link}>Bildgalerie</a> -->
+          {
+            link ? (
+              <div class="my-5">
+                <a
+                  href={link}
+                  class="my-3 p-2 text-2xl font-bold text-[#043c91bb] hover:text-[#033277] hover:no-underline hover:shadow-md active:text-[#0023a5]">
+                  »Bildgalerie
+                </a>
+              </div>
+            ) : null
+          }
+
           <slot />
         </div>
       </div>
 
       {/* Partners */}
       <!-- <div class="flex gap-10">
-      <div class="flex-1">
-        <h3 class="text-3xl font-bold">Unsere Partner:</h3>
-      </div>
-      <div class="flex-2">
-        <Image src={partners} alt="random" />
-      </div>
-    </div> -->
+        <div class="flex-1">
+          <h3 class="text-3xl font-bold">Unsere Partner:</h3>
+        </div>
+        <div class="flex-2">
+          <Image src={partners} alt="random" />
+        </div>
+      </div> -->
     </div>
   </article>
 </Layout>

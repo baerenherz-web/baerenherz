@@ -41,7 +41,7 @@ const aktivitaeten = defineCollection({
         message: 'Cover image must be at least 1080 pixels wide!'
       }),
       coverAlt: z.string(),
-      link: z.string(),
+      link: z.string().optional(),
     })
 })
 
