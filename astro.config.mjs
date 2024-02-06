@@ -1,7 +1,9 @@
 import { defineConfig } from 'astro/config';
 import tailwind from '@astrojs/tailwind';
 import mdx from "@astrojs/mdx";
-import netlify from "@astrojs/netlify/functions"; //for local server deploy change to @astrojs/netlify
+import netlify from "@astrojs/netlify/functions";
+//import netlify from "@astrojs/netlify"; //for local server deploy uncomment this and comment top
+
 import preact from "@astrojs/preact";
 import react from "@astrojs/react";
 import svelte from "@astrojs/svelte";
@@ -10,7 +12,6 @@ import svelte from "@astrojs/svelte";
 export default defineConfig({
   integrations: [tailwind(), mdx(), preact(), react(), svelte()],
 
-  //for local server deploy comment out experimental section
   experimental: {
     assets: true
   },
