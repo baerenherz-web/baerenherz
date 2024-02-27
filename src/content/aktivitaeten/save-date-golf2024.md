@@ -2,7 +2,7 @@
 title: 'Charity Golf Cup 2024'
 description: '24. Mai 2024'
 pubDate: 'Feb 27 2024'
-cover: '@assets/aktivitaeten/golf-save-date-2024.png'
+cover: '@assets/aktivitaeten/Golf_2024.png'
 coverAlt: 'golf'
 ---
 
