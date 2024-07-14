@@ -1,66 +1,70 @@
 ---
-import Logo from "@assets/logo_header.png";
+import Logo from '@assets/logo_header.png'
 
-import Container from "@components/container.astro";
-import Link from "@components/ui/Link.astro";
-import Dropdown from "./dropdown.astro";
-import { Astronav, MenuItems, MenuIcon } from "astro-navbar";
+import Container from '@components/container.astro'
+import Link from '@components/ui/Link.astro'
+import Dropdown from './dropdown.astro'
+import { Astronav, MenuItems, MenuIcon } from 'astro-navbar'
 
 const menuItems = [
   {
-    title: "Über uns",
+    title: 'Über uns',
     children: [
       {
-        title: "Mission",
-        path: "/about",
+        title: 'Mission',
+        path: '/about'
       },
       {
-        title: "Philosophie",
-        path: "/about#philosophie",
+        title: 'Philosophie',
+        path: '/about#philosophie'
       },
       {
-        title: "Vorstand",
-        path: "/about#vorstand",
+        title: 'Vorstand',
+        path: '/about#vorstand'
       },
       {
-        title: "Statuten",
-        path: "/about#statuten",
-      },
-    ],
+        title: 'Statuten',
+        path: '/about#statuten'
+      }
+    ]
   },
-  { title: "Mitgliedschaft", path: "/mitgliedschaft" },
-  { title: "Projekte", path: "/projekte" },
+  { title: 'Mitgliedschaft', path: '/mitgliedschaft' },
+  { title: 'Projekte', path: '/projekte' },
   {
-    title: "Aktivitäten",
+    title: 'Aktivitäten',
     children: [
       {
-        title: "Alle Aktivitäten",
-        path: "/aktivitaeten/",
+        title: 'Alle Aktivitäten',
+        path: '/aktivitaeten/'
       },
       {
-        title: "Charity Golfturnier 2024",
-        path: "/aktivitaeten/charity-golfturnier-2024",
+        title: 'Charity Skitage 2025',
+        path: '/aktivitaeten/save-date-ski-2025'
       },
       {
-        title: "Charity Skitage 2024",
-        path: "/aktivitaeten/charity-skitag-bericht2024",
+        title: 'Charity Golfturnier 2024',
+        path: '/aktivitaeten/charity-golfturnier-2024'
       },
       {
-        title: "Charity Golfturnier 2023",
-        path: "/aktivitaeten/charity-golfturnier-bericht2023",
+        title: 'Charity Skitage 2024',
+        path: '/aktivitaeten/charity-skitag-bericht2024'
       },
       {
-        title: "Charity Skitag 2023",
-        path: "/aktivitaeten/charity-skitag-bericht2023",
+        title: 'Charity Golfturnier 2023',
+        path: '/aktivitaeten/charity-golfturnier-bericht2023'
       },
       {
-        title: "Charity Golfturnier 2022",
-        path: "/aktivitaeten/charity-golfturnier-2022",
+        title: 'Charity Skitag 2023',
+        path: '/aktivitaeten/charity-skitag-bericht2023'
       },
-    ],
+      {
+        title: 'Charity Golfturnier 2022',
+        path: '/aktivitaeten/charity-golfturnier-2022'
+      }
+    ]
   },
-  { title: "News", path: "/news" },
-];
+  { title: 'News', path: '/news' }
+]
 ---
 
 <Container>
@@ -97,8 +101,7 @@ const menuItems = [
                   <li>
                     <a
                       href={item.path}
-                      class="flex py-2 text-gray-600 hover:bg-[#dfecf7] hover:text-gray-900 lg:px-3"
-                    >
+                      class="flex py-2 text-gray-600 hover:bg-[#dfecf7] hover:text-gray-900 lg:px-3">
                       {item.title}
                     </a>
                   </li>
