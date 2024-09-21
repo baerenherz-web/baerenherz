@@ -1,20 +1,21 @@
 ---
-import { Image } from 'astro:assets'
-import Layout from '@layouts/Layout.astro'
-import Sectionhead from '@components/Sectionhead.astro'
-import Container from '@components/container.astro'
-import Newsletter from '@components/Newsletter.jsx'
+import { Image } from "astro:assets";
+import Layout from "@layouts/Layout.astro";
+import Sectionhead from "@components/Sectionhead.astro";
+import Container from "@components/container.astro";
+import Newsletter from "@components/Newsletter.jsx";
 
-import Vorstand from '@assets/vorstand.jpg'
-import localImage from '@assets/philosohie.jpg'
-const localAlt = 'Philosophie'
+import Vorstand from "@assets/vorstand.jpg";
+import localImage from "@assets/philosohie.jpg";
+const localAlt = "Philosophie";
 ---
 
 <Layout title="Über uns">
   <Sectionhead
     class="items-center text-center"
     altHead={localAlt}
-    imageHead={localImage}>
+    imageHead={localImage}
+  >
     <Fragment slot="title" class="uppercase">Bärenherz</Fragment>
     <Fragment slot="content">
       Direkte Hilfe, unbürokratisch und schnell.
@@ -31,7 +32,7 @@ const localAlt = 'Philosophie'
           durch das persönliche und ehrenamtliche Engagement der Mitglieder
           sowie den Einnahmen aus von uns organisierten Charity Events und
           Spendengeldern jeweils im Vorfeld definierte Projekte in Sinne der
-          Philosophie des Vereins unterstützt.
+          Philosophie des Vereins unterstützt!
         </p>
       </article>
 
@@ -51,10 +52,12 @@ const localAlt = 'Philosophie'
             Die Philosophie unseres Vereins beruht auf drei Grundgedanken:
           </h3>
           <div
-            class="flex flex-col justify-around gap-20 p-6 align-middle md:flex-row">
+            class="flex flex-col justify-around gap-20 p-6 align-middle md:flex-row"
+          >
             <div class="flex w-full flex-col items-center md:w-1/3">
               <div
-                class="mb-8 flex h-48 w-48 items-center rounded-full bg-white px-4 text-center">
+                class="mb-8 flex h-48 w-48 items-center rounded-full bg-white px-4 text-center"
+              >
                 <h3 class="text-center text-lg/6 font-bold tracking-tighter">
                   Hilfe zur Selbsthilfe
                 </h3>
@@ -71,7 +74,8 @@ const localAlt = 'Philosophie'
 
             <div class="flex w-full flex-col items-center md:w-1/3">
               <div
-                class="mb-8 flex h-48 w-48 items-center rounded-full bg-white px-4 text-center">
+                class="mb-8 flex h-48 w-48 items-center rounded-full bg-white px-4 text-center"
+              >
                 <h3 class="text-center text-lg/6 font-bold tracking-tighter">
                   Ehrenamtlich aus Überzeugung
                 </h3>
@@ -86,7 +90,8 @@ const localAlt = 'Philosophie'
 
             <div class="flex w-full flex-col items-center md:w-1/3">
               <div
-                class="mb-8 flex h-48 w-48 items-center rounded-full bg-white px-4 text-center">
+                class="mb-8 flex h-48 w-48 items-center rounded-full bg-white px-4 text-center"
+              >
                 <h3 class="text-center text-lg/6 font-bold tracking-tighter">
                   Unnötige Kosten vermeiden
                 </h3>
