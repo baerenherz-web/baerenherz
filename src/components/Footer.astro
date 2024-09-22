@@ -1,11 +1,13 @@
 ---
-import Container from '@components/container.astro'
+import Container from "@components/container.astro";
 ---
 
 <Container class="w-full bg-[#2b2523] text-xs/6 text-white">
   <footer
-    class="flex w-full flex-col gap-3 py-10 md:flex-row md:justify-between md:gap-10">
+    class="flex w-full flex-col gap-3 py-10 md:flex-row md:justify-between md:gap-10"
+  >
     <div>
+      <p>IMPRESSUM</p>
       <p>Bärenherz</p>
       <p>Verein für humanitäre Hilfe</p>
       <p>c/o Rainer Mück</p>
@@ -17,14 +19,19 @@ import Container from '@components/container.astro'
     </div>
 
     <div class="md:text-center">
-      <p>Spendenkonto:</p>
+      <p>Spendenkonto (für CHF-Überweisungen):</p>
       <p>Bärenherz – Verein für humanitäre Hilfe</p>
       <p>Thurgauer Kantonalbank</p>
       <p>IBAN CH91 0078 4297 6098 0200 1</p>
       <p>BIC KBTGCH22</p>
     </div>
-
-    <div><a href="/impressum"> Impressum</a></div>
+    <div class="md:text-center">
+      <p>Spendenkonto (für EURO-Überweisungen):</p>
+      <p>Bärenherz – Verein für humanitäre Hilfe</p>
+      <p>Thurgauer Kantonalbank</p>
+      <p>IBAN CH64 0078 4297 6098 0200 2</p>
+      <p>BIC KBTGCH22</p>
+    </div>
   </footer>
 </Container>
 
