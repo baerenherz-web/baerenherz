@@ -1,13 +1,14 @@
 ---
-import Container from '@components/container.astro'
-import Facebook from '@assets/icons/facebook_icon.png'
-import Instagram from '@assets/icons/instagram_icon.png'
-import Linkedin from '@assets/icons/linkedin_icon.png'
+import Container from "@components/container.astro";
+import Facebook from "@assets/icons/facebook_icon.png";
+import Instagram from "@assets/icons/instagram_icon.png";
+import Linkedin from "@assets/icons/linkedin_icon.png";
 ---
 
 <Container class="w-full bg-[#2b2523] text-xs/6 text-white">
   <footer
-    class="flex w-full flex-col gap-3 py-10 md:flex-row md:justify-between md:gap-10">
+    class="flex w-full flex-col gap-3 py-10 md:flex-row md:justify-between md:gap-10"
+  >
     <div>
       <p>IMPRESSUM</p>
       <p>Bärenherz</p>
@@ -40,12 +41,13 @@ import Linkedin from '@assets/icons/linkedin_icon.png'
       <p>Mehr von Bärenherz:</p>
       <a
         href="https://www.linkedin.com/company/b%C3%A4renherz-verein-f%C3%BCr-humanit%C3%A4re-hilfe/"
-        target="_blank">
+        target="_blank"
+      >
         <img src={Linkedin.src} width="32px" height="32px" alt="LinkedIn" />
-      </a>
-      <a
+      </a><a
         href="https://www.facebook.com/baerenherz.org/?locale=de_DE"
-        target="_blank">
+        target="_blank"
+      >
         <img
           src={Facebook.src}
           width="32px"
@@ -53,10 +55,10 @@ import Linkedin from '@assets/icons/linkedin_icon.png'
           alt="Facebook"
           style="padding-top: 5px;"
         />
-      </a>
-      <a
+      </a><a
         href="https://www.instagram.com/baerenherz_humanitaere_hilfe?igsh=MW9kdGE5ZHF6Y3NkdA=="
-        target="_blank">
+        target="_blank"
+      >
         <img
           src={Instagram.src}
           width="32px"
