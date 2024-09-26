@@ -1,14 +1,14 @@
 ---
-import { getCollection } from 'astro:content'
-import FormattedDate from '@components/FormattedDate.astro'
-import { Image } from 'astro:assets'
+import { getCollection } from "astro:content";
+import FormattedDate from "@components/FormattedDate.astro";
+import { Image } from "astro:assets";
 
 // sort posts by date, newest first
-const posts = (await getCollection('news')).sort(
-  (a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf()
-)
+const posts = (await getCollection("news")).sort(
+  (a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf(),
+);
 // limiting to 3 posts
-const postsToDisplay = posts.slice(0, 3)
+const postsToDisplay = posts.slice(0, 3);
 ---
 
 <div class="my-2 py-6">
