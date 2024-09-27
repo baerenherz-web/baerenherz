@@ -1,28 +1,29 @@
 ---
-import { Image } from 'astro:assets'
-import Layout from '@layouts/Layout.astro'
-import Sectionhead from '@components/Sectionhead.astro'
-import Container from '@components/container.astro'
-import Link from '@components/ui/Link.astro'
+import { Image } from "astro:assets";
+import Layout from "@layouts/Layout.astro";
+import Sectionhead from "@components/Sectionhead.astro";
+import Container from "@components/container.astro";
+import Link from "@components/ui/Link.astro";
 
-import Hope from '@assets/hope.png'
-import localImage from '@assets/baby-2.jpeg'
+import Hope from "@assets/hope.png";
+import localImage from "@assets/baby-2.jpeg";
 // import galleryGrid1 from '@assets/alles-gesund.jpg'
 // import galleryGrid3 from '@assets/baby-bed.jpg'
 // import galleryGrid2 from '@assets/nicu.jpg'
 // import galleryGrid4 from '@assets/mother-vera.jpg'
-import galleryFlex1 from '@assets/FullSizeRender.jpg'
-import galleryFlex2 from '@assets/IMG_1163.jpg'
-import galleryFlex3 from '@assets/Unknown.jpeg'
-import galleryFlex4 from '@assets/Unknown-2.jpeg'
-const localAlt = 'Mitgliedschaft'
+import galleryFlex1 from "@assets/FullSizeRender.jpg";
+import galleryFlex2 from "@assets/IMG_1163.jpg";
+import galleryFlex3 from "@assets/Unknown.jpeg";
+import galleryFlex4 from "@assets/Unknown-2.jpeg";
+const localAlt = "Mitgliedschaft";
 ---
 
 <Layout title="Mitgliedschaft">
   <Sectionhead
     class="items-center text-center"
     altHead={localAlt}
-    imageHead={localImage}>
+    imageHead={localImage}
+  >
     <Fragment slot="title" class="uppercase">Projekte</Fragment>
     <Fragment slot="content">
       Hilfe für die Schwächsten. Direkt und lebensrettend.
@@ -31,6 +32,28 @@ const localAlt = 'Mitgliedschaft'
 
   <Container>
     <section class="py-10 md:px-14 xl:mx-auto xl:my-6 xl:w-3/4">
+      <article class="py-6">
+        <h2 class="py-4 text-2xl font-bold">Projekte 2024</h2>
+        <div class="text-lg leading-7">
+          <p>
+            Nachdem wir für 2024 eigentlich entschieden hatten, das Projekt in
+            Strumica zu unterstützen, um die notwendigste medizinische
+            Versorgung in der Geburtenstation sicherzustellen, mussten wir
+            feststellen, dass man es dort immer noch nicht geschafft hat, in das
+            neue Krankenhaus umzuziehen. Vor diesem Hintergrund haben wir uns
+            dem Krankenhaus in Bitola zugewendet, das wir schon bei einem
+            früheren Besuch besichtigt hatten. Mit der Unterstützung von Project
+            HOPE haben wir medizinische Geräte im Wert von 85'000 Euro
+            übergeben, die auch schon im Einsatz sind, um Neugeborenen und Ihren
+            Müttern einen besseren Start ins Leben zu ermöglichen. Trotz aller
+            Widrigkeiten, die es immer wieder gibt, ist es am Ende ein gutes
+            Gefühl zu sehen, das unsere Hilfe ankommt. Beeindruckend auch der
+            Einsatz und die Dankbarkeit der Verantwortlichen im Krankenhaus.
+            Davon konnten wir uns beim Besuch vor Ort im April persönlich ein
+            Bild machen.
+          </p>
+        </div>
+      </article>
       <article class="py-6">
         <h2 class="py-4 text-2xl font-bold">Projekte 2023</h2>
         <div class="text-lg leading-7">
@@ -106,9 +129,11 @@ const localAlt = 'Mitgliedschaft'
         </div>
         <!-- boxes -->
         <article
-          class="my-4 flex flex-col justify-center gap-4 md:flex-row md:gap-10">
+          class="my-4 flex flex-col justify-center gap-4 md:flex-row md:gap-10"
+        >
           <div
-            class="flex flex-col justify-start gap-5 bg-[#84b9e4] p-8 text-center align-middle md:w-1/2">
+            class="flex flex-col justify-start gap-5 bg-[#84b9e4] p-8 text-center align-middle md:w-1/2"
+          >
             <h3 class="" font-bold>Medizintechnik</h3>
             <p>
               Auch im Jahr 2022 wird Project HOPE e.V. sein Engagement für das
@@ -124,7 +149,8 @@ const localAlt = 'Mitgliedschaft'
             </p>
           </div>
           <div
-            class="flex flex-col justify-center gap-5 bg-[#84b9e4] p-8 text-center align-top md:w-1/2">
+            class="flex flex-col justify-center gap-5 bg-[#84b9e4] p-8 text-center align-top md:w-1/2"
+          >
             <h3 class="" font-bold>Fortbildung</h3>
             <p>
               Weil insbesondere die ersten kritischen 10 Minuten im Leben eines
@@ -203,7 +229,8 @@ const localAlt = 'Mitgliedschaft'
         <div class="flex flex-1 justify-center bg-[#84b9e4] align-middle">
           <div class="p-8 md:flex md:justify-center md:align-middle">
             <p
-              class="max-w-xl text-lg font-extrabold italic leading-relaxed text-white md:flex-1 md:px-10 md:text-2xl">
+              class="max-w-xl text-lg font-extrabold italic leading-relaxed text-white md:flex-1 md:px-10 md:text-2xl"
+            >
               Mit Ihrer Spende helfen Sie uns, Leben zu retten.
             </p>
 
@@ -212,7 +239,8 @@ const localAlt = 'Mitgliedschaft'
                 href="/spenden"
                 class="mt-4 flex flex-1 items-center justify-center gap-1 text-lg md:mt-0"
                 rel="noopener"
-                style="inverted">
+                style="inverted"
+              >
                 Jetzt Spenden
               </Link>
             </div>
