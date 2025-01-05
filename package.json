@@ -25,6 +25,7 @@
     "astro-navbar": "^2.0.1",
     "g": "^2.0.1",
     "glider-js": "^1.7.8",
+    "package.json": "^2.0.1",
     "pnpm": "^8.6.10",
     "preact": "^10.6.5",
     "preact-glide": "^1.1.8",
