@@ -6,6 +6,9 @@ import MainTextHome from '@components/MainTextHome.astro'
 // import Cta from '@components/Cta.astro'
 import Aktuelles from '@components/Aktuelles.astro'
 import Newsletter from '@components/Newsletter.jsx'
+import BaerenherzVideo from "@assets/Baerenherz_Video.mp4";
+import BaerenherzCover from "@assets/Video_Cover.png";
+
 
 // import ctaImage from '@assets/cta.jpg'
 const ctaAlt = 'Spenden'
@@ -31,6 +34,15 @@ const ctaLink = 'Jetzt spenden'
     <Fragment slot="content3">Unternehmerin, Zürich</Fragment>
   </Cta> 
 -->
+
+
+<div style="display: flex; justify-content: center; align-items: center; ">
+  <video controls poster={BaerenherzCover.src} style="width: 50%; height: auto; border-radius: 8px;">
+    <source src={BaerenherzVideo} type="video/mp4">
+    Your browser does not support the video tag.
+  </video>
+</div>
+
   <Aktuelles />
   <Newsletter client:idle />
 </Layout>
