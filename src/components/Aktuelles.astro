@@ -16,15 +16,15 @@ const postsToDisplay = posts.slice(0, 3)
     Aktuelles von Bärenherz
   </h1>
 
-  <ul class="w-full gap-4 p-10 md:flex overflow-hidden">
+  <ul class="w-full gap-4 p-10 md:flex">
     {
       postsToDisplay.map((post) => (
-        <li class="flex-1 border-2 border-[#dfecf7] hover:border-2 hover:border-[#033277]">
+        <li class="flex-1 max-w-[400px] border-2 border-[#dfecf7] hover:border-2 hover:border-[#033277]">
           <a href={`/news/${post.slug}/`}>
-            <div class="relative md:h-[350px] md:w-[640px] xl:h-[600px] bg-white">
+            <div class="relative h-[250px] bg-white">
               <Image
-                height={300}
-                width={1920}
+                height={250}
+                width={400}
                 src={post.data.cover}
                 alt={post.data.coverAlt}
                 class="object-contain h-full w-full"
