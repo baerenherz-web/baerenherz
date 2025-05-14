@@ -22,7 +22,7 @@ const posts = (await getCollection('news')).sort(
     {
       posts.map((post) => (
         <li class="my-5 list-none">
-          <a href={`/news/${post.slug}/`}>
+          <a href={post.slug === 'save-the-date-golfturnier-2025' ? '/aktivitaeten/charity-golfturnier-2025' : `/news/${post.slug}/`}>
             <Image
               width={720}
               height={360}
