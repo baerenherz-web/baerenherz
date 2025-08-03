@@ -1,44 +1,78 @@
 ---
+import Link from '@components/ui/Link.astro'
+export interface Props {
+  lang?: 'ch' | 'de'
+}
 import Container from "@components/container.astro";
 import Facebook from "@assets/icons/facebook_icon.png";
 import Instagram from "@assets/icons/instagram_icon.png";
 import Linkedin from "@assets/icons/linkedin_icon.png";
+
+const { lang } = Astro.props;
+const currentLang = lang ?? (Astro.url.pathname.startsWith('/de') ? 'de' : 'ch');
 ---
 
 <Container class="w-full bg-[#2b2523] text-xs/6 text-white">
-  <footer
-    class="flex w-full flex-col gap-3 py-10 md:flex-row md:justify-between md:gap-10"
-  >
-    <div>
-      <p>IMPRESSUM</p>
-      <p>Bärenherz</p>
-      <p>Verein für humanitäre Hilfe</p>
-      <p>c/o Rainer Mück</p>
-      <p>Untersellenstrasse 27</p>
-      <p>CH-8873 Amden</p>
-      <p class="py-2">
-        Email: <a href="mailto:info@baerenherz.org">info@baerenherz.org</a>
-      </p>
-    </div>
-
-    <div class="md:text-center">
-      <p>Spendenkonto (für CHF-Überweisungen):</p>
-      <p>Bärenherz – Verein für humanitäre Hilfe</p>
-      <p>Thurgauer Kantonalbank</p>
-      <p>IBAN CH91 0078 4297 6098 0200 1</p>
-      <p>BIC KBTGCH22</p>
-    </div>
-
-    <div class="md:text-center">
-      <p>Spendenkonto (für EURO-Überweisungen):</p>
-      <p>Bärenherz – Verein für humanitäre Hilfe</p>
-      <p>Thurgauer Kantonalbank</p>
-      <p>IBAN CH64 0078 4297 6098 0200 2</p>
-      <p>BIC KBTGCH22</p>
-    </div>
-
-    <div>
+  <footer class="flex w-full flex-col gap-3 py-10 md:flex-row md:justify-between md:gap-10">
+    {currentLang === 'ch' && (
+      <>
+        <div>
+          <p>IMPRESSUM</p>
+          <p>Bärenherz</p>
+          <p>Verein für humanitäre Hilfe</p>
+          <p>c/o Rainer Mück</p>
+          <p>Untersellenstrasse 27</p>
+          <p>CH-8873 Amden</p>
+          <p class="py-2">
+            Email: <a href="mailto:info@baerenherz.org">info@baerenherz.org</a>
+          </p>
+        </div>
+        <div class="md:text-center">
+          <p>Spendenkonto (für CHF-Überweisungen):</p>
+          <p>Bärenherz – Verein für humanitäre Hilfe</p>
+          <p>Thurgauer Kantonalbank</p>
+          <p>IBAN CH91 0078 4297 6098 0200 1</p>
+          <p>BIC KBTGCH22</p>
+        </div>
+        <div class="md:text-center">
+          <p>Spendenkonto (für EURO-Überweisungen):</p>
+          <p>Bärenherz – Verein für humanitäre Hilfe</p>
+          <p>Thurgauer Kantonalbank</p>
+          <p>IBAN CH64 0078 4297 6098 0200 2</p>
+          <p>BIC KBTGCH22</p>
+        </div>
+      </>
+    )}
+    {currentLang === 'de' && (
+      <>
+        <div>
+          <p><a href="/de/impressum">Impressum</a> | <a href="/de/datenschutz">Datenschutz</a></p>
+          <p>Bärenherz – Verein für humanitäre Hilfe e.V.</p>
+          <p>Geranienstrasse 2</p>
+          <p>82031 Grünwald</p>
+          <p class="py-2">
+            Email: <a href="mailto:info@baerenherz.org">info@baerenherz.org</a>
+          </p>
+        </div>
+        <div class="md:text-center">
+          <p>Spendenkonto (Deutschland):</p>
+          <p>Bärenherz – Verein für humanitäre Hilfe e.V.</p>
+          <p>HypoVereinsbank/UniCredit</p>
+          <p>DE78 7002 0270 0046 6389 56</p>
+          <p>HYVEDEMMXXX</p>
+        </div>
+        <div class="md:text-center">
+          <p>Spendenkonto (Schweiz):</p>
+          <p>Bärenherz – Verein für humanitäre Hilfe</p>
+          <p>Thurgauer Kantonalbank</p>
+          <p>IBAN CH91 0078 4297 6098 0200 1</p>
+          <p>BIC KBTGCH22</p>
+        </div>
+      </>
+    )}
+     <div>
       <p>Mehr von Bärenherz:</p>
+      
       <a
         href="https://www.linkedin.com/company/b%C3%A4renherz-verein-f%C3%BCr-humanit%C3%A4re-hilfe/"
         target="_blank"
@@ -68,6 +102,10 @@ import Linkedin from "@assets/icons/linkedin_icon.png";
         />
       </a>
     </div>
+  </footer>
+</Container>
+
+   
   </footer>
 
   <!-- 

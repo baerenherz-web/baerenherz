@@ -1,6 +1,6 @@
 ---
 import { getCollection } from 'astro:content';
-import NewsPostPage from '../../components/NewsPostPage.astro';
+import NewsPostPage from '../../../components/NewsPostPage.astro';
 
 const posts = await getCollection('news');
 const { slug } = Astro.params;

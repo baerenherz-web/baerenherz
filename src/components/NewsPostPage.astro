@@ -1,0 +1,9 @@
+---
+import NewsPost from '../layouts/NewsPost.astro';
+const { post } = Astro.props;
+const { Content } = await post.render();
+---
+
+<NewsPost {...post.data}>
+  <Content />
+</NewsPost>

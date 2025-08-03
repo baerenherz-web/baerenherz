@@ -1,0 +1,13 @@
+---
+// Catch-all redirect for any non-prefixed route
+if (typeof window !== 'undefined') {
+  const storedLang = localStorage.getItem('lang-preference');
+  if (storedLang === '/ch') {
+    window.location.replace('/ch/');
+  } else {
+    window.location.replace('/de/');
+  }
+} else {
+  throw Astro.redirect('/de/');
+}
+---

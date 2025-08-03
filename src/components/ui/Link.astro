@@ -1,4 +1,6 @@
 ---
+import { getLocale, prefixLocalePath } from '../../utils/locale';
+
 interface Props {
   href: string
   size?: 'md' | 'lg' | 'xl'
@@ -31,10 +33,13 @@ const styles = {
     'bg-[#033277] text-white hover:bg-[#dfecf7] hover:text-[#2b2523] hover:border-[#033277] border-2 border-transparent',
   muted: 'bg-gray-100 hover:bg-gray-200 border-2 border-transparent'
 }
+
+const locale = typeof Astro !== 'undefined' && Astro.url && Astro.url.pathname ? getLocale(Astro.url.pathname) : 'de';
+const prefixedHref = prefixLocalePath(href, locale);
 ---
 
 <a
-  href={href}
+  href={prefixedHref}
   {...rest}
   class:list={[
     'text-center transition focus-visible:ring-2 ring-offset-2 ring-gray-200',

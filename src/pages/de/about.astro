@@ -1,0 +1,194 @@
+---
+import { Image } from "astro:assets";
+import Layout from "@layouts/Layout.astro";
+import Sectionhead from "@components/Sectionhead.astro";
+import Container from "@components/container.astro";
+import Newsletter from "@components/Newsletter.jsx";
+
+import Vorstand from "@assets/vorstand_neu.jpg";
+import localImage from "@assets/philosohie.jpg";
+const localAlt = "Philosophie";
+---
+
+<Layout title="Über uns">
+  <Sectionhead
+    class="items-center text-center"
+    altHead={localAlt}
+    imageHead={localImage}
+  >
+    <Fragment slot="title" class="uppercase">Bärenherz</Fragment>
+    <Fragment slot="content">
+        Direkte Hilfe, unbürokratisch und schnell.
+      </Fragment>
+  </Sectionhead>
+  <Container>
+    <section class="py-10 md:px-14 xl:mx-auto xl:my-6 xl:w-3/4">
+      <article class="py-6">
+        <h2 class="py-4 text-2xl font-bold">Mission</h2>
+        <p class="text-lg leading-7">
+            Unsere Mission ist es, dort zu helfen, wo lebensnotwendige Unterstützung benötigt wird. Wir sind ein unabhängiger Verein, der durch das persönliche und ehrenamtliche Engagement der Mitglieder sowie den Einnahmen aus von uns organisierten Charity Events und Spendengeldern jeweils im Vorfeld definierte Projekte in Sinne der Philosophie des Vereins unterstützt.        </p>
+      </article>
+
+      <article>
+        <h2 id="philosophie" class="py-4 text-3xl font-bold">Philosophie</h2>
+
+        <p class="text-lg leading-7">
+          Die Grundidee unseres Vereins ist es, da zu helfen, wo Hilfe wirklich
+          gebraucht wird, um Leben zu retten, lebenswerte Bedingungen zu schafen
+          oder in unverschuldeten Notsituationen einen schnellen uns
+          unbürokratischen Beitrag zur Soforthilfe zu leisten.
+        </p>
+         <!-- TODO: this should be separate component -->
+         <div class="mb-4 mt-6 bg-[#d0e4f5] py-4">
+            <h3 class="py-4 text-center text-3xl font-bold">
+              Die Philosophie unseres Vereins beruht auf drei Grundgedanken:
+            </h3>
+            <div
+              class="flex flex-col justify-around gap-20 p-6 align-middle md:flex-row"
+            >
+              <div class="flex w-full flex-col items-center md:w-1/3">
+                <div
+                  class="mb-8 flex h-48 w-48 items-center rounded-full bg-white px-4 text-center"
+                >
+                  <h3 class="text-center text-lg/6 font-bold tracking-tighter">
+                    Hilfe zur Selbsthilfe
+                  </h3>
+                </div>
+  
+                <p class="justify-stretch">
+                  So wie in der Vergangenheit bei Project Hope e.V. leisten auch
+                  wir in den von uns unterstützen Projekten Hilfe zur Selbsthilfe:
+                  Wir wollen nicht einfach materielle Zuwendun gen geben, sondern
+                  aktiv die jeweilige Notsituation so verbessern, dass mittel- bis
+                  langfristig eine nachhaltige Verbesserung erreicht werden kann.
+                </p>
+              </div>
+  
+              <div class="flex w-full flex-col items-center md:w-1/3">
+                <div
+                  class="mb-8 flex h-48 w-48 items-center rounded-full bg-white px-4 text-center"
+                >
+                  <h3 class="text-center text-lg/6 font-bold tracking-tighter">
+                    Ehrenamtlich aus Überzeugung
+                  </h3>
+                </div>
+                <p>
+                  Wir arbeiten ehrenamtlich und aus Überzeugung: Alles was wir
+                  bewegen, machen wir mit viel Freunde und Elan in unserer
+                  Freizeit, weil wir wissen, dass wir damit einen wertvollen
+                  Beitrag für Leben unter lebenswerten Bedingungen leisten können.
+                </p>
+              </div>
+  
+              <div class="flex w-full flex-col items-center md:w-1/3">
+                <div
+                  class="mb-8 flex h-48 w-48 items-center rounded-full bg-white px-4 text-center"
+                >
+                  <h3 class="text-center text-lg/6 font-bold tracking-tighter">
+                    Unnötige Kosten vermeiden
+                  </h3>
+                </div>
+                <p>
+                  Wir wollen unnötige Kosten vermeiden: Unsere administrativen
+                  Aufwendungen halten wir auf einem Minimum und finanzieren diese
+                  intern durch unsere Mitgliedbeiträge und sonstigen finanziellen
+                  Zuwendungen der Mitglieder und Vorstände.
+                </p>
+              </div>
+            </div>
+  
+            <p class="my-4 p-6 font-bold">
+              Diese Hilfe erreichen wir im Wesentlichen mit unseren Charity
+              Aktionen. Hier möchten wir in einem spannenden Umfeld gemeinsam
+              Spass haben aber gerade mit dem Wissen über unsere persönliche
+              privilegierte Lebenssituation auch einen Teil an diejenigen
+              weiterreichen, denen es nicht so gut geht. Das ist unser Antrieb und
+              unsere Motivation.
+            </p>
+          </div>
+        </article>
+  
+        <article>
+          <h2 class="py-4 text-3xl font-bold" id="vorstand">Vorstand</h2>
+          <p class="pb-2 text-lg/7">
+            Aktuell setzt sich der Vorstand aus den folgenden Personen zusammen:
+          </p>
+          <ul class="py-4 text-lg/7">
+            <li>
+                Tom Luther, Founder & Managing Partner 7Cap Investments GmbH – Präsident
+            </li>
+            <li>
+                Rainer Mück, Gründer und Vorstand, Mück Management Partners AG – Vizepräsident
+            </li>
+            <li>
+                Christiane Rädiger, Gründerin und CEO, twinnovativ GmbH - Schriftführerin
+            </li>
+            <li>Oliver Brandt, Geschäftsführer bei stahl + verbundbau gmbh, Schatzmeister</li>
+          </ul>
+  
+          <Image src={Vorstand} alt="Vorstand" className="w-[100%] mx-auto py-4" />
+  
+          <div class="my-4 py-4">
+            <Newsletter />
+          </div>
+        </article>
+  
+        <!-- Statuten -->
+        <article>
+          <h2 class="pb-4 pt-10 text-3xl font-bold" id="statuten">
+            Satzung des Vereins Bärenherz – Verein für humanitäre Hilfe e.V.
+            gemäß Beschluss vom 2. April 2025
+          </h2>
+          <div class="text-base/7">
+            <p>
+              <span class="font-bold">§ 1	(Name, Sitz)</span> 
+              <li> 1 Der Verein führt den Namen „Bärenherz – Verein für humanitäre Hilfe e.V.“. </li>
+              <li> 2 Er ist in das Vereinsregister eingetragen und führt daher den Zusatz „e.V.“.</li>
+              <li> 3 Der Sitz des Vereins ist Grünwald.</li>
+            </p>
+  
+            <p>
+              <span class="font-bold">§ 2	(Zweck)</span> 
+              <li>1 Der Zweck des Vereins ist die Unterstützung von Menschen in Not sowie die Verbesserung der Lebensqualität von Bedürftigen. Es können einzelne Personen oder auch Institutionen vom Verein unterstützt werden.</li>
+              <li>2	Der Satzungszweck wird insbesondere verwirklicht durch Geldzuwendungen an bedürftige Einzelpersonen oder juristische Personen des öffentlichen Rechts oder steuerbegünstigte Körperschaften, die ihrerseits Bedürftige unterstützen, für deren mildtätige Zwecke. Die Bedürftigkeit bzw. der Verwendungszweck der Mittel bei Institutionen ist dem Vorstand gegenüber zu dokumentieren </li>
+              <li>3	Der Verein kann sich auch an mildtätigen Aktionen und Projekten beteiligen oder solche unterstützen, die von anderen juristischen Personen des öffentlichen Rechts oder steuerbegünstigten Körperschaften mit ähnlicher Zielsetzung durchgeführt werden. Hierzu gehören beispielsweise Projekte des Vereins „Project HOPE  e.V.“.</li>
+              <li>4	Der Verein verfolgt ausschließlich und unmittelbar mildtätige Zwecke im Sinne des Abschnitts „Steuerbegünstigte Zwecke“ der Abgabenordnung. Der Verein ist selbstlos tätig; er verfolgt nicht in erster Linie eigenwirtschaftliche Zwecke. Mittel des Vereins dürfen nur für die satzungsmäßigen Zwecke verwendet werden. Die Mitglieder erhalten keine Zuwendungen aus Mitteln des Vereins. Es darf keine Person durch Ausgaben, die dem Zweck der Körperschaft fremd sind oder durch unverhältnismäßig hohe Vergütungen begünstigt werden. Der Vorstand des Vereins ist ehrenamtlich tätig.</li>
+            </p>
+            <p>
+                <span class="font-bold">§ 3	(Mitgliedschaft)</span> 
+                <li>1 Mitglied des Vereins kann jede natürliche und juristische Person werden.</li>
+                <li>2 Über die Aufnahme entscheidet nach schriftlichem Antrag der Vorstand. Bei Minderjährigen ist der Aufnahmeantrag durch die gesetzlichen Vertreter zu stellen.</li>
+                <li>3 Der Austritt aus dem Verein ist jederzeit zulässig. Er muss schriftlich gegenüber dem Vorstand erklärt werden.</li>
+                <li>4 Ein Mitglied kann aus dem Verein ausgeschlossen werden, wenn sein Verhalten in grober Weise gegen die Interessen des Vereins verstößt. Über den Ausschluss entscheidet die Mitgliederversammlung.</li>
+                <li>5 Die Mitgliedschaft endet mit dem Tod des Mitglieds, bei juristischen Personen mit deren Erlöschen.</li>
+                <li>6 Das ausgetretene oder ausgeschlossene Mitglied hat keinen Anspruch gegenüber dem Vereinsvermögen.</li>
+                <li>7 Die Mitglieder haben Mitgliedsbeiträge zu leisten. Die Höhe und Fälligkeit der Mitgliedsbeiträge wird durch die Mitgliederversammlung festgesetzt.</li>   
+            </p>
+
+            <p>
+                <span class="font-bold">§ 4	(Vorstand)</span> 
+                <li>1 Der Gesamtvorstand des Vereins besteht aus dem 1. Vorsitzenden, dem 2. Vorsitzenden, dem Kassier und dem Schriftführer.</li>
+                <li>2 Der Vorstand im Sinne des § 26 BGB besteht aus dem 1. Vorsitzenden und dem 2. Vorsitzenden. Jeder von ihnen vertritt den Verein einzeln.</li>
+                <li>3 Der Vorstand wird von der Mitgliederversammlung auf die Dauer von drei Jahren gewählt; er bleibt jedoch so lange im Amt, bis eine Neuwahl erfolgt ist.</li>
+            </p>    
+            <p>
+                <span class="font-bold">§ 5	(Mitgliederversammlung)</span> 
+                <li>1	Die ordentliche Mitgliederversammlung findet einmal jährlich statt. Außerdem muss eine Mitgliederversammlung einberufen werden, wenn das Interesse des Vereins es erfordert oder wenn mindestens 1/10 der Mitglieder die Einberufung schriftlich unter Angabe des Zwecks und der Gründe verlangt.</li>
+                <li>2	Jede Mitgliederversammlung ist vom Vorstand schriftlich unter Einhaltung einer Einladungsfrist von 4 Wochen und unter Angabe der Tagesordnung einzuberufen.</li>
+                <li>3	Versammlungsleiter ist der 1. Vorsitzende und im Falle seiner Verhinderung der 2. Vorsitzende. Sollten beide nicht anwesend sein, wird ein Versammlungsleiter von der Mitgliederversammlung gewählt. Soweit der Schriftführer nicht anwesend ist, wird auch dieser von der Mitgliederversammlung bestimmt.</li>
+                <li>4	Jede ordnungsgemäß einberufene Mitgliederversammlung ist ohne Rücksicht auf die Zahl der erschienenen Mitglieder beschlussfähig.</li>
+                <li>5	Die Beschlüsse der Mitgliederversammlung werden mit einfacher Mehrheit der abgegebenen gültigen Stimmen gefasst. Zur Änderung der Satzung und des Vereinszwecks ist jedoch eine Mehrheit von ¾ der abgegebenen gültigen Stimmen erforderlich.</li>
+                <li>6	Über die Beschlüsse der Mitgliederversammlung ist ein Protokoll aufzunehmen, das vom Versammlungsleiter und dem Schriftführer zu unterschreiben ist.</li>
+
+            </p>   
+            <p>
+                <span class="font-bold">§ 6	(Auflösung, Anfall des Vereinsvermögens)</span> 
+                <li>1	Zur Auflösung des Vereins ist eine Mehrheit von 4/5 der abgegebenen gültigen Stimmen erforderlich.</li>
+                <li>2	Bei Auflösung des Vereins, Entzug der Rechtsfähigkeit oder bei Wegfall seiner steuerbegünstigten Zwecke fällt das Vermögen des Vereins an Project HOPE e.V., der es unmittelbar und ausschließlich für steuerbegünstigte Zwecke zu verwenden hat.</li>
+            </p>
+          </div>
+        </article>
+      </section>
+    </Container>
+  </Layout>
+  

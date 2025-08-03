@@ -1,6 +1,20 @@
 ---
 import { Dropdown, DropdownItems } from 'astro-navbar'
 const { title, lastItem, children } = Astro.props
+
+function getLocalePrefix() {
+  if (typeof Astro !== 'undefined' && Astro.url && Astro.url.pathname) {
+    if (Astro.url.pathname.startsWith('/ch')) return '/ch';
+    if (Astro.url.pathname.startsWith('/de')) return '/de';
+  }
+  if (typeof window !== 'undefined') {
+    if (window.location.pathname.startsWith('/ch')) return '/ch';
+    if (window.location.pathname.startsWith('/de')) return '/de';
+  }
+  return '/de';
+}
+
+const langPrefix = getLocalePrefix();
 ---
 
 <li class="relative">
@@ -32,8 +46,9 @@ const { title, lastItem, children } = Astro.props
           {
             children.map((item) => (
               <a
-                href={item.path}
-                class="p-2 text-sm text-gray-600 hover:bg-[#dfecf7] hover:text-[#2b2523]">
+                href={`${langPrefix}${item.path}`}
+                class="p-2 text-sm text-gray-600 hover:bg-[#dfecf7] hover:text-[#2b2523]"
+              >
                 {item.title}
               </a>
             ))
