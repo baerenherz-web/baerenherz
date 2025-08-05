@@ -6,8 +6,8 @@ import Button from "@components/ui/Button.astro";
 import Cta from "@components/Cta.astro";
 
 import localImage from "@assets/Mitfliedschaft.jpg";
-import personalTemplate from "../../public/Barenherz_Antrag_Template_DE.pdf"; // txtReference === '/src/words.txt'
-import businessTemplate from "../../public/Barenherz_Antrag_Template_DE.pdf"; // txtReference === '/src/words.txt'
+const personalTemplate = "/Barenherz_Antrag_Template_DE.pdf";
+const businessTemplate = "/Barenherz_Antrag_Template_DE.pdf";
 const localAlt = "Mitgliedschaft";
 import ctaImage from "@assets/cta.jpg";
 import Newsletter from "@components/Newsletter";
@@ -79,7 +79,11 @@ const ctaLink = "Jetzt spenden";
       <!-- end Boxes -->
 
       <p class="mt-10 text-lg leading-7">
-        Der Jahresbeitrag ist jeweils für das Kalenderjahr geschuldet. Bitte füllen Sie das verknüpfte Antragsformular aus und reichen Sie dieses ein an info@baerenherz.org oder per Post an Bärenherz – Verein für humanitäre Hilfe e.V., Geranienstrasse 2, 82031 Grünwald. Der Vorstand entscheidet über die Aufnahme neuer Vereinsmitglieder.
+        Der Jahresbeitrag ist jeweils für das Kalenderjahr geschuldet. Bitte
+        füllen Sie das verknüpfte Antragsformular aus und reichen Sie dieses ein
+        an info@baerenherz.org oder per Post an Bärenherz – Verein für
+        humanitäre Hilfe e.V., Geranienstrasse 2, 82031 Grünwald. Der Vorstand
+        entscheidet über die Aufnahme neuer Vereinsmitglieder.
       </p>
 
       <h2 class="mt-10 py-4 text-2xl font-bold">Eventpartner</h2>
