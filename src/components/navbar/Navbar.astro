@@ -48,53 +48,48 @@ const menuItems = [
   },
   { title: 'Mitgliedschaft', path: '/mitgliedschaft' },
   { title: 'Projekte', path: '/projekte' },
-  {
-    title: 'Aktivitäten',
-    children: [
-      {
-        title: 'Alle Aktivitäten',
-        path: '/aktivitaeten/'
-      },
-      {
-        title: 'Charity Golfturnier 2026',
-        path: '/aktivitaeten/save-the-date-golfturnier-2026'
-      },
-      {
-        title: 'Charity Skitag 2026',
-        path: '/aktivitaeten/save-the-date-skitag-2026'
-      },
-      {
-        title: 'Charity Golfturnier 2025',
-        path: '/aktivitaeten/charity-golfturnier-2025'
-      },
-      {
-        title: 'Charity Skitage 2025',
-        path: '/aktivitaeten/charity-skitag-bericht2025'
-      },
-      {
-        title: 'Charity Golfturnier 2024',
-        path: '/aktivitaeten/charity-golfturnier-2024'
-      },
-      {
-        title: 'Charity Skitage 2024',
-        path: '/aktivitaeten/charity-skitag-bericht2024'
-      },
-      {
-        title: 'Charity Golfturnier 2023',
-        path: '/aktivitaeten/charity-golfturnier-bericht2023'
-      },
-      {
-        title: 'Charity Skitag 2023',
-        path: '/aktivitaeten/charity-skitag-bericht2023'
-      },
-      {
-        title: 'Charity Golfturnier 2022',
-        path: '/aktivitaeten/charity-golfturnier-2022'
-      }
-    ]
-  },
-  { title: 'News', path: '/news' }
 ]
+
+// Aktivitäten For Germany
+if (IsNotSwitzerland) {
+  menuItems.push(
+    ...[
+      {
+        title: 'Aktivitäten',
+        children: [
+          { title: 'Alle Aktivitäten', path: '/aktivitaeten/' },
+          { title: 'Charity Golfturnier 2025', path: '/aktivitaeten/save-the-date-golfturnier-2025-de' },
+        ]
+      },
+      { title: 'News', path: '/news' }
+    ]
+  );
+}
+
+// Aktivitäten For Switzerland
+if (!IsNotSwitzerland) {
+menuItems.push(
+    ...[
+      {
+        title: 'Aktivitäten',
+        children: [
+          { title: 'Alle Aktivitäten', path: '/aktivitaeten/' },
+          { title: 'Charity Golfturnier 2026', path: '/aktivitaeten/save-the-date-golfturnier-2026' },
+          { title: 'Charity Skitag 2026', path: '/aktivitaeten/save-the-date-skitag-2026' },
+          { title: 'Charity Golfturnier 2025', path: '/aktivitaeten/charity-golfturnier-2025' },
+          { title: 'Charity Skitage 2025', path: '/aktivitaeten/charity-skitag-bericht2025' },
+          { title: 'Charity Golfturnier 2024', path: '/aktivitaeten/charity-golfturnier-2024' },
+          { title: 'Charity Skitage 2024', path: '/aktivitaeten/charity-skitag-bericht2024' },
+          { title: 'Charity Golfturnier 2023', path: '/aktivitaeten/charity-golfturnier-bericht2023' },
+          { title: 'Charity Skitag 2023', path: '/aktivitaeten/charity-skitag-bericht2023' },
+          { title: 'Charity Golfturnier 2022', path: '/aktivitaeten/charity-golfturnier-2022' }
+        ]
+      },
+      { title: 'News', path: '/news' }
+    ]
+  );
+}
+
 ---
 
 <Container>
