@@ -1,6 +1,6 @@
 ---
-if (Astro.url.pathname === '/') {
-  throw Astro.redirect('/de/');
+export function get({ redirect }) {
+  return redirect('/de/');
 }
 import Layout from '../layouts/Layout.astro'
 import Container from '@components/container.astro'
