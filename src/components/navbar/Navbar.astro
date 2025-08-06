@@ -8,6 +8,8 @@ import Link from '@components/ui/Link.astro'
 import Dropdown from './dropdown.astro'
 import { Astronav, MenuItems, MenuIcon } from 'astro-navbar'
 
+const isGermanPage = Astro.url.pathname.startsWith('/de');
+
 
 function getLocalePrefix() {
   if (typeof Astro !== 'undefined' && Astro.url && Astro.url.pathname) {
@@ -139,15 +141,19 @@ const menuItems = [
             ))
           }
         </ul>
+        {!isGermanPage && (
         <div class="mt-3 flex items-center gap-4 lg:hidden">
           <Link href="/spenden" style="inverted">Jetzt spenden!</Link>
         </div>
+        )}
       </MenuItems>
     </Astronav>
     <div class="flex items-center gap-4">
+      {!isGermanPage && (
       <div class="hidden lg:flex">
         <Link href="/spenden" style="inverted">Jetzt spenden!</Link>
       </div>
+      )}
       <!-- Language Switcher -->
       <div class="relative ml-4">
   <div class="relative">
