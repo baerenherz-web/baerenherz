@@ -6,8 +6,8 @@ import Button from "@components/ui/Button.astro";
 import Cta from "@components/Cta.astro";
 
 import localImage from "@assets/Mitfliedschaft.jpg";
-import personalTemplate from "../../public/Barenherz_Antrag_personliche_Mitgliedschaft_Template_CH.pdf"; // txtReference === '/src/words.txt'
-import businessTemplate from "../../public/Barenherz_Antrag_Unternehmensmitgliedschaft_Template_CH.pdf"; // txtReference === '/src/words.txt'
+//import personalTemplate from "../../public/Barenherz_Antrag_personliche_Mitgliedschaft_Template_CH.pdf"; // txtReference === '/src/words.txt'
+//import businessTemplate from "../../public/Barenherz_Antrag_Unternehmensmitgliedschaft_Template_CH.pdf"; // txtReference === '/src/words.txt'
 const localAlt = "Mitgliedschaft";
 import ctaImage from "@assets/cta.jpg";
 import Newsletter from "@components/Newsletter";
@@ -57,7 +57,7 @@ const ctaLink = "Jetzt spenden";
         >
           <h3 class="" font-bold>Persönliche Mitgliedschaft</h3>
           <p>Jahresbeitrag CHF 250.00</p>
-          <a href={personalTemplate} download>
+          <a href="/Baerenherz_Antrag_personliche_Mitgliedschaft_Template_CH.pdf" download>
             <Button style="inverted" size="md" class="m-auto">
               Persönliches Mitglied werden
             </Button>
@@ -69,7 +69,7 @@ const ctaLink = "Jetzt spenden";
           <h3 class="" font-bold>Unternehmensmitgliedschaft</h3>
           <p>Jahresbeitrag CHF 1'000.00</p>
 
-          <a href={businessTemplate} download>
+          <a href="/Baerenherz_Antrag_Unternehmensmitgliedschaft_Template_CH.pdf" download>
             <Button style="inverted" size="md" class="m-auto">
               Unternehmensmitglied werden
             </Button>
