@@ -1,4 +1,13 @@
 ---
-import Original from '../spenden.astro'
+import Layout from '@layouts/Layout.astro'
+import Container from '@components/container.astro'
+import WidgetReisenow from '@components/WidgetReisnow.svelte'
 ---
-<Original />
+
+<Layout title="Spenden">
+  <Container>
+    <div class="my-3 py-5">
+      <WidgetReisenow client:load />
+    </div>
+  </Container>
+</Layout>

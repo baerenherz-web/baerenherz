@@ -46,9 +46,12 @@ const langPrefix = getLocalePrefix();
           {
             children.map((item) => (
               <a
-                href={`${langPrefix}${item.path}`}
-                class="p-2 text-sm text-gray-600 hover:bg-[#dfecf7] hover:text-[#2b2523]"
+                href={item.path}
+                class="flex items-center gap-2 p-2 text-sm text-gray-600 hover:bg-[#dfecf7] hover:text-[#2b2523]"
               >
+                {item.icon && (
+                  <img src={item.icon} alt="" class="w-4 h-4 inline-block" />
+                )}
                 {item.title}
               </a>
             ))

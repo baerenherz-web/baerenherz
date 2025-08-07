@@ -1,4 +1,20 @@
 ---
-import Original from '../../aktivitaeten/[...slug].astro'
+import { getCollection } from 'astro:content'
+import AktivitaetenPost from '../../../layouts/AktivitaetenPost.astro'
+
+const posts = await getCollection('aktivitaeten-ch')
+const { slug } = Astro.params
+const post = posts.find((page) => page.slug === slug)
+
+// ✅ HIER LOGGEN
+console.log('DEBUG: Slug ist', slug)
+console.log('DEBUG: Gefundener Post:', post)
+
+if (!post) return Astro.redirect('/404')
+
+const { Content } = await post.render()
 ---
-<Original />
+
+<AktivitaetenPost {...post.data}>
+  <Content />
+</AktivitaetenPost>

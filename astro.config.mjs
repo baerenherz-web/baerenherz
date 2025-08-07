@@ -4,13 +4,12 @@ import mdx from "@astrojs/mdx";
 import netlify from "@astrojs/netlify/functions";
 //import netlify from "@astrojs/netlify"; //for local server deploy uncomment this and comment top
 
-import preact from "@astrojs/preact";
 import react from "@astrojs/react";
 import svelte from "@astrojs/svelte";
 
 // https://astro.build/config
 export default defineConfig({
-  integrations: [tailwind(), mdx(), preact(), react(), svelte()],
+  integrations: [tailwind(), mdx(), react(), svelte()],
 
   experimental: {
     assets: true

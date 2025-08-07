@@ -1,4 +1,31 @@
 ---
-import Original from '../index.astro'
+import Layout from '../../layouts/Layout.astro'
+import Container from '@components/container.astro'
+import MainTextHome from '@components/MainTextHome.astro'
+import Aktuelles from '@components/Aktuelles.astro'
+import BaerenherzVideo from "@assets/Baerenherz_Video.mp4";
+import BaerenherzCover from "@assets/Video_Cover.png";
+import Carousel from '@components/carousel/Carousel.jsx'
+
 ---
-<Original />
+
+<Layout title="Baerenherz - Verein für humanitäre Hilfe">
+
+  <Container>
+
+    <Carousel client:load />
+
+    <MainTextHome />
+
+    <div style="display: flex; justify-content: center; align-items: center; ">
+      <video controls poster={BaerenherzCover.src} style="width: 50%; height: auto; border-radius: 8px;">
+        <source src={BaerenherzVideo} type="video/mp4">
+        Your browser does not support the video tag.
+      </video>
+    </div>
+
+    <Aktuelles />
+
+  </Container>
+
+</Layout>

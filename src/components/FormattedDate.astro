@@ -4,14 +4,16 @@ interface Props {
 }
 
 const { date } = Astro.props
+
+if (!(date instanceof Date) || isNaN(date.getTime())) {
+  throw new Error(`Invalid date passed to FormattedDate: ${date}`);
+}
 ---
 
 <time datetime={date.toISOString()}>
-  {
-    date.toLocaleDateString('de-DE', {
-      day: 'numeric',
-      month: 'short',
-      year: 'numeric'
-    })
-  }
+  {date.toLocaleDateString('de-CH', {
+    day: 'numeric',
+    month: 'short',
+    year: 'numeric'
+  })}
 </time>

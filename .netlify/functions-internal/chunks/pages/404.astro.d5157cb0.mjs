@@ -1,0 +1,617 @@
+/* empty css                         */import { c as createAstro, a as createComponent, r as renderTemplate, m as maybeRenderHead, b as addAttribute, d as renderSlot, s as spreadAttributes, e as defineScriptVars, f as renderComponent, F as Fragment, g as renderHead } from '../../renderers.mjs';
+/* empty css                               */
+const Logo = {"src":"/_astro/logo_header.2ac5b6a7.png","width":1382,"height":608,"format":"png"};
+
+const $$Astro$h = createAstro();
+const $$Container = createComponent(async ($$result, $$props, $$slots) => {
+  const Astro2 = $$result.createAstro($$Astro$h, $$props, $$slots);
+  Astro2.self = $$Container;
+  const { class: className } = Astro2.props;
+  return renderTemplate`${maybeRenderHead()}<div${addAttribute([" mx-auto px-5 md:px-10", className], "class:list")}>
+  ${renderSlot($$result, $$slots["default"])}
+</div>`;
+}, "D:/B\xE4renherz/Repository/baerenherz/src/components/container.astro", void 0);
+
+function getLocale(pathname) {
+  if (pathname.startsWith("/de"))
+    return "de";
+  if (pathname.startsWith("/ch"))
+    return "ch";
+  if (typeof window !== "undefined" && typeof localStorage !== "undefined") {
+    const storedLang = localStorage.getItem("lang-preference");
+    if (storedLang === "/ch")
+      return "ch";
+    if (storedLang === "/de")
+      return "de";
+  }
+  return "de";
+}
+function prefixLocalePath(href, locale) {
+  if (/^(https?:)?\//.test(href) && !href.startsWith("/"))
+    return href;
+  if (href.startsWith("/de/") || href.startsWith("/ch/"))
+    return href;
+  if (href.startsWith("mailto:") || href.startsWith("tel:") || href.startsWith("#"))
+    return href;
+  if (locale === "de")
+    return `/de${href.startsWith("/") ? href : "/" + href}`;
+  if (locale === "ch")
+    return `/ch${href.startsWith("/") ? href : "/" + href}`;
+  return href;
+}
+
+const $$Astro$g = createAstro();
+const $$Link = createComponent(async ($$result, $$props, $$slots) => {
+  const Astro2 = $$result.createAstro($$Astro$g, $$props, $$slots);
+  Astro2.self = $$Link;
+  const {
+    href,
+    block,
+    size = "lg",
+    style = "primary",
+    class: className,
+    ...rest
+  } = Astro2.props;
+  const sizes = {
+    xl: "px-[3em] py-3",
+    lg: "px-10 py-2.5",
+    md: "px-4 py-2"
+  };
+  const styles = {
+    outline: "bg-white border-2 border-black hover:bg-gray-100 text-black ",
+    primary: "bg-[#dfecf7] text-[#2b2523] px-3.5 py-2.5 text-sm font-semibold shadow-sm hover:bg-[#033277] hover:text-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white hover:border-[#dfecf7] hover:border-2 border-transparent border-2",
+    inverted: "bg-[#033277] text-white hover:bg-[#dfecf7] hover:text-[#2b2523] hover:border-[#033277] border-2 border-transparent",
+    muted: "bg-gray-100 hover:bg-gray-200 border-2 border-transparent"
+  };
+  const locale = typeof Astro2 !== "undefined" && Astro2.url && Astro2.url.pathname ? getLocale(Astro2.url.pathname) : "de";
+  const prefixedHref = prefixLocalePath(href, locale);
+  return renderTemplate`${maybeRenderHead()}<a${addAttribute(prefixedHref, "href")}${spreadAttributes(rest)}${addAttribute([
+    "text-center transition focus-visible:ring-2 ring-offset-2 ring-gray-200",
+    block && "w-full",
+    sizes[size],
+    styles[style],
+    className
+  ], "class:list")}>${renderSlot($$result, $$slots["default"])}
+</a>`;
+}, "D:/B\xE4renherz/Repository/baerenherz/src/components/ui/Link.astro", void 0);
+
+var __freeze$2 = Object.freeze;
+var __defProp$2 = Object.defineProperty;
+var __template$2 = (cooked, raw) => __freeze$2(__defProp$2(cooked, "raw", { value: __freeze$2(raw || cooked.slice()) }));
+var _a$2;
+const $$Astro$f = createAstro();
+const $$Astronav = createComponent(async ($$result, $$props, $$slots) => {
+  const Astro2 = $$result.createAstro($$Astro$f, $$props, $$slots);
+  Astro2.self = $$Astronav;
+  const { closeOnClick = false } = Astro2.props;
+  return renderTemplate(_a$2 || (_a$2 = __template$2(["", "\n\n<script>(function(){", '\n["DOMContentLoaded", "astro:after-swap"].forEach((event) => {\n  document.addEventListener(event, addListeners);\n});\n\n// Function to clone and replace elements\nfunction cloneAndReplace(element) {\n  const clone = element.cloneNode(true);\n  element.parentNode.replaceChild(clone, element);\n}\n\nfunction addListeners() {\n  // Clean up existing listeners\n  const oldMenuButton = document.getElementById("astronav-menu");\n  if (oldMenuButton) {\n    cloneAndReplace(oldMenuButton);\n  }\n\n  const oldDropdownMenus = document.querySelectorAll(".astronav-dropdown");\n  oldDropdownMenus.forEach((menu) => {\n    cloneAndReplace(menu);\n  });\n\n  // Mobile nav toggle\n  const menuButton = document.getElementById("astronav-menu");\n  menuButton && menuButton.addEventListener("click", toggleMobileNav);\n\n  // Dropdown menus\n  const dropdownMenus = document.querySelectorAll(".astronav-dropdown");\n  dropdownMenus.forEach((menu) => {\n    const button = menu.querySelector("button");\n    button &&\n      button.addEventListener("click", (event) =>\n        toggleDropdownMenu(event, menu, dropdownMenus)\n      );\n\n    // Handle Submenu Dropdowns\n    const dropDownSubmenus = menu.querySelectorAll(\n      ".astronav-dropdown-submenu"\n    );\n\n    dropDownSubmenus.forEach((submenu) => {\n      const submenuButton = submenu.querySelector("button");\n      submenuButton &&\n        submenuButton.addEventListener("click", (event) => {\n          event.stopImmediatePropagation();\n          toggleSubmenuDropdown(event, submenu);\n        });\n    });\n  });\n\n  // Clicking away from dropdown will remove the dropdown class\n  document.addEventListener("click", closeAllDropdowns);\n\n  if (closeOnClick) {\n    handleCloseOnClick();\n  }\n}\n\nfunction toggleMobileNav() {\n  [...document.querySelectorAll(".astronav-toggle")].forEach((el) => {\n    el.classList.toggle("hidden");\n  });\n}\n\nfunction toggleDropdownMenu(event, menu, dropdownMenus) {\n  toggleMenu(menu);\n\n  // Close one dropdown when selecting another\n  Array.from(dropdownMenus)\n    .filter((el) => el !== menu && !menu.contains(el))\n    .forEach(closeMenu);\n\n  event.stopPropagation();\n}\n\nfunction toggleSubmenuDropdown(event, submenu) {\n  event.stopPropagation();\n  toggleMenu(submenu);\n\n  // Close sibling submenus at the same nesting level\n  const siblingSubmenus = submenu\n    .closest(".astronav-dropdown")\n    .querySelectorAll(".astronav-dropdown-submenu");\n  Array.from(siblingSubmenus)\n    .filter((el) => el !== submenu && !submenu.contains(el))\n    .forEach(closeMenu);\n}\n\nfunction closeAllDropdowns(event) {\n  const dropdownMenus = document.querySelectorAll(".dropdown-toggle");\n  const dropdownParent = document.querySelectorAll(\n    ".astronav-dropdown, .astronav-dropdown-submenu"\n  );\n  const isButtonInsideDropdown = [\n    ...document.querySelectorAll(\n      `.astronav-dropdown button, .astronav-dropdown label, .astronav-dropdown input,\n	  .astronav-dropdown-submenu button, .astronav-dropdown-submenu label, .astronav-dropdown-submenu input,\n	  #astronav-menu`\n    ),\n  ].some((button) => button.contains(event.target));\n  if (!isButtonInsideDropdown) {\n    dropdownMenus.forEach((d) => {\n      // console.log("I ran", d);\n      // if (!d.contains(event.target)) {\n      d.classList.remove("open");\n      d.removeAttribute("open");\n      d.classList.add("hidden");\n      // }\n    });\n    dropdownParent.forEach((d) => {\n      d.classList.remove("open");\n      d.removeAttribute("open");\n      d.setAttribute("aria-expanded", "false");\n    });\n  }\n}\n\nfunction toggleMenu(menu) {\n  menu.classList.toggle("open");\n  const expanded = menu.getAttribute("aria-expanded") === "true";\n  menu.setAttribute("aria-expanded", expanded ? "false" : "true");\n  menu.hasAttribute("open")\n    ? menu.removeAttribute("open")\n    : menu.setAttribute("open", "");\n\n  const dropdownToggle = menu.querySelector(".dropdown-toggle");\n  const dropdownExpanded = dropdownToggle.getAttribute("aria-expanded");\n  dropdownToggle.classList.toggle("hidden");\n  dropdownToggle.setAttribute(\n    "aria-expanded",\n    dropdownExpanded === "true" ? "false" : "true"\n  );\n}\n\nfunction closeMenu(menu) {\n  // console.log("closing", menu);\n  menu.classList.remove("open");\n  menu.removeAttribute("open");\n  menu.setAttribute("aria-expanded", "false");\n  const dropdownToggles = menu.querySelectorAll(".dropdown-toggle");\n  dropdownToggles.forEach((toggle) => {\n    toggle.classList.add("hidden");\n    toggle.setAttribute("aria-expanded", "false");\n  });\n}\n\nfunction handleCloseOnClick() {\n  const navMenuItems = document.querySelector(".astronav-items");\n  const navToggle = document.getElementById("astronav-menu");\n  const navLink = navMenuItems && navMenuItems.querySelectorAll("a");\n\n  const MenuIcons = navToggle.querySelectorAll(".astronav-toggle");\n\n  navLink &&\n    navLink.forEach((item) => {\n      item.addEventListener("click", () => {\n        navMenuItems?.classList.add("hidden");\n        MenuIcons.forEach((el) => {\n          el.classList.toggle("hidden");\n        });\n      });\n    });\n}\n})();<\/script>'], ["", "\n\n<script>(function(){", '\n["DOMContentLoaded", "astro:after-swap"].forEach((event) => {\n  document.addEventListener(event, addListeners);\n});\n\n// Function to clone and replace elements\nfunction cloneAndReplace(element) {\n  const clone = element.cloneNode(true);\n  element.parentNode.replaceChild(clone, element);\n}\n\nfunction addListeners() {\n  // Clean up existing listeners\n  const oldMenuButton = document.getElementById("astronav-menu");\n  if (oldMenuButton) {\n    cloneAndReplace(oldMenuButton);\n  }\n\n  const oldDropdownMenus = document.querySelectorAll(".astronav-dropdown");\n  oldDropdownMenus.forEach((menu) => {\n    cloneAndReplace(menu);\n  });\n\n  // Mobile nav toggle\n  const menuButton = document.getElementById("astronav-menu");\n  menuButton && menuButton.addEventListener("click", toggleMobileNav);\n\n  // Dropdown menus\n  const dropdownMenus = document.querySelectorAll(".astronav-dropdown");\n  dropdownMenus.forEach((menu) => {\n    const button = menu.querySelector("button");\n    button &&\n      button.addEventListener("click", (event) =>\n        toggleDropdownMenu(event, menu, dropdownMenus)\n      );\n\n    // Handle Submenu Dropdowns\n    const dropDownSubmenus = menu.querySelectorAll(\n      ".astronav-dropdown-submenu"\n    );\n\n    dropDownSubmenus.forEach((submenu) => {\n      const submenuButton = submenu.querySelector("button");\n      submenuButton &&\n        submenuButton.addEventListener("click", (event) => {\n          event.stopImmediatePropagation();\n          toggleSubmenuDropdown(event, submenu);\n        });\n    });\n  });\n\n  // Clicking away from dropdown will remove the dropdown class\n  document.addEventListener("click", closeAllDropdowns);\n\n  if (closeOnClick) {\n    handleCloseOnClick();\n  }\n}\n\nfunction toggleMobileNav() {\n  [...document.querySelectorAll(".astronav-toggle")].forEach((el) => {\n    el.classList.toggle("hidden");\n  });\n}\n\nfunction toggleDropdownMenu(event, menu, dropdownMenus) {\n  toggleMenu(menu);\n\n  // Close one dropdown when selecting another\n  Array.from(dropdownMenus)\n    .filter((el) => el !== menu && !menu.contains(el))\n    .forEach(closeMenu);\n\n  event.stopPropagation();\n}\n\nfunction toggleSubmenuDropdown(event, submenu) {\n  event.stopPropagation();\n  toggleMenu(submenu);\n\n  // Close sibling submenus at the same nesting level\n  const siblingSubmenus = submenu\n    .closest(".astronav-dropdown")\n    .querySelectorAll(".astronav-dropdown-submenu");\n  Array.from(siblingSubmenus)\n    .filter((el) => el !== submenu && !submenu.contains(el))\n    .forEach(closeMenu);\n}\n\nfunction closeAllDropdowns(event) {\n  const dropdownMenus = document.querySelectorAll(".dropdown-toggle");\n  const dropdownParent = document.querySelectorAll(\n    ".astronav-dropdown, .astronav-dropdown-submenu"\n  );\n  const isButtonInsideDropdown = [\n    ...document.querySelectorAll(\n      \\`.astronav-dropdown button, .astronav-dropdown label, .astronav-dropdown input,\n	  .astronav-dropdown-submenu button, .astronav-dropdown-submenu label, .astronav-dropdown-submenu input,\n	  #astronav-menu\\`\n    ),\n  ].some((button) => button.contains(event.target));\n  if (!isButtonInsideDropdown) {\n    dropdownMenus.forEach((d) => {\n      // console.log("I ran", d);\n      // if (!d.contains(event.target)) {\n      d.classList.remove("open");\n      d.removeAttribute("open");\n      d.classList.add("hidden");\n      // }\n    });\n    dropdownParent.forEach((d) => {\n      d.classList.remove("open");\n      d.removeAttribute("open");\n      d.setAttribute("aria-expanded", "false");\n    });\n  }\n}\n\nfunction toggleMenu(menu) {\n  menu.classList.toggle("open");\n  const expanded = menu.getAttribute("aria-expanded") === "true";\n  menu.setAttribute("aria-expanded", expanded ? "false" : "true");\n  menu.hasAttribute("open")\n    ? menu.removeAttribute("open")\n    : menu.setAttribute("open", "");\n\n  const dropdownToggle = menu.querySelector(".dropdown-toggle");\n  const dropdownExpanded = dropdownToggle.getAttribute("aria-expanded");\n  dropdownToggle.classList.toggle("hidden");\n  dropdownToggle.setAttribute(\n    "aria-expanded",\n    dropdownExpanded === "true" ? "false" : "true"\n  );\n}\n\nfunction closeMenu(menu) {\n  // console.log("closing", menu);\n  menu.classList.remove("open");\n  menu.removeAttribute("open");\n  menu.setAttribute("aria-expanded", "false");\n  const dropdownToggles = menu.querySelectorAll(".dropdown-toggle");\n  dropdownToggles.forEach((toggle) => {\n    toggle.classList.add("hidden");\n    toggle.setAttribute("aria-expanded", "false");\n  });\n}\n\nfunction handleCloseOnClick() {\n  const navMenuItems = document.querySelector(".astronav-items");\n  const navToggle = document.getElementById("astronav-menu");\n  const navLink = navMenuItems && navMenuItems.querySelectorAll("a");\n\n  const MenuIcons = navToggle.querySelectorAll(".astronav-toggle");\n\n  navLink &&\n    navLink.forEach((item) => {\n      item.addEventListener("click", () => {\n        navMenuItems?.classList.add("hidden");\n        MenuIcons.forEach((el) => {\n          el.classList.toggle("hidden");\n        });\n      });\n    });\n}\n})();<\/script>'])), renderSlot($$result, $$slots["default"]), defineScriptVars({ closeOnClick }));
+}, "D:/B\xE4renherz/Repository/baerenherz/node_modules/astro-navbar/src/Astronav.astro", void 0);
+
+const $$Astro$e = createAstro();
+const $$MenuIcon = createComponent(async ($$result, $$props, $$slots) => {
+  const Astro2 = $$result.createAstro($$Astro$e, $$props, $$slots);
+  Astro2.self = $$MenuIcon;
+  const { class: className, ...rest } = Astro2.props;
+  return renderTemplate`${maybeRenderHead()}<button id="astronav-menu" aria-label="Toggle Menu">
+  ${renderSlot($$result, $$slots["default"], renderTemplate`
+    <svg fill="currentColor"${addAttribute([className], "class:list")} width="24" height="24" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"${spreadAttributes(rest)}>
+      <title>Toggle Menu</title>
+      <path class="astronav-close-icon astronav-toggle hidden" fill-rule="evenodd" clip-rule="evenodd" d="M18.278 16.864a1 1 0 01-1.414 1.414l-4.829-4.828-4.828 4.828a1 1 0 01-1.414-1.414l4.828-4.829-4.828-4.828a1 1 0 011.414-1.414l4.829 4.828 4.828-4.828a1 1 0 111.414 1.414l-4.828 4.829 4.828 4.828z"></path>
+      <path class="astronav-open-icon astronav-toggle" fill-rule="evenodd" d="M4 5h16a1 1 0 010 2H4a1 1 0 110-2zm0 6h16a1 1 0 010 2H4a1 1 0 010-2zm0 6h16a1 1 0 010 2H4a1 1 0 010-2z"></path>
+    </svg>
+  `)}
+</button>`;
+}, "D:/B\xE4renherz/Repository/baerenherz/node_modules/astro-navbar/src/components/MenuIcon.astro", void 0);
+
+const $$Astro$d = createAstro();
+const $$OpenIcon = createComponent(async ($$result, $$props, $$slots) => {
+  const Astro2 = $$result.createAstro($$Astro$d, $$props, $$slots);
+  Astro2.self = $$OpenIcon;
+  const { class: className, ...rest } = Astro2.props;
+  return renderTemplate`${maybeRenderHead()}<span${addAttribute(["astronav-open-icon astronav-toggle", className], "class:list")}${spreadAttributes(rest)}>${renderSlot($$result, $$slots["default"])}</span>`;
+}, "D:/B\xE4renherz/Repository/baerenherz/node_modules/astro-navbar/src/components/OpenIcon.astro", void 0);
+
+const $$Astro$c = createAstro();
+const $$CloseIcon = createComponent(async ($$result, $$props, $$slots) => {
+  const Astro2 = $$result.createAstro($$Astro$c, $$props, $$slots);
+  Astro2.self = $$CloseIcon;
+  const { class: className, ...rest } = Astro2.props;
+  return renderTemplate`${maybeRenderHead()}<span${addAttribute(["astronav-close-icon astronav-toggle hidden", className], "class:list")}${spreadAttributes(rest)}>
+  ${renderSlot($$result, $$slots["default"])}
+</span>`;
+}, "D:/B\xE4renherz/Repository/baerenherz/node_modules/astro-navbar/src/components/CloseIcon.astro", void 0);
+
+const $$Astro$b = createAstro();
+const $$MenuItems = createComponent(async ($$result, $$props, $$slots) => {
+  const Astro2 = $$result.createAstro($$Astro$b, $$props, $$slots);
+  Astro2.self = $$MenuItems;
+  const { class: className, ...rest } = Astro2.props;
+  return renderTemplate`${maybeRenderHead()}<nav${addAttribute(["astronav-items astronav-toggle", className], "class:list")}${spreadAttributes(rest)}>
+    ${renderSlot($$result, $$slots["default"])}
+</nav>`;
+}, "D:/B\xE4renherz/Repository/baerenherz/node_modules/astro-navbar/src/components/MenuItems.astro", void 0);
+
+const $$Astro$a = createAstro();
+const $$Dropdown$1 = createComponent(async ($$result, $$props, $$slots) => {
+  const Astro2 = $$result.createAstro($$Astro$a, $$props, $$slots);
+  Astro2.self = $$Dropdown$1;
+  const { class: className, ...rest } = Astro2.props;
+  return renderTemplate`${maybeRenderHead()}<menu${addAttribute(["astronav-dropdown", className], "class:list")}${spreadAttributes(rest)} aria-expanded="false">${renderSlot($$result, $$slots["default"])}</menu>`;
+}, "D:/B\xE4renherz/Repository/baerenherz/node_modules/astro-navbar/src/components/Dropdown.astro", void 0);
+
+const $$Astro$9 = createAstro();
+const $$DropdownSubmenu = createComponent(async ($$result, $$props, $$slots) => {
+  const Astro2 = $$result.createAstro($$Astro$9, $$props, $$slots);
+  Astro2.self = $$DropdownSubmenu;
+  const { class: className, ...rest } = Astro2.props;
+  return renderTemplate`${maybeRenderHead()}<div${addAttribute(["astronav-dropdown-submenu", className], "class:list")}${spreadAttributes(rest)} aria-expanded="false">
+    ${renderSlot($$result, $$slots["default"])}
+</div>`;
+}, "D:/B\xE4renherz/Repository/baerenherz/node_modules/astro-navbar/src/components/DropdownSubmenu.astro", void 0);
+
+const $$Astro$8 = createAstro();
+const $$DropdownItems = createComponent(async ($$result, $$props, $$slots) => {
+  const Astro2 = $$result.createAstro($$Astro$8, $$props, $$slots);
+  Astro2.self = $$DropdownItems;
+  const { class: className, ...rest } = Astro2.props;
+  return renderTemplate`${maybeRenderHead()}<div${addAttribute(["astronav-dropdown dropdown-toggle hidden", className], "class:list")}${spreadAttributes(rest)} aria-expanded="false">
+    ${renderSlot($$result, $$slots["default"])}
+</div>`;
+}, "D:/B\xE4renherz/Repository/baerenherz/node_modules/astro-navbar/src/components/DropdownItems.astro", void 0);
+
+var __freeze$1 = Object.freeze;
+var __defProp$1 = Object.defineProperty;
+var __template$1 = (cooked, raw) => __freeze$1(__defProp$1(cooked, "raw", { value: __freeze$1(raw || cooked.slice()) }));
+var _a$1;
+const $$Astro$7 = createAstro();
+const $$StickyHeader = createComponent(async ($$result, $$props, $$slots) => {
+  const Astro2 = $$result.createAstro($$Astro$7, $$props, $$slots);
+  Astro2.self = $$StickyHeader;
+  const {
+    scrollY = 100,
+    defaultClass = "",
+    activeClass = "",
+    class: className = "",
+    ...rest
+  } = Astro2.props;
+  return renderTemplate(_a$1 || (_a$1 = __template$1(["", "<header", "", ">\n  ", "\n</header>\n\n<script data-astro-rerun>(function(){", '\n  // @ts-nocheck\n  let lastKnownScrollPosition = 0;\n  let ticking = false;\n\n  const header = document.querySelector(".astronav-sticky-header");\n\n  // Define two different scroll positions\n  const addScrollY = Math.max(scrollY, 50); // Scroll position to add active class\n  const removeScrollY = Math.max(scrollY - 50, 10); // Scroll position to remove active class\n\n  function updateAnimation(scrollPos) {\n    if (scrollPos > addScrollY) {\n      header.classList.remove(...defaultClass.split(" "));\n      header.classList.add("is-active", ...activeClass.split(" "));\n      header.setAttribute("active", "");\n    } else if (scrollPos < removeScrollY) {\n      header.classList.remove("is-active", ...activeClass.split(" "));\n      header.classList.add(...defaultClass.split(" "));\n      header.removeAttribute("active");\n    }\n  }\n\n  window.addEventListener("scroll", function () {\n    lastKnownScrollPosition = window.scrollY;\n    if (!ticking) {\n      window.requestAnimationFrame(function () {\n        updateAnimation(lastKnownScrollPosition);\n        ticking = false;\n      });\n\n      ticking = true;\n    }\n  });\n})();<\/script>'])), maybeRenderHead(), addAttribute([["astronav-sticky-header", className, defaultClass], "astro-ITFZ4QI6"], "class:list"), spreadAttributes(rest), renderSlot($$result, $$slots["default"]), defineScriptVars({ scrollY, defaultClass, activeClass }));
+}, "D:/B\xE4renherz/Repository/baerenherz/node_modules/astro-navbar/src/components/StickyHeader.astro", void 0);
+
+const $$Astro$6 = createAstro();
+const $$Dropdown = createComponent(async ($$result, $$props, $$slots) => {
+  const Astro2 = $$result.createAstro($$Astro$6, $$props, $$slots);
+  Astro2.self = $$Dropdown;
+  const { title, lastItem, children } = Astro2.props;
+  function getLocalePrefix() {
+    if (typeof Astro2 !== "undefined" && Astro2.url && Astro2.url.pathname) {
+      if (Astro2.url.pathname.startsWith("/ch"))
+        return "/ch";
+      if (Astro2.url.pathname.startsWith("/de"))
+        return "/de";
+    }
+    if (typeof window !== "undefined") {
+      if (window.location.pathname.startsWith("/ch"))
+        return "/ch";
+      if (window.location.pathname.startsWith("/de"))
+        return "/de";
+    }
+    return "/de";
+  }
+  const langPrefix = getLocalePrefix();
+  return renderTemplate`${maybeRenderHead()}<li class="relative">
+  ${renderComponent($$result, "Dropdown", $$Dropdown$1, { "class": "group" }, { "default": ($$result2) => renderTemplate`
+    <button class="flex w-full items-center gap-1 py-2 text-gray-600 hover:text-gray-900 lg:w-auto lg:px-3">
+      <span>${title}</span>
+      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="3" stroke="currentColor" class="mt-0.5 h-3 w-3 group-open:rotate-180">
+        <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 8.25l-7.5 7.5-7.5-7.5"></path>
+      </svg>
+    </button>
+    ${renderComponent($$result2, "DropdownItems", $$DropdownItems, {}, { "default": ($$result3) => renderTemplate`
+      <div${addAttribute([
+    "lg:absolute w-full lg:w-48 z-10",
+    lastItem ? "lg:right-0 origin-top-right" : "lg:left-0 origin-top-left"
+  ], "class:list")}>
+        <div class="flex flex-col px-3 lg:rounded-md lg:border lg:bg-white lg:py-2 lg:shadow">
+          ${children.map((item) => renderTemplate`<a${addAttribute(`${langPrefix}${item.path}`, "href")} class="p-2 text-sm text-gray-600 hover:bg-[#dfecf7] hover:text-[#2b2523]">
+                ${item.title}
+              </a>`)}
+        </div>
+      </div>
+    ` })}
+  ` })}
+</li>`;
+}, "D:/B\xE4renherz/Repository/baerenherz/src/components/navbar/dropdown.astro", void 0);
+
+var __freeze = Object.freeze;
+var __defProp = Object.defineProperty;
+var __template = (cooked, raw) => __freeze(__defProp(cooked, "raw", { value: __freeze(raw || cooked.slice()) }));
+var _a;
+const $$Astro$5 = createAstro();
+const $$Navbar = createComponent(async ($$result, $$props, $$slots) => {
+  const Astro2 = $$result.createAstro($$Astro$5, $$props, $$slots);
+  Astro2.self = $$Navbar;
+  const IsNotSwitzerland = !Astro2.url.pathname.startsWith("/ch");
+  function getLocalePrefix() {
+    if (typeof Astro2 !== "undefined" && Astro2.url && Astro2.url.pathname) {
+      if (Astro2.url.pathname.startsWith("/ch"))
+        return "/ch";
+      if (Astro2.url.pathname.startsWith("/de"))
+        return "/de";
+    }
+    if (typeof window !== "undefined") {
+      if (window.location.pathname.startsWith("/ch"))
+        return "/ch";
+      if (window.location.pathname.startsWith("/de"))
+        return "/de";
+    }
+    return "/de";
+  }
+  const langPrefix = getLocalePrefix();
+  const menuItems = [
+    {
+      title: "\xDCber uns",
+      children: [
+        {
+          title: "Mission",
+          path: "/about"
+        },
+        {
+          title: "Philosophie",
+          path: "/about#philosophie"
+        },
+        {
+          title: "Vorstand",
+          path: "/about#vorstand"
+        },
+        {
+          title: "Statuten",
+          path: "/about#statuten"
+        }
+      ]
+    },
+    { title: "Mitgliedschaft", path: "/mitgliedschaft" },
+    { title: "Projekte", path: "/projekte" }
+  ];
+  if (IsNotSwitzerland) {
+    menuItems.push(
+      ...[
+        {
+          title: "Aktivit\xE4ten",
+          children: [
+            { title: "Alle Aktivit\xE4ten", path: "/aktivitaeten/" },
+            { title: "Charity Golfturnier 2025", path: "/aktivitaeten/save-the-date-golfturnier-2025-de" }
+          ]
+        },
+        { title: "News", path: "/news" }
+      ]
+    );
+  }
+  if (!IsNotSwitzerland) {
+    menuItems.push(
+      ...[
+        {
+          title: "Aktivit\xE4ten",
+          children: [
+            { title: "Alle Aktivit\xE4ten", path: "/aktivitaeten/" },
+            { title: "Charity Golfturnier 2026", path: "/aktivitaeten/save-the-date-golfturnier-2026" },
+            { title: "Charity Skitag 2026", path: "/aktivitaeten/save-the-date-skitag-2026" },
+            { title: "Charity Golfturnier 2025", path: "/aktivitaeten/charity-golfturnier-2025" },
+            { title: "Charity Skitage 2025", path: "/aktivitaeten/charity-skitag-bericht2025" },
+            { title: "Charity Golfturnier 2024", path: "/aktivitaeten/charity-golfturnier-2024" },
+            { title: "Charity Skitage 2024", path: "/aktivitaeten/charity-skitag-bericht2024" },
+            { title: "Charity Golfturnier 2023", path: "/aktivitaeten/charity-golfturnier-bericht2023" },
+            { title: "Charity Skitag 2023", path: "/aktivitaeten/charity-skitag-bericht2023" },
+            { title: "Charity Golfturnier 2022", path: "/aktivitaeten/charity-golfturnier-2022" }
+          ]
+        },
+        { title: "News", path: "/news" }
+      ]
+    );
+  }
+  return renderTemplate`${renderComponent($$result, "Container", $$Container, {}, { "default": ($$result2) => renderTemplate(_a || (_a = __template(["\n  ", '<header class="my-5 flex flex-col items-center justify-between lg:flex-row">\n    ', '\n    <div class="flex items-center gap-4">\n      ', `
+      <!-- Language Switcher -->
+      <div class="relative ml-4">
+  <div class="relative">
+    <select id="lang-switcher" class="appearance-none rounded-lg border border-gray-300 bg-white px-5 py-2 pr-10 text-base font-medium text-gray-700 shadow transition focus:border-blue-400 focus:outline-none focus:ring-2 focus:ring-blue-100 hover:border-blue-300 hover:bg-blue-50" aria-label="Sprache w\xE4hlen">
+      <option value="ch">\u{1F1E8}\u{1F1ED} Schweiz</option>
+      <option value="de">\u{1F1E9}\u{1F1EA} Deutschland</option>
+    </select>
+    <span class="pointer-events-none absolute inset-y-0 right-3 flex items-center text-gray-500">
+      <svg class="h-5 w-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"></path></svg>
+    </span>
+  </div>
+  <script type="module">
+  const select = document.getElementById('lang-switcher');
+  const LANG_KEY = 'lang-preference';
+  if (select) {
+    let lang = 'de';
+    if (window.location.pathname.startsWith('/ch')) lang = 'ch';
+    else if (window.location.pathname.startsWith('/de')) lang = 'de';
+    select.value = lang;
+    select.addEventListener('change', (e) => {
+      lang = e.target.value;
+      localStorage.setItem(LANG_KEY, lang);
+      const prefix = '/' + lang;
+      let path = window.location.pathname.replace(/^\\/(de|ch)/, '');
+      if (!path.startsWith('/')) path = '/' + path;
+      window.location.pathname = prefix + path;
+    });
+  }
+<\/script>
+      </div>
+    </div>
+  </header>
+`], ["\n  ", '<header class="my-5 flex flex-col items-center justify-between lg:flex-row">\n    ', '\n    <div class="flex items-center gap-4">\n      ', `
+      <!-- Language Switcher -->
+      <div class="relative ml-4">
+  <div class="relative">
+    <select id="lang-switcher" class="appearance-none rounded-lg border border-gray-300 bg-white px-5 py-2 pr-10 text-base font-medium text-gray-700 shadow transition focus:border-blue-400 focus:outline-none focus:ring-2 focus:ring-blue-100 hover:border-blue-300 hover:bg-blue-50" aria-label="Sprache w\xE4hlen">
+      <option value="ch">\u{1F1E8}\u{1F1ED} Schweiz</option>
+      <option value="de">\u{1F1E9}\u{1F1EA} Deutschland</option>
+    </select>
+    <span class="pointer-events-none absolute inset-y-0 right-3 flex items-center text-gray-500">
+      <svg class="h-5 w-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"></path></svg>
+    </span>
+  </div>
+  <script type="module">
+  const select = document.getElementById('lang-switcher');
+  const LANG_KEY = 'lang-preference';
+  if (select) {
+    let lang = 'de';
+    if (window.location.pathname.startsWith('/ch')) lang = 'ch';
+    else if (window.location.pathname.startsWith('/de')) lang = 'de';
+    select.value = lang;
+    select.addEventListener('change', (e) => {
+      lang = e.target.value;
+      localStorage.setItem(LANG_KEY, lang);
+      const prefix = '/' + lang;
+      let path = window.location.pathname.replace(/^\\\\/(de|ch)/, '');
+      if (!path.startsWith('/')) path = '/' + path;
+      window.location.pathname = prefix + path;
+    });
+  }
+<\/script>
+      </div>
+    </div>
+  </header>
+`])), maybeRenderHead(), renderComponent($$result2, "Astronav", $$Astronav, {}, { "default": ($$result3) => renderTemplate`
+      <div class="flex w-full items-center justify-between lg:w-auto">
+        ${renderComponent($$result3, "Link", $$Link, { "href": "/" }, { "default": ($$result4) => renderTemplate`
+          <img${addAttribute(Logo.src, "src")} class="aspect-auto h-20 object-cover md:h-28" alt="Logo Bärenherz">
+        
+
+        
+        <div class="block lg:hidden">
+          ${renderComponent($$result4, "MenuIcon", $$MenuIcon, { "class": "h-8 w-8 text-[#4b4e52]" })}
+        </div>
+      ` })}</div>
+      ${renderComponent($$result3, "MenuItems", $$MenuItems, { "class": "mt-2 hidden w-full lg:mt-0 lg:flex lg:w-auto" }, { "default": ($$result4) => renderTemplate`
+        <ul class="flex flex-col text-[1.3rem] lg:flex-row lg:gap-3">
+          ${menuItems.map((item, index) => renderTemplate`${renderComponent($$result4, "Fragment", Fragment, {}, { "default": ($$result5) => renderTemplate`${item.children && renderTemplate`${renderComponent($$result5, "Dropdown", $$Dropdown, { "title": item.title, "children": item.children, "lastItem": index === menuItems.length - 1 })}`}${!item.children && renderTemplate`<li>
+                    <a class="flex py-2 text-gray-600 hover:bg-[#dfecf7] hover:text-gray-900 lg:px-3"${addAttribute(`${langPrefix}${item.path}`, "href")}>
+                      ${item.title}
+                    </a>
+                  </li>`}` })}`)}
+        </ul>
+        ${!IsNotSwitzerland && renderTemplate`<div class="mt-3 flex items-center gap-4 lg:hidden">
+          ${renderComponent($$result4, "Link", $$Link, { "href": "/spenden", "style": "inverted" }, { "default": ($$result5) => renderTemplate`Jetzt spenden!` })}
+        </div>`}` })}
+    ` }), !IsNotSwitzerland && renderTemplate`<div class="hidden lg:flex">
+        ${renderComponent($$result2, "Link", $$Link, { "href": "/spenden", "style": "inverted" }, { "default": ($$result3) => renderTemplate`Jetzt spenden!` })}
+      </div>`) })}`;
+}, "D:/B\xE4renherz/Repository/baerenherz/src/components/navbar/Navbar.astro", void 0);
+
+const Facebook = {"src":"/_astro/facebook_icon.558c591e.png","width":2048,"height":2049,"format":"png"};
+
+const Instagram = {"src":"/_astro/instagram_icon.7d0fa85f.png","width":512,"height":512,"format":"png"};
+
+const Linkedin = {"src":"/_astro/linkedin_icon.e3cd26aa.png","width":512,"height":512,"format":"png"};
+
+const $$Astro$4 = createAstro();
+const $$Footer = createComponent(async ($$result, $$props, $$slots) => {
+  const Astro2 = $$result.createAstro($$Astro$4, $$props, $$slots);
+  Astro2.self = $$Footer;
+  const { lang } = Astro2.props;
+  const currentLang = lang ?? (Astro2.url.pathname.startsWith("/de") ? "de" : "ch");
+  return renderTemplate`${renderComponent($$result, "Container", $$Container, { "class": "w-full bg-[#2b2523] text-xs/6 text-white" }, { "default": ($$result2) => renderTemplate`
+  ${maybeRenderHead()}<footer class="flex w-full flex-col gap-3 py-10 md:flex-row md:justify-between md:gap-10">
+    ${currentLang === "ch" && renderTemplate`${renderComponent($$result2, "Fragment", Fragment, {}, { "default": ($$result3) => renderTemplate`
+        <div>
+          <p>IMPRESSUM</p>
+          <p>Bärenherz</p>
+          <p>Verein für humanitäre Hilfe</p>
+          <p>c/o Rainer Mück</p>
+          <p>Untersellenstrasse 27</p>
+          <p>CH-8873 Amden</p>
+          <p class="py-2">
+            Email: <a href="mailto:info@baerenherz.org">info@baerenherz.org</a>
+          </p>
+        </div>
+        <div class="md:text-center">
+          <p>Spendenkonto (für CHF-Überweisungen):</p>
+          <p>Bärenherz – Verein für humanitäre Hilfe</p>
+          <p>Thurgauer Kantonalbank</p>
+          <p>IBAN CH91 0078 4297 6098 0200 1</p>
+          <p>BIC KBTGCH22</p>
+        </div>
+        <div class="md:text-center">
+          <p>Spendenkonto (für EURO-Überweisungen):</p>
+          <p>Bärenherz – Verein für humanitäre Hilfe</p>
+          <p>Thurgauer Kantonalbank</p>
+          <p>IBAN CH64 0078 4297 6098 0200 2</p>
+          <p>BIC KBTGCH22</p>
+        </div>
+      ` })}`}
+    ${currentLang === "de" && renderTemplate`${renderComponent($$result2, "Fragment", Fragment, {}, { "default": ($$result3) => renderTemplate`
+        <div>
+          <p><a href="/de/impressum">Impressum</a> | <a href="/de/datenschutz">Datenschutz</a></p>
+          <p>Bärenherz – Verein für humanitäre Hilfe e.V.</p>
+          <p>Geranienstrasse 2</p>
+          <p>82031 Grünwald</p>
+          <p class="py-2">
+            Email: <a href="mailto:info@baerenherz.org">info@baerenherz.org</a>
+          </p>
+        </div>
+        <div class="md:text-center">
+          <p>Spendenkonto (Deutschland):</p>
+          <p>Bärenherz – Verein für humanitäre Hilfe e.V.</p>
+          <p>HypoVereinsbank/UniCredit</p>
+          <p>DE78 7002 0270 0046 6389 56</p>
+          <p>HYVEDEMMXXX</p>
+        </div>
+        <div class="md:text-center">
+          <p>Spendenkonto (Schweiz):</p>
+          <p>Bärenherz – Verein für humanitäre Hilfe</p>
+          <p>Thurgauer Kantonalbank</p>
+          <p>IBAN CH91 0078 4297 6098 0200 1</p>
+          <p>BIC KBTGCH22</p>
+        </div>
+      ` })}`}
+     <div>
+      <p>Mehr von Bärenherz:</p>
+      
+      <a href="https://www.linkedin.com/company/b%C3%A4renherz-verein-f%C3%BCr-humanit%C3%A4re-hilfe/" target="_blank">
+        <img${addAttribute(Linkedin.src, "src")} width="32px" height="32px" alt="LinkedIn">
+      </a><a href="https://www.facebook.com/baerenherz.org/?locale=de_DE" target="_blank">
+        <img${addAttribute(Facebook.src, "src")} width="32px" height="32px" alt="Facebook" style="padding-top: 5px;">
+      </a><a href="https://www.instagram.com/baerenherz_humanitaere_hilfe?igsh=MW9kdGE5ZHF6Y3NkdA==" target="_blank">
+        <img${addAttribute(Instagram.src, "src")} width="32px" height="32px" alt="Instagram" style="padding-top: 5px;">
+      </a>
+    </div>
+  </footer>
+` })}
+
+   
+  
+
+  <!-- 
+  <div>
+      <p class="mt-1 text-xs text-slate-500">
+        Made by <a
+          href="https://web3templates.com"
+          target="_blank"
+          rel="noopener"
+          class="hover:underline">
+          Web3Templates
+        </a>
+      </p>
+      <div>
+        <p class="text-sm text-slate-500">
+          Copyright © {new Date().getFullYear()} Astroship. All rights reserved.
+        </p>
+      </div>
+      <div>
+        <p class="text-sm text-slate-500">
+          Copyright © {new Date().getFullYear()} Astroship. All rights reserved.
+        </p>
+      </div>
+    </div>
+
+ -->`;
+}, "D:/B\xE4renherz/Repository/baerenherz/src/components/Footer.astro", void 0);
+
+const $$Astro$3 = createAstro();
+const $$Layout = createComponent(async ($$result, $$props, $$slots) => {
+  const Astro2 = $$result.createAstro($$Astro$3, $$props, $$slots);
+  Astro2.self = $$Layout;
+  const { title } = Astro2.props;
+  return renderTemplate`<html lang="en" class="h-full">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="description" content="Bärenherz, Verein für humanitäre Hilfe">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <link rel="icon" type="image/svg+xml" href="/favicon.avif">
+    <meta name="generator"${addAttribute(Astro2.generator, "content")}>
+    <title>${title}</title>
+  ${renderHead()}</head>
+
+  <body class="h-full">
+    ${renderComponent($$result, "Navbar", $$Navbar, {})}
+    ${renderSlot($$result, $$slots["default"])}
+    ${renderComponent($$result, "Footer", $$Footer, {})}
+  </body></html>`;
+}, "D:/B\xE4renherz/Repository/baerenherz/src/layouts/Layout.astro", void 0);
+
+const $$Astro$2 = createAstro();
+const $$404$2 = createComponent(async ($$result, $$props, $$slots) => {
+  const Astro2 = $$result.createAstro($$Astro$2, $$props, $$slots);
+  Astro2.self = $$404$2;
+  return renderTemplate`${renderComponent($$result, "Layout", $$Layout, { "title": "404 Not Found" }, { "default": ($$result2) => renderTemplate`
+  ${renderComponent($$result2, "Container", $$Container, {}, { "default": ($$result3) => renderTemplate`
+    ${maybeRenderHead()}<div class="flex max-h-screen items-center justify-center">
+      <div class="mt-16 text-center">
+        <h1 class="text-4xl font-bold lg:text-5xl lg:tracking-tight">404</h1>
+        <p class="mt-4 text-lg text-slate-600">Page not found.</p>
+      </div>
+    </div>
+  ` })}
+` })}
+
+<!-- 
+
+
+  This example requires updating your template:
+
+  \`\`\`
+  <html class="h-full">
+  <body class="h-full">
+  \`\`\`
+<main class="grid min-h-full place-items-center bg-white px-6 py-24 sm:py-32 lg:px-8">
+  <div class="text-center">
+    <p class="text-base font-semibold text-indigo-600">404</p>
+    <h1 class="mt-4 text-3xl font-bold tracking-tight text-gray-900 sm:text-5xl">Page not found</h1>
+    <p class="mt-6 text-base leading-7 text-gray-600">Sorry, we couldn’t find the page you’re looking for.</p>
+    <div class="mt-10 flex items-center justify-center gap-x-6">
+      <a href="#" class="rounded-md bg-indigo-600 px-3.5 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">Go back home</a>
+      <a href="#" class="text-sm font-semibold text-gray-900">Contact support <span aria-hidden="true">&rarr;</span></a>
+    </div>
+  </div>
+</main>
+ -->`;
+}, "D:/B\xE4renherz/Repository/baerenherz/src/pages/404.astro", void 0);
+
+const $$file$2 = "D:/Bärenherz/Repository/baerenherz/src/pages/404.astro";
+const $$url$2 = "/404";
+
+const _404$2 = /*#__PURE__*/Object.freeze(/*#__PURE__*/Object.defineProperty({
+  __proto__: null,
+  default: $$404$2,
+  file: $$file$2,
+  url: $$url$2
+}, Symbol.toStringTag, { value: 'Module' }));
+
+const $$Astro$1 = createAstro();
+const $$404$1 = createComponent(async ($$result, $$props, $$slots) => {
+  const Astro2 = $$result.createAstro($$Astro$1, $$props, $$slots);
+  Astro2.self = $$404$1;
+  return renderTemplate`${renderComponent($$result, "Original", $$404$2, {})}`;
+}, "D:/B\xE4renherz/Repository/baerenherz/src/pages/ch/404.astro", void 0);
+
+const $$file$1 = "D:/Bärenherz/Repository/baerenherz/src/pages/ch/404.astro";
+const $$url$1 = "/ch/404";
+
+const _404$1 = /*#__PURE__*/Object.freeze(/*#__PURE__*/Object.defineProperty({
+  __proto__: null,
+  default: $$404$1,
+  file: $$file$1,
+  url: $$url$1
+}, Symbol.toStringTag, { value: 'Module' }));
+
+const $$Astro = createAstro();
+const $$404 = createComponent(async ($$result, $$props, $$slots) => {
+  const Astro2 = $$result.createAstro($$Astro, $$props, $$slots);
+  Astro2.self = $$404;
+  return renderTemplate`${renderComponent($$result, "Original", $$404$2, {})}`;
+}, "D:/B\xE4renherz/Repository/baerenherz/src/pages/de/404.astro", void 0);
+
+const $$file = "D:/Bärenherz/Repository/baerenherz/src/pages/de/404.astro";
+const $$url = "/de/404";
+
+const _404 = /*#__PURE__*/Object.freeze(/*#__PURE__*/Object.defineProperty({
+  __proto__: null,
+  default: $$404,
+  file: $$file,
+  url: $$url
+}, Symbol.toStringTag, { value: 'Module' }));
+
+export { $$Link as $, _404$2 as _, $$Layout as a, $$Container as b, _404$1 as c, _404 as d };

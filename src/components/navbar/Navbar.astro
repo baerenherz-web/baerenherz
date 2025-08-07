@@ -30,65 +30,41 @@ const menuItems = [
     children: [
       {
         title: 'Mission',
-        path: '/about'
+        path: `${langPrefix}/about`
       },
       {
         title: 'Philosophie',
-        path: '/about#philosophie'
+        path: `${langPrefix}/about#philosophie`
       },
       {
         title: 'Vorstand',
-        path: '/about#vorstand'
+        path: `${langPrefix}/about#vorstand`
       },
       {
         title: 'Statuten',
-        path: '/about#statuten'
+        path: `${langPrefix}/about#statuten`
       }
     ]
   },
-  { title: 'Mitgliedschaft', path: '/mitgliedschaft' },
-  { title: 'Projekte', path: '/projekte' },
+  { title: 'Mitgliedschaft', path: `${langPrefix}/mitgliedschaft` },
+  { title: 'Projekte', path: `${langPrefix}/projekte` },
+  { title: 'Aktivitäten',
+        children: [
+          { title: 'Alle Aktivitäten', path: '/aktivitaeten/' },
+          { icon: '/flags/ch.svg', title: 'Charity Golfturnier 2026', path: '/ch/aktivitaeten/save-the-date-golfturnier-2026' },
+          { icon: '/flags/ch.svg', title: 'Charity Skitag 2026', path: '/ch/aktivitaeten/save-the-date-skitag-2026' },
+          { icon: '/flags/de.svg', title: 'Charity Golfturnier 2025', path: '/de/aktivitaeten/save-the-date-golfturnier-2025-de' },
+          { icon: '/flags/ch.svg', title: 'Charity Golfturnier 2025', path: '/ch/aktivitaeten/charity-golfturnier-2025' },
+          { icon: '/flags/ch.svg', title: 'Charity Skitage 2025', path: '/ch/aktivitaeten/charity-skitag-bericht2025' },
+          { icon: '/flags/ch.svg', title: 'Charity Golfturnier 2024', path: '/ch/aktivitaeten/charity-golfturnier-2024' },
+          { icon: '/flags/ch.svg', title: 'Charity Skitage 2024', path: '/ch/aktivitaeten/charity-skitag-bericht2024' },
+          { icon: '/flags/ch.svg', title: 'Charity Golfturnier 2023', path: '/ch/aktivitaeten/charity-golfturnier-bericht2023' },
+          { icon: '/flags/ch.svg', title: 'Charity Skitag 2023', path: '/ch/aktivitaeten/charity-skitag-bericht2023' },
+          { icon: '/flags/ch.svg', title: 'Charity Golfturnier 2022', path: '/ch/aktivitaeten/charity-golfturnier-2022' }
+        ]
+      },
+      { title: 'News', path: '/news' }
 ]
-
-// Aktivitäten For Germany
-if (IsNotSwitzerland) {
-  menuItems.push(
-    ...[
-      {
-        title: 'Aktivitäten',
-        children: [
-          { title: 'Alle Aktivitäten', path: '/aktivitaeten/' },
-          { title: 'Charity Golfturnier 2025', path: '/aktivitaeten/save-the-date-golfturnier-2025-de' },
-        ]
-      },
-      { title: 'News', path: '/news' }
-    ]
-  );
-}
-
-// Aktivitäten For Switzerland
-if (!IsNotSwitzerland) {
-menuItems.push(
-    ...[
-      {
-        title: 'Aktivitäten',
-        children: [
-          { title: 'Alle Aktivitäten', path: '/aktivitaeten/' },
-          { title: 'Charity Golfturnier 2026', path: '/aktivitaeten/save-the-date-golfturnier-2026' },
-          { title: 'Charity Skitag 2026', path: '/aktivitaeten/save-the-date-skitag-2026' },
-          { title: 'Charity Golfturnier 2025', path: '/aktivitaeten/charity-golfturnier-2025' },
-          { title: 'Charity Skitage 2025', path: '/aktivitaeten/charity-skitag-bericht2025' },
-          { title: 'Charity Golfturnier 2024', path: '/aktivitaeten/charity-golfturnier-2024' },
-          { title: 'Charity Skitage 2024', path: '/aktivitaeten/charity-skitag-bericht2024' },
-          { title: 'Charity Golfturnier 2023', path: '/aktivitaeten/charity-golfturnier-bericht2023' },
-          { title: 'Charity Skitag 2023', path: '/aktivitaeten/charity-skitag-bericht2023' },
-          { title: 'Charity Golfturnier 2022', path: '/aktivitaeten/charity-golfturnier-2022' }
-        ]
-      },
-      { title: 'News', path: '/news' }
-    ]
-  );
-}
 
 ---
 
@@ -125,9 +101,10 @@ menuItems.push(
                 {!item.children && (
                   <li>
                     <a
-                      class="flex py-2 text-gray-600 hover:bg-[#dfecf7] hover:text-gray-900 lg:px-3"
-                      href={`${langPrefix}${item.path}`}
+                      class="flex items-center gap-2 py-2 text-gray-600 hover:bg-[#dfecf7] hover:text-gray-900 lg:px-3"
+                      href={item.path}
                     >
+                      {item.icon && <img src={item.icon} alt="" class="inline w-5 h-5" />}
                       {item.title}
                     </a>
                   </li>
@@ -146,42 +123,72 @@ menuItems.push(
     <div class="flex items-center gap-4">
       {!IsNotSwitzerland && (
       <div class="hidden lg:flex">
-        <Link href="/spenden" style="inverted">Jetzt spenden!</Link>
+        <Link href="/ch/spenden" style="inverted">Jetzt spenden!</Link>
       </div>
       )}
       <!-- Language Switcher -->
-      <div class="relative ml-4">
+<div class="relative ml-4">
   <div class="relative">
-    <select
-      id="lang-switcher"
-      class="appearance-none rounded-lg border border-gray-300 bg-white px-5 py-2 pr-10 text-base font-medium text-gray-700 shadow transition focus:border-blue-400 focus:outline-none focus:ring-2 focus:ring-blue-100 hover:border-blue-300 hover:bg-blue-50"
-      aria-label="Sprache wählen"
-    >
-      <option value="ch">🇨🇭 Schweiz</option>
-      <option value="de">🇩🇪 Deutschland</option>
-    </select>
-    <span class="pointer-events-none absolute inset-y-0 right-3 flex items-center text-gray-500">
-      <svg class="h-5 w-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"/></svg>
+    <div class="relative inline-block text-left">
+  <button id="lang-toggle" class="inline-flex justify-center w-full rounded-md border border-gray-300 bg-white px-4 py-2 text-sm font-medium text-gray-700 shadow-sm hover:bg-blue-50">
+    <span id="lang-label" class="flex items-center gap-2">
+    <!-- Wird per JS ersetzt -->
     </span>
+    <svg class="ml-2 -mr-1 h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+      <path fill-rule="evenodd" d="M5.23 7.21a.75.75 0 011.06.02L10 10.94l3.71-3.71a.75.75 0 011.08 1.04l-4.25 4.25a.75.75 0 01-1.08 0L5.21 8.27a.75.75 0 01.02-1.06z" clip-rule="evenodd" />
+    </svg>
+  </button>
+
+  <div id="lang-menu" class="hidden absolute right-0 z-10 mt-2 w-40 origin-top-right rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5">
+    <div class="py-1">
+      <a href="/ch" class="flex items-center gap-2 px-4 py-2 text-sm text-gray-700 hover:bg-blue-100">
+        <img src="/flags/ch.svg" alt="CH" class="w-5 h-5" /> Schweiz
+      </a>
+      <a href="/de" class="flex items-center gap-2 px-4 py-2 text-sm text-gray-700 hover:bg-blue-100">
+        <img src="/flags/de.svg" alt="DE" class="w-5 h-5" /> Deutschland
+      </a>
+    </div>
   </div>
-  <script type="module">
-  const select = document.getElementById('lang-switcher');
-  const LANG_KEY = 'lang-preference';
-  if (select) {
-    let lang = 'de';
-    if (window.location.pathname.startsWith('/ch')) lang = 'ch';
-    else if (window.location.pathname.startsWith('/de')) lang = 'de';
-    select.value = lang;
-    select.addEventListener('change', (e) => {
-      lang = e.target.value;
-      localStorage.setItem(LANG_KEY, lang);
-      const prefix = '/' + lang;
-      let path = window.location.pathname.replace(/^\/(de|ch)/, '');
-      if (!path.startsWith('/')) path = '/' + path;
-      window.location.pathname = prefix + path;
+</div>
+<script>
+  const toggle = document.getElementById('lang-toggle');
+  const menu = document.getElementById('lang-menu');
+  const label = document.getElementById('lang-label');
+
+  // Sprach-Flaggen + Namen
+  const languages = {
+    ch: {
+      label: 'Schweiz',
+      flag: '/flags/ch.svg',
+      alt: 'CH'
+    },
+    de: {
+      label: 'Deutschland',
+      flag: '/flags/de.svg',
+      alt: 'DE'
+    }
+  };
+
+  let lang = 'de';
+  if (window.location.pathname.startsWith('/ch')) lang = 'ch';
+  if (window.location.pathname.startsWith('/de')) lang = 'de';
+
+  // Label im Button setzen
+  if (label) {
+    const { flag, label: text, alt } = languages[lang];
+    label.innerHTML = `<img src="${flag}" alt="${alt}" class="w-5 h-5 mr-2" /> ${text}`;
+  }
+
+  // Dropdown öffnen/schließen
+  if (toggle && menu) {
+    toggle.addEventListener('click', () => {
+      menu.classList.toggle('hidden');
     });
   }
 </script>
+  </div>
+</div>
+
       </div>
     </div>
   </header>
