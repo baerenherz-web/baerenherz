@@ -1,0 +1,10 @@
+---
+import { getCollection } from 'astro:content'
+import NewsPostPage from '../../../components/NewsPostPage.astro'
+
+const posts = await getCollection('news')
+const { slug } = Astro.params
+const post = posts.find((p) => p.slug === slug)
+if (!post) return Astro.redirect('/404')
+---
+<NewsPostPage post={post} />

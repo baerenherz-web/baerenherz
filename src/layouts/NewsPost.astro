@@ -1,26 +1,23 @@
 ---
 import type { CollectionEntry } from 'astro:content'
 import { Image } from 'astro:assets'
-
 type Props = CollectionEntry<'news'>['data']
-
 const { title, cover, coverAlt } = Astro.props
-
 import Layout from '@layouts/Layout.astro'
 import Container from '@components/container.astro'
 import Link from '@components/ui/Link.astro'
----
 
+// NEU: Prefix aus URL
+const pathname = Astro.url.pathname || '/'
+const langPrefix = pathname.startsWith('/ch') ? '/ch' : '/de'
+---
 <Layout title={title}>
   <article class="flex min-h-screen items-center justify-center bg-gray-100">
     <div class="m-6 rounded bg-white p-8 shadow-lg">
       <div class="py-6">
-        <Link href="/news">« News</Link>
+        <Link href={`${langPrefix}/news`}>« News</Link>
       </div>
-      <div class="">
-        {cover && <Image width={1020} src={cover} alt={coverAlt} />}
-      </div>
-
+      <div>{cover && <Image width={1020} src={cover} alt={coverAlt} />}</div>
       <div class="my-8 py-4">
         <h1 class="py-4 text-3xl">{title}</h1>
         <div class="max-width-80 prose max-w-prose lg:prose-xl">
