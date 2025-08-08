@@ -3,193 +3,275 @@ import Logo from '@assets/logo_header.png'
 
 import Container from '@components/container.astro'
 import Link from '@components/ui/Link.astro'
-// All internal links now use locale-prefixed Link.astro
-
 import Dropdown from './dropdown.astro'
-import { Astronav, MenuItems, MenuIcon } from 'astro-navbar'
+import { Astronav, MenuItems } from 'astro-navbar' // kein MenuIcon mehr
 
-const IsNotSwitzerland = !Astro.url.pathname.startsWith('/ch');
+// Locale rein serverseitig bestimmen (kein window)
+const pathname = Astro.url.pathname || '/'
+const langPrefix = pathname.startsWith('/ch') ? '/ch' : '/de'
+const isCH = langPrefix === '/ch'
 
-
-function getLocalePrefix() {
-  if (typeof Astro !== 'undefined' && Astro.url && Astro.url.pathname) {
-    if (Astro.url.pathname.startsWith('/ch')) return '/ch';
-    if (Astro.url.pathname.startsWith('/de')) return '/de';
-  }
-  if (typeof window !== 'undefined') {
-    if (window.location.pathname.startsWith('/ch')) return '/ch';
-    if (window.location.pathname.startsWith('/de')) return '/de';
-  }
-  return '/de';
-}
-
-const langPrefix = getLocalePrefix();
+// Navigationseinträge
 const menuItems = [
   {
     title: 'Über uns',
     children: [
-      {
-        title: 'Mission',
-        path: `${langPrefix}/about`
-      },
-      {
-        title: 'Philosophie',
-        path: `${langPrefix}/about#philosophie`
-      },
-      {
-        title: 'Vorstand',
-        path: `${langPrefix}/about#vorstand`
-      },
-      {
-        title: 'Statuten',
-        path: `${langPrefix}/about#statuten`
-      }
-    ]
+      { title: 'Mission',     path: `${langPrefix}/about` },
+      { title: 'Philosophie', path: `${langPrefix}/about#philosophie` },
+      { title: 'Vorstand',    path: `${langPrefix}/about#vorstand` },
+      { title: 'Statuten',    path: `${langPrefix}/about#statuten` },
+    ],
   },
   { title: 'Mitgliedschaft', path: `${langPrefix}/mitgliedschaft` },
-  { title: 'Projekte', path: `${langPrefix}/projekte` },
-  { title: 'Aktivitäten',
-        children: [
-          { title: 'Alle Aktivitäten', path: '/aktivitaeten/' },
-          { icon: '/flags/ch.svg', title: 'Charity Golfturnier 2026', path: '/ch/aktivitaeten/save-the-date-golfturnier-2026' },
-          { icon: '/flags/ch.svg', title: 'Charity Skitag 2026', path: '/ch/aktivitaeten/save-the-date-skitag-2026' },
-          { icon: '/flags/de.svg', title: 'Charity Golfturnier 2025', path: '/de/aktivitaeten/save-the-date-golfturnier-2025-de' },
-          { icon: '/flags/ch.svg', title: 'Charity Golfturnier 2025', path: '/ch/aktivitaeten/charity-golfturnier-2025' },
-          { icon: '/flags/ch.svg', title: 'Charity Skitage 2025', path: '/ch/aktivitaeten/charity-skitag-bericht2025' },
-          { icon: '/flags/ch.svg', title: 'Charity Golfturnier 2024', path: '/ch/aktivitaeten/charity-golfturnier-2024' },
-          { icon: '/flags/ch.svg', title: 'Charity Skitage 2024', path: '/ch/aktivitaeten/charity-skitag-bericht2024' },
-          { icon: '/flags/ch.svg', title: 'Charity Golfturnier 2023', path: '/ch/aktivitaeten/charity-golfturnier-bericht2023' },
-          { icon: '/flags/ch.svg', title: 'Charity Skitag 2023', path: '/ch/aktivitaeten/charity-skitag-bericht2023' },
-          { icon: '/flags/ch.svg', title: 'Charity Golfturnier 2022', path: '/ch/aktivitaeten/charity-golfturnier-2022' }
-        ]
-      },
-      { title: 'News', path: '/news' }
+  { title: 'Projekte',       path: `${langPrefix}/projekte` },
+  {
+    title: 'Aktivitäten',
+    children: [
+      { title: 'Alle Aktivitäten',                         path: `${langPrefix}/aktivitaeten/` },
+      { icon: '/flags/ch.svg', title: 'Charity Golfturnier 2026', path: '/ch/aktivitaeten/save-the-date-golfturnier-2026' },
+      { icon: '/flags/ch.svg', title: 'Charity Skitag 2026',      path: '/ch/aktivitaeten/save-the-date-skitag-2026' },
+      { icon: '/flags/de.svg', title: 'Charity Golfturnier 2025', path: '/de/aktivitaeten/save-the-date-golfturnier-2025-de' },
+      { icon: '/flags/ch.svg', title: 'Charity Golfturnier 2025', path: '/ch/aktivitaeten/charity-golfturnier-2025' },
+      { icon: '/flags/ch.svg', title: 'Charity Skitage 2025',     path: '/ch/aktivitaeten/charity-skitag-bericht2025' },
+      { icon: '/flags/ch.svg', title: 'Charity Golfturnier 2024', path: '/ch/aktivitaeten/charity-golfturnier-2024' },
+      { icon: '/flags/ch.svg', title: 'Charity Skitage 2024',     path: '/ch/aktivitaeten/charity-skitag-bericht2024' },
+      { icon: '/flags/ch.svg', title: 'Charity Golfturnier 2023', path: '/ch/aktivitaeten/charity-golfturnier-bericht2023' },
+      { icon: '/flags/ch.svg', title: 'Charity Skitag 2023',      path: '/ch/aktivitaeten/charity-skitag-bericht2023' },
+      { icon: '/flags/ch.svg', title: 'Charity Golfturnier 2022', path: '/ch/aktivitaeten/charity-golfturnier-2022' },
+    ],
+  },
+  { title: 'News', path: `${langPrefix}/news` },
 ]
-
 ---
 
 <Container>
-  <header class="my-5 flex flex-col items-center justify-between lg:flex-row">
+  <header class="sticky top-0 z-40 bg-white/90 backdrop-blur supports-[backdrop-filter]:bg-white/60">
     <Astronav>
-      <div class="flex w-full items-center justify-between lg:w-auto">
-        <Link href="/">
-          <img
-            src={Logo.src}
-            class="aspect-auto h-20 object-cover md:h-28"
-            alt="Logo Bärenherz"
-          />
-        </a>
+      <!-- 3-Spalten-Grid: [Logo] [Navigation zentriert] [Actions rechts] -->
+      <div class="my-5 grid grid-cols-[auto_1fr_auto] items-center gap-4">
+        <!-- Linke Spalte: Logo + Hamburger (nur mobil) -->
+        <div class="flex items-center gap-3">
+          <Link href={langPrefix}>
+            <img
+              src={Logo.src}
+              class="h-16 w-auto object-contain md:h-24"
+              alt="Logo Bärenherz"
+              width="192" height="96"
+              loading="eager" decoding="async"
+            />
+          </Link>
 
-        <!-- hamburger button -->
-        <div class="block lg:hidden">
-          <MenuIcon class="h-8 w-8 text-[#4b4e52]" />
+          <!-- Hamburger nur mobil -->
+          <button
+            id="nav-toggle"
+            class="inline-flex lg:hidden print:hidden items-center justify-center rounded p-2 outline-offset-2 focus-visible:outline focus-visible:outline-2 focus-visible:outline-blue-600"
+            aria-label="Menü öffnen"
+            type="button"
+          >
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-[#4b4e52]" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path stroke-linecap="round" d="M4 7h16M4 12h16M4 17h16" />
+            </svg>
+          </button>
         </div>
-      </div>
-      <MenuItems class="mt-2 hidden w-full lg:mt-0 lg:flex lg:w-auto">
-        <ul class="flex flex-col text-[1.3rem] lg:flex-row lg:gap-3">
-          {
-            menuItems.map((item, index) => (
+
+        <!-- Mittlere Spalte: zentrierte Navigation (nur Desktop) -->
+        <nav class="hidden lg:flex justify-center">
+          <ul class="flex items-center gap-6 text-[1.125rem]">
+            {menuItems.map((item, index) => (
               <>
-                {item.children && (
+                {item.children ? (
                   <Dropdown
                     title={item.title}
                     children={item.children}
                     lastItem={index === menuItems.length - 1}
                   />
-                )}
-
-                {!item.children && (
+                ) : (
                   <li>
                     <a
-                      class="flex items-center gap-2 py-2 text-gray-600 hover:bg-[#dfecf7] hover:text-gray-900 lg:px-3"
                       href={item.path}
+                      class="flex items-center gap-1 rounded py-2 px-3 text-gray-700 hover:text-gray-900 hover:bg-[#dfecf7] focus-visible:outline focus-visible:outline-2 focus-visible:outline-blue-600"
                     >
-                      {item.icon && <img src={item.icon} alt="" class="inline w-5 h-5" />}
+                      {item.icon && <img src={item.icon} alt="" class="inline h-5 w-5" />}
                       {item.title}
                     </a>
                   </li>
                 )}
               </>
-            ))
-          }
-        </ul>
-        {!IsNotSwitzerland && (
-        <div class="mt-3 flex items-center gap-4 lg:hidden">
-          <Link href="/spenden" style="inverted">Jetzt spenden!</Link>
+            ))}
+          </ul>
+        </nav>
+
+        <!-- Rechte Spalte: Spenden + Language Switcher -->
+        <div class="flex items-center gap-3">
+          {isCH && (
+            <div class="hidden lg:flex">
+              <Link href="/ch/spenden" style="inverted">Jetzt spenden!</Link>
+            </div>
+          )}
+
+          <div class="relative hidden lg:block">
+            <button id="lang-toggle"
+              class="inline-flex items-center justify-center gap-2 rounded-md border border-gray-300 bg-white px-3 py-2 text-sm font-medium text-gray-700 shadow-sm hover:bg-blue-50 focus-visible:outline focus-visible:outline-2 focus-visible:outline-blue-600"
+              aria-haspopup="menu" aria-expanded="false" aria-controls="lang-menu">
+              <span class="flex items-center gap-2">
+                <img src={isCH ? '/flags/ch.svg' : '/flags/de.svg'} alt={isCH ? 'CH' : 'DE'} class="h-5 w-5" />
+                {isCH ? 'Schweiz' : 'Deutschland'}
+              </span>
+              <svg class="ml-1 h-4 w-4" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                <path fill-rule="evenodd" d="M5.23 7.21a.75.75 0 011.06.02L10 10.94l3.71-3.71a.75.75 0 011.08 1.04l-4.25 4.25a.75.75 0 01-1.08 0L5.21 8.27a.75.75 0 01.02-1.06z" clip-rule="evenodd" />
+              </svg>
+            </button>
+
+            <div id="lang-menu"
+              class="invisible absolute right-0 z-50 mt-2 w-44 origin-top-right scale-95 rounded-md bg-white opacity-0 shadow-lg ring-1 ring-black ring-opacity-5 transition-all data-[open=true]:visible data-[open=true]:scale-100 data-[open=true]:opacity-100"
+              role="menu" aria-labelledby="lang-toggle" data-open="false">
+              <div class="py-1">
+                <a href="/ch" class="flex items-center gap-2 px-4 py-2 text-sm text-gray-700 hover:bg-blue-100" role="menuitem">
+                  <img src="/flags/ch.svg" alt="CH" class="h-5 w-5" /> Schweiz
+                </a>
+                <a href="/de" class="flex items-center gap-2 px-4 py-2 text-sm text-gray-700 hover:bg-blue-100" role="menuitem">
+                  <img src="/flags/de.svg" alt="DE" class="h-5 w-5" /> Deutschland
+                </a>
+              </div>
+            </div>
+          </div>
         </div>
-        )}
-      </MenuItems>
+      </div>
     </Astronav>
-    <div class="flex items-center gap-4">
-      {!IsNotSwitzerland && (
-      <div class="hidden lg:flex">
-        <Link href="/ch/spenden" style="inverted">Jetzt spenden!</Link>
-      </div>
-      )}
-      <!-- Language Switcher -->
-<div class="relative ml-4">
-  <div class="relative">
-    <div class="relative inline-block text-left">
-  <button id="lang-toggle" class="inline-flex justify-center w-full rounded-md border border-gray-300 bg-white px-4 py-2 text-sm font-medium text-gray-700 shadow-sm hover:bg-blue-50">
-    <span id="lang-label" class="flex items-center gap-2">
-    <!-- Wird per JS ersetzt -->
-    </span>
-    <svg class="ml-2 -mr-1 h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
-      <path fill-rule="evenodd" d="M5.23 7.21a.75.75 0 011.06.02L10 10.94l3.71-3.71a.75.75 0 011.08 1.04l-4.25 4.25a.75.75 0 01-1.08 0L5.21 8.27a.75.75 0 01.02-1.06z" clip-rule="evenodd" />
-    </svg>
-  </button>
-
-  <div id="lang-menu" class="hidden absolute right-0 z-10 mt-2 w-40 origin-top-right rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5">
-    <div class="py-1">
-      <a href="/ch" class="flex items-center gap-2 px-4 py-2 text-sm text-gray-700 hover:bg-blue-100">
-        <img src="/flags/ch.svg" alt="CH" class="w-5 h-5" /> Schweiz
-      </a>
-      <a href="/de" class="flex items-center gap-2 px-4 py-2 text-sm text-gray-700 hover:bg-blue-100">
-        <img src="/flags/de.svg" alt="DE" class="w-5 h-5" /> Deutschland
-      </a>
-    </div>
-  </div>
-</div>
-<script>
-  const toggle = document.getElementById('lang-toggle');
-  const menu = document.getElementById('lang-menu');
-  const label = document.getElementById('lang-label');
-
-  // Sprach-Flaggen + Namen
-  const languages = {
-    ch: {
-      label: 'Schweiz',
-      flag: '/flags/ch.svg',
-      alt: 'CH'
-    },
-    de: {
-      label: 'Deutschland',
-      flag: '/flags/de.svg',
-      alt: 'DE'
-    }
-  };
-
-  let lang = 'de';
-  if (window.location.pathname.startsWith('/ch')) lang = 'ch';
-  if (window.location.pathname.startsWith('/de')) lang = 'de';
-
-  // Label im Button setzen
-  if (label) {
-    const { flag, label: text, alt } = languages[lang];
-    label.innerHTML = `<img src="${flag}" alt="${alt}" class="w-5 h-5 mr-2" /> ${text}`;
-  }
-
-  // Dropdown öffnen/schließen
-  if (toggle && menu) {
-    toggle.addEventListener('click', () => {
-      menu.classList.toggle('hidden');
-    });
-  }
-</script>
-  </div>
-</div>
-
-      </div>
-    </div>
   </header>
 </Container>
+
+<!-- Mobile Overlay Menü: außerhalb des Containers, full-screen -->
+<div
+  id="mobile-menu"
+  class="lg:hidden fixed inset-0 z-[100] bg-white translate-y-[-100%] opacity-0 pointer-events-none
+         transition-all duration-300 ease-out
+         data-[open=true]:translate-y-0 data-[open=true]:opacity-100 data-[open=true]:pointer-events-auto"
+  data-open="false"
+  role="dialog"
+  aria-modal="true"
+>
+  <div class="flex items-center justify-between px-4 py-4 border-b">
+    <span class="text-lg font-semibold">Menü</span>
+    <button id="nav-close" class="rounded p-2" aria-label="Menü schließen">
+      <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" viewBox="0 0 24 24" stroke="currentColor" fill="none">
+        <path stroke-linecap="round" stroke-width="2" d="M6 6l12 12M18 6l-12 12"/>
+      </svg>
+    </button>
+  </div>
+
+  <nav class="h-[calc(100vh-4rem)] overflow-y-auto px-4 pb-6 pt-2">
+    <ul class="flex flex-col gap-1 text-base">
+      {menuItems.map((item) => (
+        <>
+          {item.children ? (
+            <li class="border-b py-2">
+              <details class="group">
+                <summary class="flex cursor-pointer list-none items-center justify-between py-2 text-gray-900">
+                  <span>{item.title}</span>
+                  <svg class="h-4 w-4 transition-transform group-open:rotate-180" viewBox="0 0 20 20" fill="currentColor">
+                    <path fill-rule="evenodd" d="M5.23 7.21a.75.75 0 011.06.02L10 10.94l3.71-3.71a.75.75 0 011.08 1.04l-4.25 4.25a.75.75 0 01-1.08 0L5.21 8.27a.75.75 0 01.02-1.06z" clip-rule="evenodd" />
+                  </svg>
+                </summary>
+                <div class="mt-1 flex flex-col pl-2">
+                  {item.children.map((child) => (
+                    <a href={child.path} class="flex items-center gap-2 rounded px-2 py-2 text-gray-700 hover:bg-[#dfecf7]">
+                      {child.icon && <img src={child.icon} alt="" class="h-4 w-4" />}
+                      {child.title}
+                    </a>
+                  ))}
+                </div>
+              </details>
+            </li>
+          ) : (
+            <li>
+              <a href={item.path} class="block rounded px-2 py-2 text-gray-900 hover:bg-[#dfecf7]">
+                {item.title}
+              </a>
+            </li>
+          )}
+        </>
+      ))}
+
+      {isCH && (
+        <li class="mt-3">
+          <a href="/ch/spenden" class="inline-flex w-full items-center justify-center rounded bg-[#0a3471] px-4 py-3 text-white">
+            Jetzt spenden!
+          </a>
+        </li>
+      )}
+
+      <!-- Language Switcher (mobil) -->
+      <li class="mt-4">
+        <div class="rounded-md border bg-white">
+          <a
+            href="/ch"
+            class={`flex items-center gap-2 px-4 py-3 text-gray-800 hover:bg-blue-50 ${isCH ? 'bg-blue-50 font-medium' : ''}`}
+          >
+            <img src="/flags/ch.svg" alt="CH" class="h-5 w-5" />
+            Schweiz {isCH && '(aktuell)'}
+          </a>
+          <a
+            href="/de"
+            class={`flex items-center gap-2 border-t px-4 py-3 text-gray-800 hover:bg-blue-50 ${!isCH ? 'bg-blue-50 font-medium' : ''}`}
+          >
+            <img src="/flags/de.svg" alt="DE" class="h-5 w-5" />
+            Deutschland {!isCH && '(aktuell)'}
+          </a>
+        </div>
+      </li>
+
+    </ul>
+  </nav>
+</div>
+
+<!-- Scripts -->
+<script is:inline>
+  // Desktop: Language dropdown
+  (function () {
+    const btn = document.getElementById('lang-toggle');
+    const menu = document.getElementById('lang-menu');
+    if (!btn || !menu) return;
+
+    const setOpen = (open) => {
+      menu.dataset.open = String(open);
+      btn.setAttribute('aria-expanded', String(open));
+    };
+
+    btn.addEventListener('click', (e) => {
+      e.stopPropagation();
+      setOpen(menu.dataset.open !== 'true');
+    });
+    document.addEventListener('click', () => setOpen(false));
+    document.addEventListener('keydown', (e) => { if (e.key === 'Escape') setOpen(false); });
+  })();
+
+  // Mobile: Overlay-Menü
+  (function () {
+    const openBtn = document.getElementById('nav-toggle');
+    const closeBtn = document.getElementById('nav-close');
+    const panel = document.getElementById('mobile-menu');
+    if (!openBtn || !panel) return;
+
+    const setOpen = (open) => {
+      panel.dataset.open = String(open);
+      document.documentElement.classList.toggle('overflow-hidden', open);
+      document.body.classList.toggle('overflow-hidden', open);
+    };
+
+    openBtn.addEventListener('click', (e) => {
+      e.stopPropagation();
+      setOpen(true);
+    });
+    if (closeBtn) closeBtn.addEventListener('click', () => setOpen(false));
+    document.addEventListener('keydown', (e) => { if (e.key === 'Escape') setOpen(false); });
+    panel.addEventListener('click', (e) => { if (e.target === panel) setOpen(false); });
+  })();
+</script>
+
+<style is:inline>
+  /* Fallback: ab lg Hamburger definitiv verstecken */
+  @media (min-width: 1024px) {
+    #nav-toggle { display: none !important; }
+  }
+</style>
