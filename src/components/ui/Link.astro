@@ -1,15 +1,6 @@
 ---
 import { getLocale, prefixLocalePath } from '../../utils/locale';
 
-interface Props {
-  href: string
-  size?: 'md' | 'lg' | 'xl'
-  block?: boolean
-  style?: 'outline' | 'primary' | 'inverted' | 'muted'
-  class?: string
-  [x: string]: any
-}
-
 const {
   href,
   block,
@@ -17,14 +8,9 @@ const {
   style = 'primary',
   class: className,
   ...rest
-} = Astro.props
+} = Astro.props;
 
-const sizes = {
-  xl: 'px-[3em] py-3',
-  lg: 'px-10 py-2.5',
-  md: 'px-4 py-2'
-}
-
+const sizes = { xl: 'px-[3em] py-3', lg: 'px-10 py-2.5', md: 'px-4 py-2' };
 const styles = {
   outline: 'bg-white border-2 border-black hover:bg-gray-100 text-black ',
   primary:
@@ -32,10 +18,18 @@ const styles = {
   inverted:
     'bg-[#033277] text-white hover:bg-[#dfecf7] hover:text-[#2b2523] hover:border-[#033277] border-2 border-transparent',
   muted: 'bg-gray-100 hover:bg-gray-200 border-2 border-transparent'
-}
+};
 
-const locale = typeof Astro !== 'undefined' && Astro.url && Astro.url.pathname ? getLocale(Astro.url.pathname) : 'de';
-const prefixedHref = prefixLocalePath(href, locale);
+const locale = Astro.url?.pathname ? getLocale(Astro.url.pathname) : 'de';
+
+// Nur relative Pfade präfixen:
+const isExternal = typeof href === 'string' && /^[a-z]+:/i.test(href); // http:, https:, mailto:, tel:, ...
+const isHash = typeof href === 'string' && href.startsWith('#');
+const isAbsolute = typeof href === 'string' && href.startsWith('/');
+
+const prefixedHref = (isExternal || isHash || isAbsolute)
+  ? href
+  : prefixLocalePath(href, locale);
 ---
 
 <a
@@ -48,5 +42,6 @@ const prefixedHref = prefixLocalePath(href, locale);
     styles[style],
     className
   ]}
-  ><slot />
+>
+  <slot />
 </a>
