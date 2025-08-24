@@ -6,39 +6,47 @@ import { Image } from 'astro:assets'
 import FormattedDate from '@components/FormattedDate.astro'
 import Container from '@components/container.astro'
 
-// Nur DE-Collection laden!
-const posts = (await getCollection('aktivitaeten-de')).sort(
+// CH- und DE-Collection laden und zusammenführen
+const postsCH = await getCollection('aktivitaeten-ch')
+const postsDE = await getCollection('aktivitaeten-de')
+
+const posts = [...postsCH, ...postsDE].sort(
   (a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf()
 )
 ---
 
-<Layout title="Aktivitäten DE">
+<Layout title="Alle Aktivitäten">
   <Container class="mx-14 my-10">
     {
-      posts.map((post) => (
-        <li class="list-none">
-          <a href={`/de/aktivitaeten/${post.slug}/`}>
-            <Image
-              width={720}
-              height={360}
-              src={post.data.cover}
-              alt={post.data.coverAlt}
-            />
-            <div class="mb-6 mt-2 pb-10 pt-4">
-              <h4 class="text-3xl">{post.data.title}</h4>
-              <p class="pb-4 pt-2 text-base text-gray-500">
-                <FormattedDate date={new Date(post.data.pubDate)} />
-              </p>
-              <div class="prose-base line-clamp-4 lg:prose-xl">
-                {post.data.description}
+      posts.map((post) => {
+        const isCH = post.collection === 'aktivitaeten-ch'
+        const basePath = isCH ? '/ch/aktivitaeten/' : '/de/aktivitaeten/'
+
+        return (
+          <li class="list-none">
+            <a href={`${basePath}${post.slug}/`}>
+              <Image
+                width={720}
+                height={360}
+                src={post.data.cover}
+                alt={post.data.coverAlt}
+              />
+              <div class="mb-6 mt-2 pb-10 pt-4">
+                <h4 class="text-3xl">{post.data.title}</h4>
+                <p class="pb-4 pt-2 text-base text-gray-500">
+                  <FormattedDate date={new Date(post.data.pubDate)} />
+                </p>
+                <div class="prose-base line-clamp-4 lg:prose-xl">
+                  {post.data.description}
+                </div>
+                <div class="pt-5">
+                  <p class="text-2xl italic text-[#033277]">weiterlesen...</p>
+                </div>
               </div>
-              <div class="pt-5">
-                <p class="text-2xl italic text-[#033277]">weiterlesen...</p>
-              </div>
-            </div>
-          </a>
-        </li>
-      ))
+            </a>
+          </li>
+        )
+      })
     }
   </Container>
 </Layout>
