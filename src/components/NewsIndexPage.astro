@@ -9,12 +9,14 @@ import headerImg from '@assets/news/postheader.webp'
 const pathname = Astro.url.pathname || '/'
 const langPrefix = pathname.startsWith('/ch') ? '/ch' : '/de'
 
-// Posts holen und sicher nach Datum sortieren
-const posts = (await getCollection('news')).sort((a, b) => {
-  const ad = new Date(a.data.pubDate).getTime()
-  const bd = new Date(b.data.pubDate).getTime()
-  return bd - ad
-})
+// Posts holen, nach Datum sortieren und nur Posts ab 2024 anzeigen
+const posts = (await getCollection('news'))
+  .sort((a, b) => {
+    const ad = new Date(a.data.pubDate).getTime()
+    const bd = new Date(b.data.pubDate).getTime()
+    return bd - ad
+  })
+  .filter(post => new Date(post.data.pubDate).getFullYear() >= 2024)
 ---
 
 <Container class="mx-14 my-10 flex flex-col">
