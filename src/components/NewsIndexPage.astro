@@ -12,11 +12,10 @@ const langPrefix = pathname.startsWith('/ch') ? '/ch' : '/de'
 // Posts holen, nach Datum sortieren und nur Posts ab 2024 anzeigen
 const posts = (await getCollection('news'))
   .sort((a, b) => {
-    const ad = new Date(a.data.pubDate).getTime()
-    const bd = new Date(b.data.pubDate).getTime()
-    return bd - ad
-  })
-  .filter(post => new Date(post.data.pubDate).getFullYear() >= 2024)
+  const ad = new Date(a.data.pubDate).getTime()
+  const bd = new Date(b.data.pubDate).getTime()
+  return bd - ad
+})
 ---
 
 <Container class="mx-14 my-10 flex flex-col">
@@ -55,11 +54,6 @@ const posts = (await getCollection('news'))
                 <p class="pb-4 pt-2 text-base text-gray-500">
                   <FormattedDate date={new Date(post.data.pubDate)} />
                 </p>
-
-                <div class="prose-base line-clamp-4 lg:prose-xl">
-                  {post.data.description}
-                </div>
-
                 <div class="pt-5">
                   <p class="text-2xl italic text-[#033277]">weiterlesen...</p>
                 </div>
