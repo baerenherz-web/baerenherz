@@ -26,10 +26,17 @@ const posts = (await getCollection('news'))
   <ul>
     {
       posts.map((post) => {
-        const href =
-          post.slug === 'save-the-date-golfturnier-2025'
-            ? `${langPrefix}/aktivitaeten/charity-golfturnier-2025`
-            : `${langPrefix}/news/${post.slug}/`
+        let href;
+
+        if (post.slug === 'save-the-date-golfturnier-2025') {
+          href = `${langPrefix}/aktivitaeten/charity-golfturnier-2025`;
+        } else if (post.slug === 'charity-wein-und-golf-bericht-2025') {
+          href = `${langPrefix}/aktivitaeten/charity-wein-und-golf-bericht-2025`;
+        } else {
+          href = `${langPrefix}/news/${post.slug}/`;
+        }
+
+            
 
         return (
           <li class="my-5 list-none">
@@ -55,7 +62,7 @@ const posts = (await getCollection('news'))
                   <FormattedDate date={new Date(post.data.pubDate)} />
                 </p>
                 <div class="pt-5">
-                  <p class="text-2xl italic text-[#033277]">weiterlesen...</p>
+                  <p class="text-2xl italic text-[#033277]">Hier geht es zum Artikel...</p>
                 </div>
               </div>
             </a>
